@@ -87,7 +87,10 @@
     .sub{color:var(--muted);max-width:70ch}
 
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-    .card{background:var(--card);border:1px solid var(--stroke);padding:1rem;border-radius:16px;box-shadow:var(--shadow);position:relative;transition:.25s transform,.25s box-shadow,.25s border-color}
+    .card{backdrop-filter:blur(14px) saturate(160%);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);padding:1rem;border-radius:18px;box-shadow:0 12px 32px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,0.06);position:relative;transition:.25s transform,.25s box-shadow,.25s border-color;overflow:visible}
+    /* Soft glow border untuk tampilan mewah */
+    .card::after{content:"";position:absolute;inset:-1px;border-radius:16px;padding:1px;background:linear-gradient(90deg,rgba(139,255,173,0.06),rgba(11,187,239,0.06));-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0.6;transition:.35s opacity, .35s transform}
+    .card:hover::after{opacity:1;transform:scale(1.02)}
     .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.38);border-color:#23406a}
     .card h3{margin:.2rem 0 .5rem 0}
     .card p{color:var(--muted)}
@@ -132,6 +135,15 @@
     .popmini .icon{width:32px;height:32px;border-radius:999px;display:grid;place-items:center;background:#102236;border:1px solid #1e3458}
     .popmini .txt{font-size:.92rem}
     .popmini .close{margin-left:.4rem;background:transparent;border:0;color:var(--muted);font-weight:700;cursor:pointer}
+  
+    /* Badge pojok dan quick tooltip */
+    .corner-badge{position:absolute;left:12px;top:12px;z-index:4;padding:.28rem .55rem;border-radius:10px;font-size:.78rem;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.35);color:#041014}
+    .corner-badge.promo{background:linear-gradient(90deg,#ffd166,#ffb86b);border:1px solid rgba(255,200,120,.12)}
+    .corner-badge.new{background:linear-gradient(90deg,#8fffad,#5fe5c6);border:1px solid rgba(143,255,173,.12)}
+    .corner-badge.bestseller{background:linear-gradient(90deg,#ffd166,#ffecb3);border:1px solid rgba(60,40,10,.12)}
+    .card .quicktip{position:absolute;left:12px;bottom:12px;z-index:4;display:none;max-width:220px;background:rgba(8,12,18,.86);border:1px solid var(--stroke);padding:.5rem .6rem;border-radius:10px;color:var(--muted);font-size:.88rem}
+    .card:hover .quicktip{display:block}
+
   </style>
 </head>
 <body>
@@ -207,7 +219,8 @@
 
     <div class="hero-card">
       <img src="Poster%20T65L_Tanpa%20Harga-01.jpg" alt="Uwinfly T65L Putih" style="border-radius:16px;border:1px solid var(--stroke)" loading="lazy">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.7rem">
+      <h3 style="margin:.6rem 0 .4rem 0;text-align:center">Uwinfly T65L</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.7rem">;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.7rem">
         <div class="card"><strong>🔌 Hemat</strong><p>Biaya operasional rendah, pengisian mudah di rumah.</p></div>
         <div class="card"><strong>🛡️ Aman</strong><p>Unit bergaransi & layanan servis resmi.</p></div>
       </div>
@@ -225,110 +238,12 @@
         <!-- Produk Baru: Uwinfly T80 (SLA 60V/20Ah) -->
         <div class="card" data-series="T">
           <img src="T80WEB.jpg" alt="Uwinfly T80" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly T80 (SLA 60V/20Ah)</h3>
-          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 7.500.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 7.000.000</span></strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: SLA 60V/20Ah</li>
-            <li>Kecepatan: 55 km/jam</li>
-            <li>Jarak Tempuh: 55 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20order%20Uwinfly%20T80%20%28SLA%2060V%2F20Ah%29%20-%20apakah%20ready%3F" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-        <div class="card"><h3>Stok Lengkap</h3><p>Seri Uwinfly populer: D65/D66A, T60/T65L, T80/T85, M60L/M100.</p></div>
-        <div class="card"><h3>Harga Transparan</h3><p>Label harga jelas + opsi cicilan (tanya CS).</p></div>
-        <div class="card"><h3>Test Ride</h3><p>Coba langsung di Metro Indah Mall Bandung (jam 10.00–21.00).</p></div>
-        <div class="card"><h3>Aksesoris & Sparepart</h3><p>Helmet, baterai, charger, ban, dan layanan servis.</p></div>
-        <div class="card"><h3>Pengiriman Cepat</h3><p>Area Bandung & sekitarnya, bisa same-day (syarat berlaku).</p></div>
-        <div class="card"><h3>Garansi Resmi</h3><p>Unit bergaransi & dukungan teknisi berpengalaman.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALERI FOTO ringkas -->
-  <section id="galeri">
-    <div class="container">
-      <h2>Galeri Foto</h2>
-      <p class="sub">Foto unit real, tampilan toko, dan area servis Uwinfly Eramolis.</p>
-      <div class="grid-3" style="margin-top:1rem">
-        <div class="card"><img src="WhatsApp%20Image%202024-10-27%20at%2010.36.48.jpeg" alt="Foto Toko Uwinfly Eramolis" loading="lazy"></div>
-        <div class="card"><img src="ERAMOSLIS%20(1).png" alt="Barisan Unit Uwinfly" loading="lazy"></div>
-        <div class="card"><img src="https://via.placeholder.com/600x400?text=Area+Servis" alt="Area Servis" loading="lazy"></div>
-        <div class="card"><img src="https://via.placeholder.com/600x400?text=Stok+Ready" alt="Stok Ready" loading="lazy"></div>
-        <div class="card"><img src="https://via.placeholder.com/600x400?text=Test+Ride" alt="Test Ride" loading="lazy"></div>
-        <div class="card"><img src="https://via.placeholder.com/600x400?text=Unit+Display" alt="Unit Display" loading="lazy"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- KATALOG MODEL -->
-    <!-- KATALOG MODEL (RAPIH) -->
-  <section id="katalog">
-    <div class="container">
-      <h2>Katalog Model Uwinfly</h2>
-      <p class="sub">Daftar harga, spesifikasi singkat, dan status ketersediaan. Gunakan filter untuk melihat seri tertentu.</p>
-
-      <!-- Filter (atas) -->
-      <div id="catalogFilters" class="filter-bar" role="tablist" aria-label="Filter katalog">
-        <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Semua</button>
-        <button class="filter-btn" data-filter="T" role="tab">Seri T</button>
-        <button class="filter-btn" data-filter="M" role="tab">Seri M</button>
-        <button class="filter-btn" data-filter="D" role="tab">Seri D</button>
-      </div>
-
-      <!-- Tombol Bandingkan -->
-      <div style="margin-top:1rem;">
-        <button class="btn" style="background:#12223a;border-radius:12px;" onclick="alert('Fitur Bandingkan segera aktif!')">🔍 Bandingkan Produk</button>
-      </div>
-
-      <div class="grid-3" style="margin-top:1rem">
-        
-        $1
-
-        <!-- T90 -->
-        <div class="card" data-series="T">
-          <img src="T90WEB.jpg" alt="Uwinfly T90" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          $1
-<span class="status bestseller">Bestseller</span>
-          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 15.000.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 14.000.000</span></strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: Lithium 60V/30Ah</li>
-            <li>Power: 3000W</li>
-            <li>Kecepatan: 40–45 km/jam</li>
-            <li>Jarak Tempuh: 35–40 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Order%20Uwinfly%20T90" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        <span class="status bestseller">Bestseller</span>
-          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 4.200.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 3.900.000</span></strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: SLA 48V/12Ah</li>
-            <li>Kecepatan: 40–45 km/jam</li>
-            <li>Jarak Tempuh: 35–40 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20order%20Uwinfly%20T60%20%28SLA%2048V%2F12Ah%29" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        <div class="card" data-series="T">
-          <img src="T65LWEB.png" alt="Uwinfly T65L" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly T65L</h3>
-          <p><strong>Harga Cash: Rp 5.200.000</strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: SLA / Lithium</li>
-            <li>Kecepatan: 35-40 km/jam</li>
-            <li>Jarak Tempuh: 40–45 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20Uwinfly%20T65L" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        <div class="card" data-series="T">
-          <img src="T80WEB.jpg" alt="Uwinfly T80" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
           <h3>Uwinfly T80</h3>
           <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 7.500.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 7.000.000</span></strong></p>
           <ul style="color:var(--muted);margin-left:1rem">
             <li>Baterai: Lithium 60V</li>
             <li>Kecepatan: 55–60 km/jam</li>
-            <li>Jarak Tempuh: 50–55 km</li>
+            <li>Jarak Tempuh: 60–80 km</li>
           </ul>
           <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20Uwinfly%20T80" style="margin-top:.6rem;display:inline-block">Order</a>
         </div>
@@ -347,12 +262,12 @@
 
         
         <!-- ===== Seri M ===== -->
-        $1
+        
 
         <!-- M70 -->
         <div class="card" data-series="M">
           <img src="M70WEB.jpg" alt="Uwinfly M70" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          $1
+          <h3>Uwinfly M70</h3>
 <span class="status bestseller">Bestseller</span>
           <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 4.800.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 4.199.000</span></strong></p>
           <ul style="color:var(--muted);margin-left:1rem">
@@ -383,6 +298,7 @@
         <div class="card" data-series="D">
           <img src="D65WEB.jpg" alt="Uwinfly D65" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
           <h3>Uwinfly D65</h3>
+          <span class="status bestseller">Bestseller</span>
           <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 3.700.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 3.500.000</span></strong></p>
           <ul style="color:var(--muted);margin-left:1rem">
             <li>Baterai: SLA / Lithium</li>
@@ -406,9 +322,9 @@
 
         <div class="card" data-series="D">
           <img src="D70%20WEB.jpg" alt="Uwinfly D70" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          
-<span class="status bestseller">Bestseller</span>
-          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 4.300.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 3.500.000</span></strong></p>
+          <h3>Uwinfly D70</h3>
+          <span class="status bestseller">Bestseller</span>
+          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 3.800.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 3.299.000</span></strong></p>
           <ul style="color:var(--muted);margin-left:1rem">
             <li>Baterai: SLA 48V/12Ah</li>
             <li>Kecepatan: 40–45 km/jam</li>
@@ -419,7 +335,8 @@
 
         <div class="card" data-series="D">
           <img src="D65ADVWEB.jpeg" alt="Uwinfly D65 ADV" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-        
+          <h3>Uwinfly D65 ADV</h3>
+          
 <span class="status bestseller">Bestseller</span>
           <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 4.300.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 4.100.000</span></strong></p>
           <ul style="color:var(--muted);margin-left:1rem">
@@ -433,7 +350,7 @@
         <div class="card" data-series="D">
           <img src="D75WEB.jpg" alt="Uwinfly D75" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
           <h3>Uwinfly D75</h3>
-          <p><strong>Harga Cash: Rp 6.800.000</strong></p>
+          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 3.900.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 3.800.000</span></strong></p>
           <ul style="color:var(--muted);margin-left:1rem">
             <li>Baterai: SLA / Lithium</li>
             <li>Kecepatan: 35–45 km/jam</li>
@@ -539,3 +456,42 @@
         <form id="statusForm" style="display:grid;gap:.6rem">
           <label>Nama
             <input required name="cname" type="text" placeholder="Nama lengkap" style="width:100%;margin-top:.35rem;pad
+  <script>
+  (function(){
+    const cards = document.querySelectorAll('#katalog .card[data-series]');
+    if(!cards.length) return;
+    cards.forEach(card=>{
+      let badgeText = '';
+      if(card.querySelector('.status.bestseller')) badgeText = 'Bestseller';
+      else if(card.querySelector('p strong span.status')) badgeText = card.querySelector('p strong span.status').innerText || 'Promo';
+      else if(card.querySelector('p strong') && (card.querySelector('p strong').innerHTML||'').includes('text-decoration:line-through')) badgeText = 'Promo';
+
+      if(badgeText){
+        const b = document.createElement('div');
+        b.className = 'corner-badge ' + (badgeText.toLowerCase().includes('best')? 'bestseller' : (badgeText.toLowerCase().includes('new')? 'new':'promo'));
+        b.textContent = badgeText;
+        b.setAttribute('aria-hidden','true');
+        card.appendChild(b);
+      }
+
+      const ul = card.querySelector('ul');
+      const quick = document.createElement('div');
+      quick.className = 'quicktip';
+      quick.setAttribute('role','note');
+      if(ul){
+        const items = Array.from(ul.querySelectorAll('li')).slice(0,3).map(li=>li.textContent.trim());
+        quick.innerHTML = items.map(it=>'<div>• ' + it + '</div>').join('');
+      } else {
+        const p = card.querySelector('p');
+        quick.textContent = p ? p.textContent.trim().slice(0,120) : '';
+      }
+      card.appendChild(quick);
+
+      card.setAttribute('tabindex','0');
+      card.addEventListener('focus',()=>{ quick.style.display='block'; });
+      card.addEventListener('blur',()=>{ quick.style.display='none'; });
+    });
+  })();
+  </script>
+</body>
+</html>
