@@ -220,17 +220,43 @@
     <div class="hero-card">
       <img src="Poster%20T65L_Tanpa%20Harga-01.jpg" alt="Uwinfly T65L Putih" style="border-radius:16px;border:1px solid var(--stroke)" loading="lazy">
       <h3 style="margin:.6rem 0 .4rem 0;text-align:center">Uwinfly T65L</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.7rem">;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.7rem">
+      <div style="display:grid">;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.7rem">
         <div class="card"><strong>🔌 Hemat</strong><p>Biaya operasional rendah, pengisian mudah di rumah.</p></div>
         <div class="card"><strong>🛡️ Aman</strong><p>Unit bergaransi & layanan servis resmi.</p></div>
       </div>
     </div>
   </header>
 
+  <!-- PROMO SECTION -->
+  <section id="promo">
+    <div class="container">
+      <h2>Promo Spesial</h2>
+      <p class="sub">Produk dengan harga diskon dari katalog otomatis tampil di sini.</p>
+      <div class="grid-3" id="promoGrid" style="margin-top:1rem">
+        <!-- Kartu promo akan diisi otomatis dari katalog -->
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERI (Section diperbaiki agar tombol bekerja) -->
+  <section id="galeri">
+    <div class="container">
+      <h2>Galeri Unit</h2>
+      <p class="sub">Lihat beberapa foto unit terbaru di showroom kami.</p>
+      <div class="grid-3" style="margin-top:1rem">
+        <div class="card"><img src="T65LWEB.png" alt="Uwinfly T65L" style="border-radius:12px;border:1px solid var(--stroke)"></div>
+        <div class="card"><img src="M70WEB.jpg" alt="Uwinfly M70" style="border-radius:12px;border:1px solid var(--stroke)"></div>
+        <div class="card"><img src="D65WEB.jpg" alt="Uwinfly D65" style="border-radius:12px;border:1px solid var(--stroke)"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
   <div class="container"><div class="divider"></div></div>
 
   <!-- FITUR -->
-  <section id="fitur">
+  <section id="katalog">
     <div class="container">
       <h2>Keunggulan Kami</h2>
       <p class="sub">Beli nyaman dengan dukungan after-sales lengkap dan stok siap kirim.</p>
@@ -362,7 +388,39 @@
       </div>
     </div>
   </section>
-  <!-- SERVISREPART -->
+
+  <!-- KEAMANAN -->
+  <section id="keamanan">
+    <div class="container">
+      <h2>Keamanan Pembelian</h2>
+      <p class="sub">Perlindungan pelanggan saat membeli unit di showroom kami.</p>
+
+      <div class="grid-3" style="margin-top:1rem">
+        <div class="card">
+          <h3>✔ Pembayaran Aman</h3>
+          <p>Pembayaran langsung ke toko resmi tanpa pihak ketiga. Semua transaksi terekam dan dapat diverifikasi.</p>
+        </div>
+
+        <div class="card">
+          <h3>✔ Unit Baru & Bergaransi</h3>
+          <p>Setiap unit yang keluar dari toko adalah unit baru, lengkap dengan garansi resmi Uwinfly.</p>
+        </div>
+
+        <div class="card">
+          <h3>✔ Tidak Ada Biaya Tersembunyi</h3>
+          <p>Harga jelas dan transparan. Tidak ada biaya tambahan yang tidak diberitahukan sebelumnya.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <h3>✔ Cek Unit Sebelum Pembayaran</h3>
+        <p>Pelanggan diperbolehkan memeriksa unit, test fungsi, dan memastikan kondisi motor/sepeda sebelum transaksi diselesaikan.</p>
+      </div>
+
+    </div>
+  </section>
+
+<!-- SERVISREPART -->
   <section id="servis">
     <div class="container">
       <h2>Servis & Sparepart</h2>
@@ -435,8 +493,7 @@
       </div>
     </div>
   </section>
-
-  <!-- STATUS SERVIS -->
+<!-- STATUS SERVIS -->
   <section id="status">
     <div class="container">
       <h2>Status Servis</h2>
@@ -492,6 +549,75 @@
       card.addEventListener('blur',()=>{ quick.style.display='none'; });
     });
   })();
-  </script>
+  <\/script>
+  <script>
+  // Auto-isi section #promo dengan produk yang punya harga coret (diskon)
+  document.addEventListener('DOMContentLoaded', function(){
+    const promoGrid = document.getElementById('promoGrid');
+    if(!promoGrid) return;
+    const cards = document.querySelectorAll('#katalog .card[data-series]');
+    cards.forEach(card=>{
+      // dianggap promo jika ada span harga yang dicoret
+      const strikePrice = card.querySelector('span[style*="text-decoration:line-through"]');
+      if(!strikePrice) return;
+      const clone = card.cloneNode(true);
+      clone.classList.add('promo-item');
+      promoGrid.appendChild(clone);
+    });
+  });
+  <\/script>
+    <!-- KEAMANAN -->
+  <section id="keamanan">
+    <div class="container">
+      <h2>Keamanan Transaksi & Belanja</h2>
+      <p class="sub">Kami jaga keamanan unit, data, dan transaksi Anda saat membeli di Uwinfly Eramolis MIM.</p>
+      <div class="grid-3" style="margin-top:1rem">
+        <div class="card">
+          <h3>1. Transaksi Resmi</h3>
+          <p>Pembayaran hanya ke rekening resmi/tunai di kasir toko. Tidak ada transfer ke nomor pribadi yang mencurigakan.</p>
+        </div>
+        <div class="card">
+          <h3>2. Bukti Pembelian Jelas</h3>
+          <p>Setiap pembelian mendapat nota, kartu garansi, dan data unit tercatat di sistem kami untuk memudahkan klaim.</p>
+        </div>
+        <div class="card">
+          <h3>3. Unit Dicek Sebelum Serah Terima</h3>
+          <p>Unit dicek fungsi lampu, rem, baterai, charger, dan kelistrikan sebelum diserahkan ke pelanggan.</p>
+        </div>
+        <div class="card">
+          <h3>4. Layanan Purna Jual Aman</h3>
+          <p>Servis dan sparepart dilakukan di bengkel resmi dengan mekanik yang memahami produk Uwinfly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOKASI TOKO -->
+  <section id="lokasi">
+    <div class="container">
+      <h2>Lokasi Toko</h2>
+      <p class="sub">Kunjungi showroom resmi kami di Metro Indah Mall Bandung.</p>
+
+      <div class="card" style="margin-top:1rem">
+        <h3>Uwinfly Eramolis MIM</h3>
+        <p style="margin:.4rem 0 1rem 0">📍 <strong>Jl. MTC IV, Sekejati, Kec. Buahbatu, Kota Bandung, Jawa Barat 40286</strong></p>
+
+        <!-- Foto Depan Toko -->
+        <img src="WhatsApp Image 2025-11-15 at 22.58.13_b0f602e8.jpg" alt="Foto Depan Toko Uwinfly Eramolis MIM" style="border-radius:14px;border:1px solid var(--stroke);margin-bottom:1rem" loading="lazy">
+
+        <!-- Google Maps -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3952.917094420699!2d107.6582256!3d-7.675760299999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e8896023df4d%3A0xbbbcd09ad237a6f5!2sJl.%20MTC%20IV%2C%20Sekejati%2C%20Kec.%20Buahbatu%2C%20Kota%20Bandung%2C%20Jawa%20Barat%2040286!5e0!3m2!1sid!2sid!4v1700000000001"
+          width="100%" height="300" style="border:0;border-radius:14px" allowfullscreen loading="lazy">
+        </iframe>
+
+        <p style="margin-top:1rem;color:var(--muted)">Jam Operasional:<br>
+          <strong>Setiap Hari — 10.00 s/d 21.00</strong>
+        </p>
+
+        <a class="btn primary" href="https://maps.google.com/?q=Metro+Indah+Mall+Bandung" style="margin-top:.6rem;display:inline-flex">Buka di Google Maps</a>
+      </div>
+    </div>
+  </section>
 </body>
 </html>
