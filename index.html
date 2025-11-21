@@ -194,49 +194,18 @@
 
   <!-- HERO -->
   <header class="hero-full" style="position:relative;z-index:20;">
-    <!-- Fullscreen slider (full-bleed) -->
-    <div id="heroFull" style="position:relative;overflow:hidden;height:80vh;display:block;margin-left:calc(50% - 50vw);width:100vw;">
+    <!-- Clean fullscreen slider -->
+    <div id="heroFull" style="position:relative;overflow:hidden;height:100vh;display:block;margin-left:calc(50% - 50vw);width:100vw;">
       <div class="slides" style="display:flex;height:100%;transition:transform .7s ease;will-change:transform;">
-        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;">
-          <img src="/mnt/data/ALL T65LWEB.jpg" alt="Uwinfly T65L" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;">
-          <img src="/mnt/data/T85WEB.jpg" alt="Uwinfly T85" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;">
-          <img src="/mnt/data/SLIDE,M.jpg" alt="Slide M" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-      </div>
-        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;">
-          <img src="/mnt/data/T85WEB.jpg" alt="Uwinfly T85" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;">
-          <img src="/mnt/data/SLIDE,M.jpg" alt="Slide M" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-      </div>
-        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;">
-          <img src="/mnt/data/T85WEB.jpg" alt="Uwinfly T85" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;">
-          <img src="/mnt/data/SLIDE,M.jpg" alt="Slide M" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-      </div>
-        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;">
-          <img src="/mnt/data/T85WEB.jpg" alt="Uwinfly T85" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;">
-          <img src="/mnt/data/SLIDE,M.jpg" alt="Slide M" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
-      </div>
-        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;">
-          <img src="/mnt/data/T85WEB.jpg" alt="Uwinfly T85" style="width:100%;height:100%;object-fit:cover;display:block;"/>
-        </div>
+        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;"><img src="/mnt/data/ALL T65LWEB.jpg" alt="Uwinfly T65L" style="width:100%;height:100%;object-fit:cover;display:block;"/></div>
+        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;"><img src="/mnt/data/T85WEB.jpg" alt="Uwinfly T85" style="width:100%;height:100%;object-fit:cover;display:block;"/></div>
+        <div class="slide" style="min-width:100%;height:100%;background:#000;display:grid;place-items:center;"><img src="/mnt/data/SLIDE,M.jpg" alt="Slide M" style="width:100%;height:100%;object-fit:cover;display:block;"/></div>
       </div>
 
-      <!-- overlay content -->
-      <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;color:var(--text);text-align:center;pointer-events:none;max-width:1100px;padding:1rem">
+      <!-- subtle overlay -->
+      <div class="overlay" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;color:var(--text);text-align:center;pointer-events:none;max-width:1100px;padding:1rem">
         <h1 style="font-size:clamp(1.8rem,4vw,3.6rem);margin:0 0 .6rem 0;font-weight:800">Uwinfly — T Series</h1>
-        <p style="color:var(--muted);margin:0 0 1rem 0;pointer-events:auto">Unit terbaru, bergaransi, dan siap jalan. Cek katalog untuk detail harga & promo.</p>
+        <p class="sub" style="color:var(--muted);margin:0 0 1rem 0;pointer-events:auto">Unit terbaru, bergaransi, dan siap jalan. Cek katalog untuk detail harga & promo.</p>
         <div style="display:flex;gap:.6rem;justify-content:center;pointer-events:auto">
           <a class="btn primary" href="#katalog">Lihat Katalog</a>
           <a class="btn" href="#promo">Cek Promo</a>
@@ -247,57 +216,53 @@
       <button id="prevFull" aria-label="Sebelumnya" style="position:absolute;left:18px;top:50%;transform:translateY(-50%);z-index:12;background:rgba(0,0,0,.35);border:0;color:#fff;padding:.6rem 10px;border-radius:10px;cursor:pointer">‹</button>
       <button id="nextFull" aria-label="Berikutnya" style="position:absolute;right:18px;top:50%;transform:translateY(-50%);z-index:12;background:rgba(0,0,0,.35);border:0;color:#fff;padding:.6rem 10px;border-radius:10px;cursor:pointer">›</button>
 
-      <!-- dots -->
       <div id="heroDots" style="position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:.5rem;z-index:12"></div>
     </div>
   </header>
 
   <script>
-    (function(){
-      const slider = document.querySelector('#heroFull .slides');
-      const slides = Array.from(slider.children);
-      const total = slides.length;
-      let index = 0;
-      let autoplay = true;
-      let timer = null;
-      const dotsWrap = document.getElementById('heroDots');
+  (function(){
+    const heroEl = document.getElementById('heroFull'); if(heroEl) heroEl.style.height = '100vh';
+    const slider = document.querySelector('#heroFull .slides');
+    const slides = Array.from(slider.children);
+    const total = slides.length;
+    let index = 0; let timer = null; const dotsWrap = document.getElementById('heroDots');
 
-      // create dots
-      slides.forEach((s,i)=>{
-        const d = document.createElement('button');
-        d.setAttribute('aria-label','Slide '+(i+1));
-        d.style.width='10px';d.style.height='10px';d.style.borderRadius='50%';d.style.border='none';d.style.background='rgba(255,255,255,.4)';d.style.cursor='pointer';
-        d.addEventListener('click', ()=>{goTo(i);});
-        dotsWrap.appendChild(d);
-      });
+    // build dots
+    slides.forEach((s,i)=>{
+      const d = document.createElement('button');
+      d.setAttribute('aria-label','Slide '+(i+1));
+      d.style.width='10px'; d.style.height='10px'; d.style.borderRadius='50%'; d.style.border='none'; d.style.background='rgba(255,255,255,.4)'; d.style.cursor='pointer'; d.style.margin='0 4px';
+      d.addEventListener('click', ()=> goTo(i));
+      dotsWrap.appendChild(d);
+    });
 
-      const dots = Array.from(dotsWrap.children);
-      function update(){
-        slider.style.transform = `translateX(-${index*100}%)`;
-        dots.forEach((d,i)=> d.style.background = i===index ? 'white' : 'rgba(255,255,255,.4)');
-      }
+    const dots = Array.from(dotsWrap.children);
+    function update(){ slider.style.transform = `translateX(-${index*100}%)`; dots.forEach((d,i)=> d.style.background = i===index ? 'white' : 'rgba(255,255,255,.4)'); }
+    function next(){ index = (index+1) % total; update(); }
+    function prev(){ index = (index-1+total) % total; update(); }
+    function goTo(i){ index = i; update(); resetTimer(); }
 
-      function next(){ index = (index+1) % total; update(); }
-      function prev(){ index = (index-1+total) % total; update(); }
-      function goTo(i){ index = i; update(); resetTimer(); }
+    document.getElementById('nextFull').addEventListener('click', ()=>{ next(); resetTimer(); });
+    document.getElementById('prevFull').addEventListener('click', ()=>{ prev(); resetTimer(); });
 
-      document.getElementById('nextFull').addEventListener('click', ()=>{ next(); resetTimer(); });
-      document.getElementById('prevFull').addEventListener('click', ()=>{ prev(); resetTimer(); });
+    function startTimer(){ if(timer) clearInterval(timer); timer = setInterval(()=> next(), 4500); }
+    function resetTimer(){ startTimer(); }
+    startTimer();
 
-      // autoplay
-      function startTimer(){ if(timer) clearInterval(timer); timer = setInterval(()=>{ next(); }, 4500); }
-      function resetTimer(){ if(autoplay){ startTimer(); } }
-      startTimer();
+    heroEl.addEventListener('mouseenter', ()=> clearInterval(timer));
+    heroEl.addEventListener('mouseleave', ()=> startTimer());
 
-      // pause on hover
-      const hero = document.getElementById('heroFull');
-      hero.addEventListener('mouseenter', ()=>{ if(timer) clearInterval(timer); });
-      hero.addEventListener('mouseleave', ()=>{ if(autoplay) startTimer(); });
+    // touch support
+    let touchStartX = 0; let touchEndX = 0; const threshold = 50;
+    heroEl.addEventListener('touchstart', e=> touchStartX = e.changedTouches[0].screenX);
+    heroEl.addEventListener('touchmove', e=> touchEndX = e.changedTouches[0].screenX);
+    heroEl.addEventListener('touchend', ()=>{ const dx = touchEndX - touchStartX; if(Math.abs(dx) > threshold){ if(dx < 0) next(); else prev(); resetTimer(); } touchStartX = touchEndX = 0; });
 
-      // make images cover and responsive on resize (ensure height)
-      window.addEventListener('resize', update);
-      update();
-    })();
+    window.addEventListener('keydown', e=>{ if(e.key === 'ArrowRight') next(); if(e.key === 'ArrowLeft') prev(); });
+    window.addEventListener('resize', update);
+    update();
+  })();
   </script>';d.style.cursor='pointer';
         d.addEventListener('click', ()=>{goTo(i);});
         dotsWrap.appendChild(d);
@@ -580,125 +545,6 @@
   </section>
 
   <script>
-  // Build Yadea-style product cards and distribute to Motor / Sepeda grids
-  document.addEventListener('DOMContentLoaded', function(){
-    const motorNames = ['M100','T90','T85','T80'];
-    const motorGrid = document.getElementById('motorGrid');
-    const sepedaGrid = document.getElementById('sepedaGrid');
-
-    // collect product source cards (the original .card items in katalog)
-    const sourceCards = Array.from(document.querySelectorAll('#katalog .card'));
-    const productCards = sourceCards.filter(c => c.querySelector('h3'));
-
-    function buildCard(src){
-      const title = src.querySelector('h3') ? src.querySelector('h3').innerText.trim() : 'Produk';
-      const img = src.querySelector('img') ? src.querySelector('img').getAttribute('src') : '';
-      // detect price
-      let price = '';
-      const strike = src.querySelector('span[style*="text-decoration:line-through"]');
-      const promoPrice = src.querySelector('span.status.bestseller');
-      if(promoPrice) price = promoPrice.innerText.trim();
-      else if(strike && strike.nextElementSibling) price = strike.nextElementSibling.innerText.trim();
-      else {
-        const strong = src.querySelector('p strong');
-        price = strong ? strong.innerText.replace(/Harga:?/i,'').trim() : '';
-      }
-      const features = Array.from(src.querySelectorAll('ul li')).slice(0,3).map(li => li.textContent.trim());
-      const hasPromo = !!strike;
-
-      const art = document.createElement('article');
-      art.className = 'product-card card';
-
-      const thumb = document.createElement('img'); thumb.className='thumb'; thumb.src = img; thumb.alt = title; thumb.loading='lazy';
-      const body = document.createElement('div'); body.className='body';
-      const h = document.createElement('h3'); h.textContent = title;
-      const pprice = document.createElement('div'); pprice.className='price'; pprice.textContent = price || 'Harga hubungi';
-
-      if(features.length){
-        const ul = document.createElement('ul'); features.forEach(f=>{const li=document.createElement('li'); li.textContent=f; ul.appendChild(li)}); body.appendChild(ul);
-      }
-
-      body.appendChild(h); body.appendChild(pprice);
-      const actions = document.createElement('div'); actions.className='actions';
-      const orderSrc = src.querySelector('a.btn.primary');
-      const orderBtn = orderSrc ? orderSrc.cloneNode(true) : document.createElement('a');
-      orderBtn.classList.add('order-btn');
-      if(!orderBtn.getAttribute('href')) orderBtn.setAttribute('href','#');
-      orderBtn.setAttribute('target','_blank');
-      actions.appendChild(orderBtn);
-      body.appendChild(actions);
-
-      art.appendChild(thumb);
-      if(hasPromo){ const b=document.createElement('div'); b.className='corner-badge promo'; b.textContent='Promo'; b.setAttribute('aria-hidden','true'); art.appendChild(b); }
-      art.appendChild(body);
-      return art;
-    }
-
-    productCards.forEach(src =>{
-      const title = (src.querySelector('h3')?.innerText||'').toUpperCase();
-      const series = (src.getAttribute('data-series')||'').toUpperCase();
-      const isMotor = motorNames.some(n => title.includes(n)) || series === 'T';
-      const card = buildCard(src);
-      if(isMotor) motorGrid.appendChild(card); else sepedaGrid.appendChild(card);
-    });
-
-    if(!motorGrid.children.length){ const msg=document.createElement('div'); msg.className='card'; msg.textContent='Tidak ada motor terdaftar.'; motorGrid.appendChild(msg); }
-    if(!sepedaGrid.children.length){ const msg=document.createElement('div'); msg.className='card'; msg.textContent='Tidak ada sepeda terdaftar.'; sepedaGrid.appendChild(msg); }
-  });
-  </script>rEach(f=>{const li=document.createElement('li'); li.textContent=f; ul.appendChild(li)}); body.appendChild(ul);
-      }
-
-      body.appendChild(h); body.appendChild(pprice);
-      const actions = document.createElement('div'); actions.className='actions';
-      const orderSrc = src.querySelector('a.btn.primary');
-      const orderBtn = orderSrc ? orderSrc.cloneNode(true) : document.createElement('a');
-      orderBtn.classList.add('order-btn');
-      if(!orderBtn.getAttribute('href')) orderBtn.setAttribute('href','#');
-      orderBtn.setAttribute('target','_blank');
-      actions.appendChild(orderBtn);
-      body.appendChild(actions);
-
-      art.appendChild(thumb);
-      if(hasPromo){ const b=document.createElement('div'); b.className='corner-badge promo'; b.textContent='Promo'; b.setAttribute('aria-hidden','true'); art.appendChild(b); }
-      art.appendChild(body);
-      return art;
-    }
-
-    productCards.forEach(src =>{
-      const title = (src.querySelector('h3')?.innerText||'').toUpperCase();
-      const series = (src.getAttribute('data-series')||'').toUpperCase();
-      const isMotor = motorNames.some(n => title.includes(n)) || series === 'T';
-      const card = buildCard(src);
-      if(isMotor) motorGrid.appendChild(card); else sepedaGrid.appendChild(card);
-    });
-
-    if(!motorGrid.children.length){ const msg=document.createElement('div'); msg.className='card'; msg.textContent='Tidak ada motor terdaftar.'; motorGrid.appendChild(msg); }
-    if(!sepedaGrid.children.length){ const msg=document.createElement('div'); msg.className='card'; msg.textContent='Tidak ada sepeda terdaftar.'; sepedaGrid.appendChild(msg); }
-  });
-  </script>
-
-  <!-- PEMISAH KATALOG: MOTOR & SEPEDA -->
-  <section id="products-split">
-    <div class="container">
-      <h2>Motor Listrik</h2>
-      <p class="sub">Koleksi motor listrik seri T & M (pilihan motor). Klik order untuk pesan cepat.</p>
-      <div id="motorGrid" class="grid-3" style="margin-top:1rem;">
-        <!-- Motor items akan diisi otomatis -->
-      </div>
-
-      <div style="height:1.6rem"></div>
-
-      <h2>Sepeda Listrik</h2>
-      <p class="sub">Koleksi sepeda listrik (seri M kecil & D). Cocok untuk jarak pendek dan penggunaan harian.</p>
-      <div id="sepedaGrid" class="grid-3" style="margin-top:1rem;">
-        <!-- Sepeda items akan diisi otomatis -->
-      </div>
-
-      <small style="display:block;margin-top:.6rem;color:var(--muted)">Catatan: jika suatu produk tidak muncul, pastikan elemen produk memiliki atribut <code>data-series</code> atau nama model pada &lt;h3&gt; sesuai.</small>
-    </div>
-  </section>
-
-  <script>
     // Distribusi produk ke dua grid: motor (M100,T90,T85,T80) dan sepeda (lainnya)
     document.addEventListener('DOMContentLoaded', function(){
       const motorNames = ['M100','T90','T85','T80'];
@@ -712,4 +558,185 @@
 
       productCards.forEach(card=>{
         const titleEl = card.querySelector('h3');
-        co
+        const title = titleEl ? titleEl.innerText.trim().toUpperCase() : '';
+
+        // Tentukan apakah termasuk motor berdasarkan nama model
+        const isMotor = motorNames.some(n => title.includes(n));
+
+        // Jika ada atribut data-series yang eksplisit bisa digunakan juga
+        const series = (card.getAttribute('data-series')||'').toUpperCase();
+        if(!isMotor && series==='T'){
+          // jika series T tapi namanya tidak cocok, treat as motor
+          // (keamanan agar seri T termasuk motor)
+          isMotor = true;
+        }
+
+        const clone = card.cloneNode(true);
+        // Pastikan tombol order membuka WA (tetap bekerja)
+        const wa = clone.querySelector('a.btn.primary');
+        if(wa){ wa.setAttribute('target','_blank'); }
+
+        if(isMotor){ motorGrid.appendChild(clone); }
+        else { sepedaGrid.appendChild(clone); }
+      });
+
+      // Jika grid kosong beri pesan
+      if(!motorGrid.children.length){
+        const msg = document.createElement('div'); msg.className='card'; msg.textContent='Tidak ada motor terdaftar.'; motorGrid.appendChild(msg);
+      }
+      if(!sepedaGrid.children.length){
+        const msg = document.createElement('div'); msg.className='card'; msg.textContent='Tidak ada sepeda terdaftar.'; sepedaGrid.appendChild(msg);
+      }
+
+    });
+  </script>
+
+  <!-- GARANSI -->
+  <section id="garansi">
+    <div class="container">
+      <h2>Garansi Resmi</h2>
+      <p class="sub">Semua unit dilengkapi kartu garansi resmi Uwinfly. Berikut ringkasan garansi per tipe baterai:</p>
+
+      <div class="card" style="margin-top:1rem">
+        <h3>Ringkasan Garansi</h3>
+        <ul style="color:var(--muted);margin-left:1rem">
+          <li><strong>Rangka:</strong> 10 tahun (semua tipe).</li>
+          <li><strong>Dinamo / Motor listrik:</strong> 1 tahun.</li>
+        </ul>
+      </div>
+
+      <div class="grid-3" style="margin-top:1rem">
+        <div class="card">
+          <h3>Tipe Baterai — SLA</h3>
+          <p>Garansi baterai: <strong>6 bulan</strong> untuk baterai SLA. (Syarat &amp; ketentuan berlaku).</p>
+        </div>
+
+        <div class="card">
+          <h3>Tipe Baterai — Lithium</h3>
+          <p>Garansi baterai: <strong>1 tahun</strong> untuk baterai Lithium. (Syarat &amp; ketentuan berlaku).</p>
+        </div>
+
+        <div class="card">
+          <h3>Proses Klaim</h3>
+          <p>Untuk klaim, siapkan nota / kartu garansi dan foto kerusakan. Hubungi CS kami via WhatsApp untuk verifikasi.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:1rem">
+        <a class="btn" id="hubungiCs" href="https://wa.me/628551579797?text=Halo%20CS%20Uwinfly%20Eramolis%2C%20saya%20mau%20klaim%20garansi" style="display:inline-flex">Hubungi CS</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- KEAMANAN -->
+  <section id="keamanan">
+    <div class="container">
+      <h2>Keamanan Pembelian</h2>
+      <p class="sub">Perlindungan pelanggan saat membeli unit di showroom kami.</p>
+
+      <div class="grid-3" style="margin-top:1rem">
+        <div class="card">
+          <h3>✔ Pembayaran Aman</h3>
+          <p>Pembayaran langsung ke toko resmi tanpa pihak ketiga. Semua transaksi terekam dan dapat diverifikasi.</p>
+        </div>
+
+        <div class="card">
+          <h3>✔ Unit Baru & Bergaransi</h3>
+          <p>Setiap unit yang keluar dari toko adalah unit baru, lengkap dengan garansi resmi Uwinfly.</p>
+        </div>
+
+        <div class="card">
+          <h3>✔ Tidak Ada Biaya Tersembunyi</h3>
+          <p>Harga jelas dan transparan. Tidak ada biaya tambahan yang tidak diberitahukan sebelumnya.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1rem">
+        <h3>✔ Cek Unit Sebelum Pembayaran</h3>
+        <p>Pelanggan diperbolehkan memeriksa unit, test fungsi, dan memastikan kondisi motor/sepeda sebelum transaksi diselesaikan.</p>
+      </div>
+
+    </div>
+  </section>
+
+<!-- SERVISREPART -->
+  <section id="servis">
+    <div class="container">
+      <h2>Servis & Sparepart</h2>
+      <p class="sub">Perawatan berkala, perbaikan, dan ketersediaan suku cadang resmi Uwinfly.</p>
+      <div class="grid-3" style="margin-top:1rem">
+        <div class="card"><h3>Servis Berkala</h3><p>Paket cek 15 poin: rem, ban, lampu, kelistrikan, firmware (jika ada), baut, bearing, rantai/belt, & lainnya.</p><p><strong>Mulai Rp 35.000</strong></p></div>
+        <div class="card"><h3>Ganti Baterai</h3><p>Penggantian/upgrade pack baterai asli. Termasuk uji kapasitas & garansi.</p><p><strong>Konsultasi via WA</strong></p></div>
+        <div class="card"><h3>Sparepart Resmi</h3><p>Ban, tube, kampas rem, lampu, charger, controller, throttle, spion, dll.</p><p><strong>Tanya stok</strong></p></div>
+      </div>
+      <div class="card" style="margin-top:1rem">
+        <h3 style="margin:.2rem 0 .6rem 0">Booking Servis</h3>
+        <form id="serviceForm" style="display:grid;gap:.8rem">
+          <label>Nama
+            <input required name="sname" type="text" placeholder="Nama lengkap" style="width:100%;margin-top:.35rem;padding:.8rem;border-radius:12px;border:1px solid var(--stroke);background:#0b101c;color:var(--text)" autocomplete="name">
+          </label>
+
+          <label>Nama / Type Unit
+            <select name="unitType" id="unitType" required style="width:100%;margin-top:.35rem;padding:.8rem;border-radius:12px;border:1px solid var(--stroke);background:#0b101c;color:var(--text)">
+              <option value="" disabled selected>Pilih Type Unit</option>
+              <option>Uwinfly D65</option>
+              <option>Uwinfly D66A</option>
+              <option>Uwinfly T60</option>
+              <option>Uwinfly T65L</option>
+              <option>Uwinfly T80</option>
+              <option>Uwinfly T85</option>
+              <option>Uwinfly M60L</option>
+              <option>Uwinfly M100</option>
+              <option value="lainnya">Lainnya (ketik manual)</option>
+            </select>
+          </label>
+          <div id="unitOtherWrap" style="display:none">
+            <label>Type Unit (manual)
+              <input name="unitOther" type="text" placeholder="Contoh: Uwinfly X99 Edisi Khusus" style="width:100%;margin-top:.35rem;padding:.8rem;border-radius:12px;border:1px solid var(--stroke);background:#0b101c;color:var(--text)" autocomplete="off">
+            </label>
+          </div>
+
+          <label>Lokasi Servis
+            <select name="serviceLocation" id="serviceLocation" required style="width:100%;margin-top:.35rem;padding:.8rem;border-radius:12px;border:1px solid var(--stroke);background:#0b101c;color:var(--text)">
+              <option value="" disabled selected>Pilih Lokasi Servis</option>
+              <option value="MIM">Metro Indah Mall (MIM)</option>
+              <option value="CJR">Cijerah (CJR)</option>
+              <option value="OTR">Outlet Lainnya (OTR)</option>
+            </select>
+          </label>
+
+          <label>Kode Booking (otomatis)
+            <div style="display:flex;gap:.5rem;align-items:center;margin-top:.35rem">
+              <input name="bookingCode" id="bookingCode" type="text" readonly placeholder="Akan dibuat otomatis" style="flex:1;padding:.8rem;border-radius:12px;border:1px solid var(--stroke);background:#0b101c;color:var(--muted)">
+              <button class="btn" type="button" id="copyBookingCode" title="Salin kode">Salin</button>
+            </div>
+            <small style="color:var(--muted)">Format: <code>PREFIX-YYMMDD-XXXX</code> (contoh: <b>MIM-251110-4821</b>). Simpan kode ini untuk cek status.</small>
+          </label>
+
+          <label>Foto Buku Garansi (opsional)
+            <input name="warranty" id="warrantyFile" type="file" accept="image/*" style="width:100%;margin-top:.35rem;padding:.7rem;border-radius:12px;border:1px solid var(--stroke);background:#0b101c;color:var(--muted)">
+            <small style="color:var(--muted)">Format jpg/png, maksimal 5MB. Lampiran tidak ikut terkirim via WhatsApp/mailto, tapi kami akan minta fotonya saat follow-up.</small>
+            <div id="warrantyPreview" style="display:none;margin-top:.5rem"><img alt="Preview buku garansi" style="max-width:240px;border-radius:12px;border:1px solid var(--stroke)"/></div>
+          </label>
+
+          <label>Keluhan / Kendala
+            <textarea required name="issue" rows="4" placeholder="Contoh: Rem bunyi saat ditarik pelan, lampu sein kanan mati, minta ganti ban belakang." style="width:100%;margin-top:.35rem;padding:.8rem;border-radius:12px;border:1px solid var(--stroke);background:#0b101c;color:var(--text)"></textarea>
+          </label>
+
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <button class="btn primary" type="submit">Kirim Booking</button>
+            <a class="btn" id="waService" href="#">Kirim via WhatsApp</a>
+          </div>
+          <small style="color:var(--muted)">Kami akan konfirmasi jadwal servis melalui WhatsApp/Telepon.</small>
+        </form>
+      </div>
+    </div>
+  </section>
+  <!-- STATUS SERVIS -->
+  <section id="status">
+    <div class="container">
+      <h2>Status Servis</h2>
+      <p class="sub">Pantau progres servis Anda. Untuk saat ini, pengecekan status dilakukan via WhatsApp/telepon agar data tetap aman.</p>
+
+      <div class="card" style="margin:.8rem 0
