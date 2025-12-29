@@ -1,576 +1,362 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dealer Sepeda/Motor Listrik — Uwinfly Eramolis MIM</title>
-  <meta name="description" content="Dealer resmi sepeda & motor listrik Uwinfly di Metro Indah Mall Bandung. Katalog harga, spesifikasi, promo, dan kontak WhatsApp." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#090d15; /* sedikit lebih gelap agar dekorasi pop */
-      --text:#e8eaf0;
-      --muted:#9aa7bc;
-      --brand:#27ae60;
-      --brand-2:#8fffad;
-      --card:#0f1524;
-      --stroke:#1b2233;
-      --warn:#ffd166;
-      --error:#ff6b6b;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius:20px;
-      --grad-1: radial-gradient(60% 60% at 20% 10%, rgba(39,174,96,.18), transparent 60%),
-                radial-gradient(40% 40% at 90% 10%, rgba(143,255,173,.15), transparent 70%),
-                radial-gradient(50% 50% at 10% 80%, rgba(11,187,239,.12), transparent 60%);
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-    .container{width:min(1120px,92%);margin-inline:auto}
-    /* Dekorasi global: grid lembut + orbs */
-    body::before{
-      content:"";position:fixed;inset:0;z-index:-2;background:var(--grad-1);filter:blur(10px);
-    }
-    body::after{
-      content:"";position:fixed;inset:0;z-index:-3;opacity:.35;background-image:
-        linear-gradient(transparent 23px, rgba(255,255,255,.05) 24px),
-        linear-gradient(90deg, transparent 23px, rgba(255,255,255,.05) 24px);
-      background-size:24px 24px;
-      mask-image:radial-gradient(60% 60% at 50% 40%, black, transparent 80%);
-      pointer-events:none;
-    }
-    /* Partikel kecil */
-    .sparkle{position:fixed;inset:0;pointer-events:none;z-index:-1}
-    .sparkle span{position:absolute;width:2px;height:2px;background:#cfe;opacity:.8;border-radius:50%;animation:float 9s linear infinite}
-    @keyframes float{from{transform:translateY(0)}to{transform:translateY(-120vh)}}
+<title>Dealer Sepeda/Motor Listrik — Uwinfly Eramolis MIM</title> <style> :root{ --bg:#090d15; /* sedikit lebih gelap agar dekorasi pop */ --text:#e8eaf0; --muted:#9aa7bc; --brand:#27ae60; --brand-2:#8fffad; --card:#0f1524; --stroke:#1b2233; --warn:#ffd166; --error:#ff6b6b; --shadow: 0 10px 30px rgba(0,0,0,.35); --radius:20px; --grad-1: radial-gradient(60% 60% at 20% 10%, rgba(39,174,96,.18), transparent 60%), radial-gradient(40% 40% at 90% 10%, rgba(143,255,173,.15), transparent 70%), radial-gradient(50% 50% at 10% 80%, rgba(11,187,239,.12), transparent 60%); } *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif} a{color:inherit;text-decoration:none} img{max-width:100%;display:block} .container{width:min(1120px,92%);margin-inline:auto} /* Dekorasi global: grid lembut + orbs */ body::before{ content:"";position:fixed;inset:0;z-index:-2;background:var(--grad-1);filter:blur(10px); } body::after{ content:"";position:fixed;inset:0;z-index:-3;opacity:.35;background-image: linear-gradient(transparent 23px, rgba(255,255,255,.05) 24px), linear-gradient(90deg, transparent 23px, rgba(255,255,255,.05) 24px); background-size:24px 24px; mask-image:radial-gradient(60% 60% at 50% 40%, black, transparent 80%); pointer-events:none; } /* Partikel kecil */ .sparkle{position:fixed;inset:0;pointer-events:none;z-index:-1} .sparkle span{position:absolute;width:2px;height:2px;background:#cfe;opacity:.8;border-radius:50%;animation:float 9s linear infinite} @keyframes float{from{transform:translateY(0)}to{transform:translateY(-120vh)}}
+.btn{display:inline-flex;gap:.6rem;align-items:center;padding:.9rem 1.15rem;border-radius:14px;border:1px solid var(--stroke);background:linear-gradient(180deg,#121826,#0e1422);color:var(--text);font-weight:600;box-shadow:var(--shadow);transition:.25s transform,.25s opacity,.25s box-shadow}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.btn.primary{background:
+  linear-gradient(180deg,rgba(39,174,96,.25),rgba(39,174,96,.15)),
+  linear-gradient(180deg,#0bbbef,#0997c3);
+  border-color:#087ea4;color:#041014;position:relative;overflow:hidden}
+.btn.primary::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(90deg,#8fffad,#0bbbef,#8fffad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:glow 4s linear infinite}
+@keyframes glow{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 
-    .btn{display:inline-flex;gap:.6rem;align-items:center;padding:.9rem 1.15rem;border-radius:14px;border:1px solid var(--stroke);background:linear-gradient(180deg,#121826,#0e1422);color:var(--text);font-weight:600;box-shadow:var(--shadow);transition:.25s transform,.25s opacity,.25s box-shadow}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.45)}
-    .btn.primary{background:
-      linear-gradient(180deg,rgba(39,174,96,.25),rgba(39,174,96,.15)),
-      linear-gradient(180deg,#0bbbef,#0997c3);
-      border-color:#087ea4;color:#041014;position:relative;overflow:hidden}
-    .btn.primary::after{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;background:linear-gradient(90deg,#8fffad,#0bbbef,#8fffad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:glow 4s linear infinite}
-    @keyframes glow{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .6rem;border:1px solid var(--stroke);border-radius:999px;color:var(--muted);font-size:.8rem;background:#0d1322;transition:.25s ease}
+.badge:hover{background:#1a2336;color:var(--text);transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.status{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .5rem;border:1px solid var(--stroke);border-radius:999px;font-size:.75rem}
+.status.ready{background:#0f1d14;color:#a5f3b5;border-color:#1a3b26}
+.status.bestseller{background:#17120a;color:#ffd166;border-color:#3a2d14}
+.status.po{background:#161623;color:#b3b9ff;border-color:#2a2f65}
 
-    .badge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .6rem;border:1px solid var(--stroke);border-radius:999px;color:var(--muted);font-size:.8rem;background:#0d1322;transition:.25s ease}
-    .badge:hover{background:#1a2336;color:var(--text);transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.35)}
-    .status{display:inline-flex;align-items:center;gap:.4rem;padding:.25rem .5rem;border:1px solid var(--stroke);border-radius:999px;font-size:.75rem}
-    .status.ready{background:#0f1d14;color:#a5f3b5;border-color:#1a3b26}
-    .status.bestseller{background:#17120a;color:#ffd166;border-color:#3a2d14}
-    .status.po{background:#161623;color:#b3b9ff;border-color:#2a2f65}
+/* NAV + progress */
+nav{position:sticky;top:0;z-index:60;background:rgba(9,13,21,.9);backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid var(--stroke)}
+.nav-bar{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+.brand{display:flex;align-items:center;gap:.7rem;font-weight:800}
+.brand .logo{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:radial-gradient(60% 60% at 30% 30%,var(--brand),transparent),radial-gradient(60% 60% at 70% 70%,var(--brand-2),transparent);box-shadow:0 8px 22px rgba(101,214,255,.25)}
+.nav-links{display:flex;gap:1rem;align-items:center}
+.nav-links a{padding:.5rem .7rem;border-radius:10px;color:var(--muted)}
+.nav-links a:hover{background:#0f1628;color:var(--text)}
+.menu-btn{display:none}
+.progress{position:absolute;inset-inline:0;top:0;height:2px;background:linear-gradient(90deg,#8fffad,#0bbbef);transform-origin:0 0;transform:scaleX(0)}
 
-    /* NAV + progress */
-    nav{position:sticky;top:0;z-index:60;background:rgba(9,13,21,.9);backdrop-filter:saturate(150%) blur(8px);border-bottom:1px solid var(--stroke)}
-    .nav-bar{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
-    .brand{display:flex;align-items:center;gap:.7rem;font-weight:800}
-    .brand .logo{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:radial-gradient(60% 60% at 30% 30%,var(--brand),transparent),radial-gradient(60% 60% at 70% 70%,var(--brand-2),transparent);box-shadow:0 8px 22px rgba(101,214,255,.25)}
-    .nav-links{display:flex;gap:1rem;align-items:center}
-    .nav-links a{padding:.5rem .7rem;border-radius:10px;color:var(--muted)}
-    .nav-links a:hover{background:#0f1628;color:var(--text)}
-    .menu-btn{display:none}
-    .progress{position:absolute;inset-inline:0;top:0;height:2px;background:linear-gradient(90deg,#8fffad,#0bbbef);transform-origin:0 0;transform:scaleX(0)}
+/* HERO */
+.hero{padding:4.8rem 0 3rem;display:grid;grid-template-columns:1.2fr .8fr;gap:2.2rem;align-items:center}
+.hero h1{font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.05;margin:0 0 1rem 0}
+.hero p{font-size:clamp(1rem,1.3vw,1.15rem);color:var(--muted)}
+.hero-card{position:relative;border:1px solid var(--stroke);background:linear-gradient(180deg,#0d1322,#0b101c);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);overflow:hidden}
+.hero-card::before{content:"";position:absolute;inset:-2px;border-radius:calc(var(--radius) + 2px);padding:2px;background:linear-gradient(120deg,#8fffad,transparent 30%,#0bbbef 70%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:blur(.6px)}
 
-    /* HERO */
-    .hero{padding:4.8rem 0 3rem;display:grid;grid-template-columns:1.2fr .8fr;gap:2.2rem;align-items:center}
-    .hero h1{font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.05;margin:0 0 1rem 0}
-    .hero p{font-size:clamp(1rem,1.3vw,1.15rem);color:var(--muted)}
-    .hero-card{position:relative;border:1px solid var(--stroke);background:linear-gradient(180deg,#0d1322,#0b101c);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);overflow:hidden}
-    .hero-card::before{content:"";position:absolute;inset:-2px;border-radius:calc(var(--radius) + 2px);padding:2px;background:linear-gradient(120deg,#8fffad,transparent 30%,#0bbbef 70%,transparent);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:blur(.6px)}
+/* SECTION */
+section{padding:3.6rem 0;border-top:1px solid var(--stroke);position:relative}
+section .divider{height:1px;background:linear-gradient(90deg,transparent,#20314f,transparent);margin:1.2rem 0}
+h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0 0 1rem 0}
+.sub{color:var(--muted);max-width:70ch}
 
-    /* SECTION */
-    section{padding:3.6rem 0;border-top:1px solid var(--stroke);position:relative}
-    section .divider{height:1px;background:linear-gradient(90deg,transparent,#20314f,transparent);margin:1.2rem 0}
-    h2{font-size:clamp(1.6rem,3.2vw,2.2rem);margin:0 0 1rem 0}
-    .sub{color:var(--muted);max-width:70ch}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.card{background:var(--card);border:1px solid var(--stroke);padding:1rem;border-radius:16px;box-shadow:var(--shadow);position:relative;transition:.25s transform,.25s box-shadow,.25s border-color}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.38);border-color:#23406a}
+.card h3{margin:.2rem 0 .5rem 0}
+.card p{color:var(--muted)}
 
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
-    .card{backdrop-filter:blur(14px) saturate(160%);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);padding:1rem;border-radius:18px;box-shadow:0 12px 32px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,0.06);position:relative;transition:.25s transform,.25s box-shadow,.25s border-color;overflow:visible}
-    /* Soft glow border untuk tampilan mewah */
-    .card::after{content:"";position:absolute;inset:-1px;border-radius:16px;padding:1px;background:linear-gradient(90deg,rgba(139,255,173,0.06),rgba(11,187,239,0.06));-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;opacity:0.6;transition:.35s opacity, .35s transform}
-    .card:hover::after{opacity:1;transform:scale(1.02)}
-    .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(0,0,0,.38);border-color:#23406a}
-    .card h3{margin:.2rem 0 .5rem 0}
-    .card p{color:var(--muted)}
+/* Pricing (masih placeholder jika dibutuhkan) */
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
 
-    /* Pricing (masih placeholder jika dibutuhkan) */
-    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+/* FAQ */
+.faq{max-width:880px}
+details{border:1px solid var(--stroke);border-radius:14px;padding:1rem;background:#0e1422}
+details+details{margin-top:.8rem}
+summary{cursor:pointer;font-weight:600}
+summary::-webkit-details-marker{display:none}
 
-    /* FAQ */
-    .faq{max-width:880px}
-    details{border:1px solid var(--stroke);border-radius:14px;padding:1rem;background:#0e1422}
-    details+details{margin-top:.8rem}
-    summary{cursor:pointer;font-weight:600}
-    summary::-webkit-details-marker{display:none}
+/* TABLE */
+.tbl{width:100%;border-collapse:collapse;border:1px solid var(--stroke);background:#0d1423;border-radius:12px;overflow:hidden}
+.tbl caption{padding:.6rem 1rem;font-weight:700;text-align:left}
+.tbl th,.tbl td{padding:.6rem .8rem;border-bottom:1px solid var(--stroke);font-size:.92rem}
+.tbl thead th{background:#0f182b;color:var(--muted);text-align:left}
+.tbl tbody tr:hover{background:#0e1628}
+@media(max-width:720px){.tbl{display:block;overflow:auto;white-space:nowrap}}
 
-    /* TABLE */
-    .tbl{width:100%;border-collapse:collapse;border:1px solid var(--stroke);background:#0d1423;border-radius:12px;overflow:hidden}
-    .tbl caption{padding:.6rem 1rem;font-weight:700;text-align:left}
-    .tbl th,.tbl td{padding:.6rem .8rem;border-bottom:1px solid var(--stroke);font-size:.92rem}
-    .tbl thead th{background:#0f182b;color:var(--muted);text-align:left}
-    .tbl tbody tr:hover{background:#0e1628}
-    @media(max-width:720px){.tbl{display:block;overflow:auto;white-space:nowrap}}
+/* RESPONSIVE */
+@media (max-width: 960px){
+  .hero{grid-template-columns:1fr;gap:1rem}
+  .grid-3{grid-template-columns:1fr 1fr}
+}
+@media (max-width: 680px){
+  .nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:#0c1220;padding:1rem;border-bottom:1px solid var(--stroke)}
+  .nav-links.open{display:flex;flex-direction:column;gap:.2rem}
+  .menu-btn{display:inline-flex;border:1px solid var(--stroke);padding:.5rem .7rem;border-radius:10px;background:#0e1526}
+  .grid-3{grid-template-columns:1fr}
+}
 
-    /* RESPONSIVE */
-    @media (max-width: 960px){
-      .hero{grid-template-columns:1fr;gap:1rem}
-      .grid-3{grid-template-columns:1fr 1fr}
-    }
-    @media (max-width: 680px){
-      .nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:#0c1220;padding:1rem;border-bottom:1px solid var(--stroke)}
-      .nav-links.open{display:flex;flex-direction:column;gap:.2rem}
-      .menu-btn{display:inline-flex;border:1px solid var(--stroke);padding:.5rem .7rem;border-radius:10px;background:#0e1526}
-      .grid-3{grid-template-columns:1fr}
-    }
+@keyframes pulseWA{0%{transform:scale(1);}50%{transform:scale(1.12);}100%{transform:scale(1);}}
+#floatWA{animation:pulseWA 1.6s ease-in-out infinite;}
+.filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.8rem} .filter-btn{padding:.5rem .8rem;border:1px solid var(--stroke);border-radius:999px;background:#0d1322;color:var(--muted);cursor:pointer;font-weight:600} .filter-btn.active{background:#12223a;color:var(--text);box-shadow:0 6px 18px rgba(0,0,0,.35)} .popmini{position:fixed;left:22px;bottom:22px;z-index:95;display:flex;align-items:center;gap:.6rem;background:#0f182a;border:1px solid var(--stroke);padding:.7rem .9rem;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.35);transform:translateY(140%);opacity:0;transition:.4s ease;max-width:86vw} .popmini.show{transform:translateY(0);opacity:1} .popmini .icon{width:32px;height:32px;border-radius:999px;display:grid;place-items:center;background:#102236;border:1px solid #1e3458} .popmini .txt{font-size:.92rem} .popmini .close{margin-left:.4rem;background:transparent;border:0;color:var(--muted);font-weight:700;cursor:pointer} </style>
 
-    @keyframes pulseWA{0%{transform:scale(1);}50%{transform:scale(1.12);}100%{transform:scale(1);}}
-    #floatWA{animation:pulseWA 1.6s ease-in-out infinite;}
-  .filter-bar{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.8rem}
-    .filter-btn{padding:.5rem .8rem;border:1px solid var(--stroke);border-radius:999px;background:#0d1322;color:var(--muted);cursor:pointer;font-weight:600}
-    .filter-btn.active{background:#12223a;color:var(--text);box-shadow:0 6px 18px rgba(0,0,0,.35)}
-  .popmini{position:fixed;left:22px;bottom:22px;z-index:95;display:flex;align-items:center;gap:.6rem;background:#0f182a;border:1px solid var(--stroke);padding:.7rem .9rem;border-radius:14px;box-shadow:0 10px 26px rgba(0,0,0,.35);transform:translateY(140%);opacity:0;transition:.4s ease;max-width:86vw}
-    .popmini.show{transform:translateY(0);opacity:1}
-    .popmini .icon{width:32px;height:32px;border-radius:999px;display:grid;place-items:center;background:#102236;border:1px solid #1e3458}
-    .popmini .txt{font-size:.92rem}
-    .popmini .close{margin-left:.4rem;background:transparent;border:0;color:var(--muted);font-weight:700;cursor:pointer}
-  
-    /* Badge pojok dan quick tooltip */
-    .corner-badge{position:absolute;left:12px;top:12px;z-index:4;padding:.28rem .55rem;border-radius:10px;font-size:.78rem;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.35);color:#041014}
-    .corner-badge.promo{background:linear-gradient(90deg,#ffd166,#ffb86b);border:1px solid rgba(255,200,120,.12)}
-    .corner-badge.new{background:linear-gradient(90deg,#8fffad,#5fe5c6);border:1px solid rgba(143,255,173,.12)}
-    .corner-badge.bestseller{background:linear-gradient(90deg,#ffd166,#ffecb3);border:1px solid rgba(60,40,10,.12)}
-    .card .quicktip{position:absolute;left:12px;bottom:12px;z-index:4;display:none;max-width:220px;background:rgba(8,12,18,.86);border:1px solid var(--stroke);padding:.5rem .6rem;border-radius:10px;color:var(--muted);font-size:.88rem}
-    .card:hover .quicktip{display:block}
+🔔
+Halo! Selamat datang di Uwinfly Eramolis MIM.
+✕
+Uwinfly Eramolis Metro Indah Mall
+Fitur Galeri Katalog Servis Status Promo Keamanan Lokasi Testimoni Garansi FAQ Lokasi Kontak
+☰
+⚡ Dealer Resmi — Metro Indah Mall
+Sepeda & Motor Listrik Uwinfly — Hemat, Bertenaga, Ramah Lingkungan.
+Kami menyediakan unit terbaru Uwinfly lengkap dengan garansi resmi, layanan purna jual, serta opsi baterai SLA dan Lithium.
 
-    /* Promo entrance animation */
-    .promo-item{opacity:0;transform:translateY(12px) scale(.995);transition:opacity .5s cubic-bezier(.2,.9,.2,1),transform .55s cubic-bezier(.2,.9,.2,1);will-change:opacity,transform}
-    .promo-item.promo-enter{opacity:1;transform:translateY(0) scale(1)}
-    .promo-item .corner-badge{left:10px;top:10px}
+Lihat Unit Cek Promo
+  <div class="grid-3" style="margin-top:1.5rem">
+    <div class="card metric" role="figure" aria-label="Unit terjual 1.5K+">
+      <div class="num" style="font-size:1.6rem;font-weight:800">1.5K+</div>
+      <div class="lbl" style="color:var(--muted);font-size:.9rem">Unit Terjual</div>
+    </div>
+    <div class="card metric" role="figure" aria-label="Garansi rangka 10 tahun">
+      <div class="num" style="font-size:1.6rem;font-weight:800">10 Tahun</div>
+      <div class="lbl" style="color:var(--muted);font-size:.9rem">Garansi Rangka</div>
+    </div>
+    <div class="card metric" role="figure" aria-label="Rating pelanggan 4.8 dari 5">
+      <div class="num" style="font-size:1.6rem;font-weight:800">4.8/5</div>
+      <div class="lbl" style="color:var(--muted);font-size:.9rem">Rating Pelanggan</div>
+    </div>
+  </div>
+</div>
 
-  </style>
-</head>
-<body>
-  <!-- Progress bar -->
-  <div class="progress" id="progress"></div>
+<div class="hero-card">
+  <img src="T65L%20Putih.png" alt="Uwinfly T65L Putih" style="border-radius:16px;border:1px solid var(--stroke)" loading="lazy">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-top:.7rem">
+    <div class="card"><strong>🔌 Hemat</strong><p>Biaya operasional rendah, pengisian mudah di rumah.</p></div>
+    <div class="card"><strong>🛡️ Aman</strong><p>Unit bergaransi & layanan servis resmi.</p></div>
+  </div>
+</div>
+Keunggulan Kami
+Beli nyaman dengan dukungan after-sales lengkap dan stok siap kirim.
 
-  <!-- Dekorasi partikel -->
-  <div class="sparkle" aria-hidden="true" id="spark"></div>
+Stok Lengkap
+Seri Uwinfly populer: D65/D66A, T60/T65L, T80/T85, M60L/M100.
 
-  <!-- Notifikasi Pop-up Mini -->
-  <div id="popmini" class="popmini" role="status" aria-live="polite" aria-atomic="true">
-    <div class="icon">🔔</div>
-    <div class="txt">Halo! Selamat datang di Uwinfly Eramolis MIM.</div>
-    <button class="close" aria-label="Tutup">✕</button>
+Harga Transparan
+Label harga jelas + opsi cicilan (tanya CS).
+
+Test Ride
+Coba langsung di Metro Indah Mall Bandung (jam 10.00–21.00).
+
+Aksesoris & Sparepart
+Helmet, baterai, charger, ban, dan layanan servis.
+
+Pengiriman Cepat
+Area Bandung & sekitarnya, bisa same-day (syarat berlaku).
+
+Garansi Resmi
+Unit bergaransi & dukungan teknisi berpengalaman.
+
+Galeri Foto
+Foto unit real, tampilan toko, dan area servis Uwinfly Eramolis.
+
+Foto Toko Uwinfly Eramolis
+Barisan Unit Uwinfly
+Area Servis
+Stok Ready
+Test Ride
+Unit Display
+Katalog Model Uwinfly
+Daftar harga, spesifikasi singkat, dan status ketersediaan. Gunakan filter untuk melihat seri tertentu.
+
+  <!-- Filter (posisi 1: di atas katalog) -->
+  <div id="catalogFilters" class="filter-bar" role="tablist" aria-label="Filter katalog">
+    <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">Semua</button>
+    <button class="filter-btn" data-filter="D" role="tab">Seri D</button>
+    <button class="filter-btn" data-filter="M" role="tab">Seri M</button>
+    <button class="filter-btn" data-filter="T" role="tab">Seri T</button>
   </div>
 
- <!-- NAV -->
-<nav role="navigation" aria-label="Navigasi utama">
-  <div class="container nav-bar">
-    <a href="#" class="brand" aria-label="Beranda Uwinfly Eramolis Metro Indah Mall">
-      <img src="LOGOWEB.png" alt="Logo Uwinfly Eramolis" class="logo-img">
-    </a>
-  </div>
-</nav>
-
+  <div class="grid-3" style="margin-top:1rem">
+    <!-- Seri T -->
+    <div class="card" data-series="T">
+      <img src="T65L%20Putih.png" alt="Uwinfly T65L" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
+      <h3>Uwinfly T65L</h3>
+      <p><strong>Harga Cash: Rp 8.500.000</strong></p>
+      <ul style="color:var(--muted);margin-left:1rem">
+        <li>Baterai: SLA / Lithium</li>
+        <li>Kecepatan: 45–55 km/jam</li>
+        <li>Jarak Tempuh: 50–70 km</li>
+      </ul>
       
-        <span>Uwinfly Eramolis Metro Indah Mall</span>
-      </a>
-      <div class="nav-links" id="navLinks">
-        <a href="#fitur">Fitur</a>
-        <a href="#galeri">Galeri</a>
-        <a href="#katalog">Katalog</a>
-        <a href="#promo">Promo</a>
-        <a href="#keamanan">Keamanan</a>
-        <a href="https://maps.app.goo.gl/4AhmW7mFh9SEwuh57" target="_blank">Lokasi</a>
-        <a href="#garansi">Garansi</a>
-        <a href="#kontak" class="btn ghost" style="padding:.55rem .8rem">Kontak</a>
-      </div>
-      <button class="menu-btn" id="menuBtn" aria-label="Buka menu">☰</button>
+      <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20{{model}}" style="margin-top:.6rem;display:inline-block">Order</a>
     </div>
-  </nav>
- 
-      <!-- subtle overlay -->
-      <div class="overlay" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:10;color:var(--text);text-align:center;pointer-events:none;max-width:1100px;padding:1rem">
-        <h1 style="font-size:clamp(1.8rem,4vw,3.6rem);margin:0 0 .6rem 0;font-weight:800">Uwinfly — T Series</h1>
-        <p class="sub" style="color:var(--muted);margin:0 0 1rem 0;pointer-events:auto">Unit terbaru, bergaransi, dan siap jalan. Cek katalog untuk detail harga & promo.</p>
-        <div style="display:flex;gap:.6rem;justify-content:center;pointer-events:auto">
-          <a class="btn primary" href="#katalog">Lihat Katalog</a>
-          <a class="btn" href="#promo">Cek Promo</a>
-        </div>
-      </div>
-
-      <!-- controls -->
-      <button id="prevFull" aria-label="Sebelumnya" style="position:absolute;left:18px;top:50%;transform:translateY(-50%);z-index:12;background:rgba(0,0,0,.35);border:0;color:#fff;padding:.6rem 10px;border-radius:10px;cursor:pointer">‹</button>
-      <button id="nextFull" aria-label="Berikutnya" style="position:absolute;right:18px;top:50%;transform:translateY(-50%);z-index:12;background:rgba(0,0,0,.35);border:0;color:#fff;padding:.6rem 10px;border-radius:10px;cursor:pointer">›</button>
-
-      <div id="heroDots" style="position:absolute;left:50%;bottom:18px;transform:translateX(-50%);display:flex;gap:.5rem;z-index:12"></div>
-    </div>
-  </header>
-
-  <script>
-  (function(){
-    const heroEl = document.getElementById('heroFull'); if(heroEl) heroEl.style.height = '100vh';
-    const slider = document.querySelector('#heroFull .slides');
-    const slides = Array.from(slider.children);
-    const total = slides.length;
-    let index = 0; let timer = null; const dotsWrap = document.getElementById('heroDots');
-
-    // build dots
-    slides.forEach((s,i)=>{
-      const d = document.createElement('button');
-      d.setAttribute('aria-label','Slide '+(i+1));
-      d.style.width='10px'; d.style.height='10px'; d.style.borderRadius='50%'; d.style.border='none'; d.style.background='rgba(255,255,255,.4)'; d.style.cursor='pointer'; d.style.margin='0 4px';
-      d.addEventListener('click', ()=> goTo(i));
-      dotsWrap.appendChild(d);
-    });
-
-    const dots = Array.from(dotsWrap.children);
-    function update(){ slider.style.transform = `translateX(-${index*100}%)`; dots.forEach((d,i)=> d.style.background = i===index ? 'white' : 'rgba(255,255,255,.4)'); }
-    function next(){ index = (index+1) % total; update(); }
-    function prev(){ index = (index-1+total) % total; update(); }
-    function goTo(i){ index = i; update(); resetTimer(); }
-
-    document.getElementById('nextFull').addEventListener('click', ()=>{ next(); resetTimer(); });
-    document.getElementById('prevFull').addEventListener('click', ()=>{ prev(); resetTimer(); });
-
-    function startTimer(){ if(timer) clearInterval(timer); timer = setInterval(()=> next(), 4500); }
-    function resetTimer(){ startTimer(); }
-    startTimer();
-
-    heroEl.addEventListener('mouseenter', ()=> clearInterval(timer));
-    heroEl.addEventListener('mouseleave', ()=> startTimer());
-
-    // touch support
-    let touchStartX = 0; let touchEndX = 0; const threshold = 50;
-    heroEl.addEventListener('touchstart', e=> touchStartX = e.changedTouches[0].screenX);
-    heroEl.addEventListener('touchmove', e=> touchEndX = e.changedTouches[0].screenX);
-    heroEl.addEventListener('touchend', ()=>{ const dx = touchEndX - touchStartX; if(Math.abs(dx) > threshold){ if(dx < 0) next(); else prev(); resetTimer(); } touchStartX = touchEndX = 0; });
-
-    window.addEventListener('keydown', e=>{ if(e.key === 'ArrowRight') next(); if(e.key === 'ArrowLeft') prev(); });
-    window.addEventListener('resize', update);
-    update();
-  })();
-  </script>
-
-  <section id="promo">
-  <div class="container">
-
-    <!-- FOTO TOKO -->
-    <div class="promo-banner">
-      <img src="TOKOWEB.jpg" alt="Toko Uwinfly Eramolis Metro Indah Mall">
-    </div>
-
-  </div>
-</section>
-
-  <!-- GALERI (Section diperbaiki agar tombol bekerja) -->
-  <section id="galeri">
-    <div class="container">
-      <h2>Galeri Unit</h2>
-      <p class="sub">Lihat beberapa foto unit terbaru di showroom kami.</p>
-      <div class="grid-3" style="margin-top:1rem">
-        <div class="card"><img src="T65LWEB.png" alt="Uwinfly T65L" style="border-radius:12px;border:1px solid var(--stroke)"></div>
-        <div class="card"><img src="M70WEB.jpg" alt="Uwinfly M70" style="border-radius:12px;border:1px solid var(--stroke)"></div>
-        <div class="card"><img src="D65WEB.jpg" alt="Uwinfly D65" style="border-radius:12px;border:1px solid var(--stroke)"></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="container"><div class="divider"></div></div>
-
-  <div class="container"><div class="divider"></div></div>
-
-  <!-- FITUR -->
-  <section id="katalog">
-    <div class="container">
-      <h2>Keunggulan Kami</h2>
-      <p class="sub">Beli nyaman dengan dukungan after-sales lengkap dan stok siap kirim.</p>
-      <div class="grid-3" style="margin-top:1rem">
-        <!-- Produk Baru: Uwinfly T80 (SLA 60V/20Ah) -->
-        <div class="card" data-series="T">
-          <img src="T80WEB.jpg" alt="Uwinfly T80" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly T80</h3>
-          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 7.500.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 7.000.000</span></strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: Lithium 60V</li>
-            <li>Kecepatan: 55–60 km/jam</li>
-            <li>Jarak Tempuh: 60–80 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20Uwinfly%20T80" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        <div class="card" data-series="T">
-          <img src="/mnt/data/T85WEB.jpg" alt="Uwinfly T85" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly T85</h3>
-          <p><strong>Harga Cash: Rp 11.999.000</strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: Lithium 60V</li>
-            <li>Kecepatan: 60+ km/jam</li>
-            <li>Jarak Tempuh: 60–85 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20Uwinfly%20T85" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        
-        <!-- ===== Seri M ===== -->
-        
-
-        <!-- M70 -->
-        <div class="card" data-series="M">
-          <img src="M70WEB.jpg" alt="Uwinfly M70" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly M70</h3>
-<span class="status bestseller">Bestseller</span>
-          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 4.800.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 4.199.000</span></strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: SLA 48V/12Ah</li>
-            <li>Power: 600W</li>
-            <li>Kecepatan: 40–45 km/jam</li>
-            <li>Jarak Tempuh: 35–40 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Order%20Uwinfly%20M70" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        <!-- M70L -->
-        <div class="card" data-series="M">
-          <img src="M70LWEB.jpg" alt="Uwinfly M70L" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly M70L</h3>
-          <p><strong>Harga Cash: Rp 5.200.000</strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: Lithium 48V/12Ah</li>
-            <li>Power: 600W</li>
-            <li>Kecepatan: 40–45 km/jam</li>
-            <li>Jarak Tempuh: 35–40 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Order%20Uwinfly%20M70L" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        
-        <!-- ===== Seri D ===== -->
-        <div class="card" data-series="D">
-          <img src="D65WEB.jpg" alt="Uwinfly D65" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly D65</h3>
-          <span class="status bestseller">Bestseller</span>
-          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 3.700.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 3.500.000</span></strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: SLA / Lithium</li>
-            <li>Kecepatan: 30–35 km/jam</li>
-            <li>Jarak Tempuh: 40–55 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20Uwinfly%20D65" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        <div class="card" data-series="D">
-          <img src="D66AWEB.jpg" alt="Uwinfly D66A" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly D66A</h3>
-          <p><strong>Harga Cash: Rp 3.600.000</strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: SLA / Lithium</li>
-            <li>Kecepatan: 30–35 km/jam</li>
-            <li>Jarak Tempuh: 45–60 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20Uwinfly%20D66A" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        <div class="card" data-series="D">
-          <img src="D70%20WEB.jpg" alt="Uwinfly D70" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly D70</h3>
-          <span class="status bestseller">Bestseller</span>
-          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 3.800.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 3.299.000</span></strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: SLA 48V/12Ah</li>
-            <li>Kecepatan: 40–45 km/jam</li>
-            <li>Jarak Tempuh: 35–40 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20order%20Uwinfly%20D70%20%28SLA%2048V%2F12Ah%29" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        <div class="card" data-series="D">
-          <img src="D65ADVWEB.jpeg" alt="Uwinfly D65 ADV" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly D65 ADV</h3>
-          
-<span class="status bestseller">Bestseller</span>
-          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 4.300.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 4.100.000</span></strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: SLA 48V/12Ah</li>
-            <li>Kecepatan: 40–45 km/jam</li>
-            <li>Jarak Tempuh: 35–40 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20order%20Uwinfly%20D65%20ADV%20%28SLA%2048V%2F12Ah%29" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-        <div class="card" data-series="D">
-          <img src="D75WEB.jpg" alt="Uwinfly D75" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
-          <h3>Uwinfly D75</h3>
-          <p><strong>Harga: <span style="text-decoration:line-through;color:var(--muted)">Rp 3.900.000</span> <span class="status bestseller" style="margin-left:.4rem">Rp 3.800.000</span></strong></p>
-          <ul style="color:var(--muted);margin-left:1rem">
-            <li>Baterai: SLA / Lithium</li>
-            <li>Kecepatan: 35–45 km/jam</li>
-            <li>Jarak Tempuh: 40–55 km</li>
-          </ul>
-          <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20Uwinfly%20D75" style="margin-top:.6rem;display:inline-block">Order</a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- PEMISAH KATALOG: MOTOR & SEPEDA -->
-  <section id="products-split">
-    <div class="container">
-      <h2>Motor Listrik</h2>
-      <p class="sub">Koleksi motor listrik seri T & M (pilihan motor). Klik order untuk pesan cepat.</p>
-      <div id="motorGrid" class="grid-3" style="margin-top:1rem;">
-        <!-- Motor items akan diisi otomatis -->
-      </div>
-
-      <div style="height:1.6rem"></div>
-
-      <h2>Sepeda Listrik</h2>
-      <p class="sub">Koleksi sepeda listrik (seri M kecil & D). Cocok untuk jarak pendek dan penggunaan harian.</p>
-      <div id="sepedaGrid" class="grid-3" style="margin-top:1rem;">
-        <!-- Sepeda items akan diisi otomatis -->
-      </div>
-
-      <small style="display:block;margin-top:.6rem;color:var(--muted)">Catatan: jika suatu produk tidak muncul, pastikan elemen produk memiliki atribut <code>data-series</code> atau nama model pada &lt;h3&gt; sesuai.</small>
-    </div>
-  </section>
-
-  <script>
-    // Distribusi produk ke dua grid: motor (M100,T90,T85,T80) dan sepeda (lainnya)
-    document.addEventListener('DOMContentLoaded', function(){
-      const motorNames = ['M100','T90','T85','T80'];
-      const motorGrid = document.getElementById('motorGrid');
-      const sepedaGrid = document.getElementById('sepedaGrid');
-
-      // Cari semua kartu produk yang ada di halaman (dari katalog lama)
-      const allCards = Array.from(document.querySelectorAll('.card'));
-      // Filter hanya yang berisi tag <h3> (produk)
-      const productCards = allCards.filter(c=> c.querySelector('h3'));
-
-      productCards.forEach(card=>{
-        const titleEl = card.querySelector('h3');
-        const title = titleEl ? titleEl.innerText.trim().toUpperCase() : '';
-
-        // Tentukan apakah termasuk motor berdasarkan nama model
-        const isMotor = motorNames.some(n => title.includes(n));
-
-        // Jika ada atribut data-series yang eksplisit bisa digunakan juga
-        const series = (card.getAttribute('data-series')||'').toUpperCase();
-        if(!isMotor && series==='T'){
-          // jika series T tapi namanya tidak cocok, treat as motor
-          // (keamanan agar seri T termasuk motor)
-          isMotor = true;
-        }
-
-        const clone = card.cloneNode(true);
-        // Pastikan tombol order membuka WA (tetap bekerja)
-        const wa = clone.querySelector('a.btn.primary');
-        if(wa){ wa.setAttribute('target','_blank'); }
-
-        if(isMotor){ motorGrid.appendChild(clone); }
-        else { sepedaGrid.appendChild(clone); }
-      });
-
-      // Jika grid kosong beri pesan
-      if(!motorGrid.children.length){
-        const msg = document.createElement('div'); msg.className='card'; msg.textContent='Tidak ada motor terdaftar.'; motorGrid.appendChild(msg);
-      }
-      if(!sepedaGrid.children.length){
-        const msg = document.createElement('div'); msg.className='card'; msg.textContent='Tidak ada sepeda terdaftar.'; sepedaGrid.appendChild(msg);
-      }
-
-    });
-  </script>
-
-  <!-- GARANSI -->
-  <section id="garansi">
-    <div class="container">
-      <h2>Garansi Resmi</h2>
-      <p class="sub">Semua unit dilengkapi kartu garansi resmi Uwinfly. Berikut ringkasan garansi per tipe baterai:</p>
-
-      <div class="card" style="margin-top:1rem">
-        <h3>Ringkasan Garansi</h3>
-        <ul style="color:var(--muted);margin-left:1rem">
-          <li><strong>Rangka:</strong> 10 tahun (semua tipe).</li>
-          <li><strong>Dinamo / Motor listrik:</strong> 1 tahun.</li>
-        </ul>
-      </div>
-
-      <div class="grid-3" style="margin-top:1rem">
-        <div class="card">
-          <h3>Tipe Baterai — SLA</h3>
-          <p>Garansi baterai: <strong>6 bulan</strong> untuk baterai SLA. (Syarat &amp; ketentuan berlaku).</p>
-        </div>
-
-        <div class="card">
-          <h3>Tipe Baterai — Lithium</h3>
-          <p>Garansi baterai: <strong>1 tahun</strong> untuk baterai Lithium. (Syarat &amp; ketentuan berlaku).</p>
-        </div>
-
-        <div class="card">
-          <h3>Proses Klaim</h3>
-          <p>Untuk klaim, siapkan nota / kartu garansi dan foto kerusakan. Hubungi CS kami via WhatsApp untuk verifikasi.</p>
-        </div>
-      </div>
-
-      <div style="margin-top:1rem">
-        <a class="btn" id="hubungiCs" href="https://wa.me/628551579797?text=Halo%20CS%20Uwinfly%20Eramolis%2C%20saya%20mau%20klaim%20garansi" style="display:inline-flex">Hubungi CS</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- KEAMANAN -->
-  <section id="keamanan">
-    <div class="container">
-      <h2>Keamanan Pembelian</h2>
-      <p class="sub">Perlindungan pelanggan saat membeli unit di showroom kami.</p>
-
-      <div class="grid-3" style="margin-top:1rem">
-        <div class="card">
-          <h3>✔ Pembayaran Aman</h3>
-          <p>Pembayaran langsung ke toko resmi tanpa pihak ketiga. Semua transaksi terekam dan dapat diverifikasi.</p>
-        </div>
-
-        <div class="card">
-          <h3>✔ Unit Baru & Bergaransi</h3>
-          <p>Setiap unit yang keluar dari toko adalah unit baru, lengkap dengan garansi resmi Uwinfly.</p>
-        </div>
-
-        <div class="card">
-          <h3>✔ Tidak Ada Biaya Tersembunyi</h3>
-          <p>Harga jelas dan transparan. Tidak ada biaya tambahan yang tidak diberitahukan sebelumnya.</p>
-        </div>
-      </div>
-
-      <div class="card" style="margin-top:1rem">
-        <h3>✔ Cek Unit Sebelum Pembayaran</h3>
-        <p>Pelanggan diperbolehkan memeriksa unit, test fungsi, dan memastikan kondisi motor/sepeda sebelum transaksi diselesaikan.</p>
-      </div>
-
-    </div>
-  </section>
-
-          <label>Nama / Type Unit
-            <select name="unitType" id="unitType" required style="width:100%;margin-top:.35rem;padding:.8rem;border-radius:12px;border:1px solid var(--stroke);background:#0b101c;color:var(--text)">
-              <option value="" disabled selected>Pilih Type Unit</option>
-              <option>Uwinfly D65</option>
-              <option>Uwinfly D66A</option>
-              <option>Uwinfly T60</option>
-              <option>Uwinfly T65L</option>
-              <option>Uwinfly T80</option>
-              <option>Uwinfly T85</option>
-              <option>Uwinfly M60L</option>
-              <option>Uwinfly M100</option>
-              <option value="lainnya">Lainnya (ketik manual)</option>
-            </select>
-          </label>
-          <div id="unitOtherWrap" style="display:none">
-            <label>Type Unit (manual)
-              <input name="unitOther" type="text" placeholder="Contoh: Uwinfly X99 Edisi Khusus" style="width:100%;margin-top:.35rem;padding:.8rem;border-radius:12px;border:1px solid var(--stroke);background:#0b101c;color:var(--text)" autocomplete="off">
-            </label>
-          </div>
+    <div class="card" data-series="T">
+      <img src="https://via.placeholder.com/600x400?text=Uwinfly+T80" alt="Uwinfly T80" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
+      <h3>Uwinfly T80</h3>
+      <p><strong>Harga Cash: Rp 10.800.000</strong></p>
+      <ul style="color:var(--muted);margin-left:1rem">
+        <li>Baterai: Lithium 60V</li>
+        <li>Kecepatan: 55–60 km/jam</li>
+        <li>Jarak Tempuh: 60–80 km</li>
+      </ul>
       
-         <div class="card" style="margin:.8rem 0
+      <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20{{model}}" style="margin-top:.6rem;display:inline-block">Order</a>
+    </div>
+    <div class="card" data-series="T">
+      <img src="https://via.placeholder.com/600x400?text=Uwinfly+T85" alt="Uwinfly T85" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
+      <h3>Uwinfly T85</h3>
+      <p><strong>Harga Cash: Rp 11.500.000</strong></p>
+      <ul style="color:var(--muted);margin-left:1rem">
+        <li>Baterai: Lithium 60V</li>
+        <li>Kecepatan: 60+ km/jam</li>
+        <li>Jarak Tempuh: 70–90 km</li>
+      </ul>
+      
+      <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20{{model}}" style="margin-top:.6rem;display:inline-block">Order</a>
+    </div>
+
+    <!-- Seri M -->
+    <div class="card" data-series="M">
+      <img src="https://via.placeholder.com/600x400?text=Uwinfly+M60L" alt="Uwinfly M60L" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
+      <h3>Uwinfly M60L</h3>
+      <p><strong>Harga Cash: Rp 8.900.000</strong></p>
+      <ul style="color:var(--muted);margin-left:1rem">
+        <li>Baterai: Lithium 60V</li>
+        <li>Kecepatan: 45–55 km/jam</li>
+        <li>Jarak Tempuh: 50–65 km</li>
+      </ul>
+      
+      <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20{{model}}" style="margin-top:.6rem;display:inline-block">Order</a>
+    </div>
+    <div class="card" data-series="M">
+      <img src="https://via.placeholder.com/600x400?text=Uwinfly+M100" alt="Uwinfly M100" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
+      <h3>Uwinfly M100</h3>
+      <p><strong>Harga Cash: Rp 9.700.000</strong></p>
+      <ul style="color:var(--muted);margin-left:1rem">
+        <li>Baterai: Lithium 60V</li>
+        <li>Kecepatan: 40–50 km/jam</li>
+        <li>Jarak Tempuh: 45–60 km</li>
+      </ul>
+      
+      <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20{{model}}" style="margin-top:.6rem;display:inline-block">Order</a>
+    </div>
+
+    <!-- Seri D (sepeda listrik) -->
+    <div class="card" data-series="D">
+      <img src="https://via.placeholder.com/600x400?text=Uwinfly+D65" alt="Uwinfly D65" style="border-radius:12px;border:1px solid var(--stroke)" loading="lazy">
+      <h3>Uwinfly D65</h3>
+      <p><strong>Harga Cash: Rp 6.800.000</strong></p>
+      <ul style="color:var(--muted);margin-left:1rem">
+        <li>Baterai: SLA / Lithium</li>
+        <li>Kecepatan: 30–35 km/jam</li>
+        <li>Jarak Tempuh: 40–55 km</li>
+      </ul>
+      
+      <a class="btn primary" href="https://wa.me/628551579797?text=Saya%20ingin%20order%20{{model}}" style="margin-top:.6rem;display:inline-block">Order</a>
+    </div>
+   
+Daftar promo resmi tanpa embel-embel free jas hujan atau bonus yang tidak relevan.
+
+  <div class="grid-3" style="margin-top:1rem">
+    <div class="card">
+      <h3>Potongan Harga</h3>
+      <ul style="margin-left:1rem;color:var(--muted)">
+        <li>Cashback hingga <strong>2 juta</strong> (model tertentu)</li>
+        <li>Program diskon akhir bulan</li>
+        <li>Harga spesial untuk pembelian 2 unit</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Cicilan / Kredit</h3>
+      <ul style="margin-left:1rem;color:var(--muted)">
+        <li>Bekerja sama dengan beberapa leasing resmi</li>
+        <li>Tenor fleksibel 6–18 bulan</li>
+        <li>Proses cepat, syarat mudah</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Promo Servis</h3>
+      <ul style="margin-left:1rem;color:var(--muted)">
+        <li>Servis berkala harga khusus</li>
+        <li>Pengecekan kelistrikan & rem (periode tertentu)</li>
+        <li>Diskon sparepart pilihan</li>
+      </ul>
+    </div>
+  </div>
+</div>
+Keamanan Transaksi
+Belanja aman di dealer resmi Uwinfly Eramolis. Tidak ada biaya tersembunyi, tidak ada penipuan.
+
+  <div class="grid-3" style="margin-top:1rem">
+    <div class="card">
+      <h3>Pembayaran Resmi</h3>
+      <p>Kami menerima pembayaran melalui:</p>
+      <ul style="margin:.4rem 0 0 1rem;color:var(--muted)">
+        <li>Transfer bank</li>
+        <li>QRIS</li>
+        <li>Kartu Debit</li>
+        <li>Kartu Kredit</li>
+        <li>SPayLater (Shopee)</li>
+      </ul>
+      <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1rem">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/QRIS_logo.svg" alt="QRIS" style="height:34px;background:#fff;padding:4px;border-radius:8px">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Visa.svg" alt="Visa" style="height:34px;background:#fff;padding:4px;border-radius:8px">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" style="height:34px;background:#fff;padding:4px;border-radius:8px">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Shopee_logo.svg" alt="Shopee PayLater" style="height:34px;background:#fff;padding:4px;border-radius:8px">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/ATM_logo.svg" alt="Debit" style="height:34px;background:#fff;padding:4px;border-radius:8px">
+      </div>
+    </div>
+    <div class="card">
+      <h3>Tanpa Titip Dana</h3>
+      <p>Kami <strong>tidak pernah</strong> meminta DP atau transfer ke rekening pribadi. Pastikan nomor rekening atas nama toko/perusahaan.</p>
+    </div>
+    <div class="card">
+      <h3>Bukti & Invoice</h3>
+      <p>Setiap transaksi mendapatkan invoice resmi + bukti pembelian untuk garansi.</p>
+    </div>
+  </div>
+</div>
+Lokasi & Jam Operasional
+Metro Indah Mall (MIM)
+Jl. Soekarno Hatta No. 590, Bandung. Buka setiap hari.
+
+<iframe title="Peta lokasi Uwinfly Eramolis MIM" src="https://www.google.com/maps?q=Uwinfly%20Eramolis%20Metro%20Indah%20Mall%20Bandung&output=embed" width="100%" height="300" style="border:0;border-radius:12px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+Jam Operasional
+Setiap hari: 10:00 – 21:00 WIB
+Test ride & servis mengikuti jam operasional
+Hubungi WA untuk janji temu khusus
+Buat Janji Temu
+Siap Pindah ke Kendaraan Listrik?
+Hemat biaya, ramah lingkungan, dan purna jual terjamin di Uwinfly Eramolis MIM.
+
+Lihat Katalog Konsultasi Gratis
+Kenapa Harus Uwinfly Eramolis MIM?
+Dealer Resmi
+Unit bergaransi, suku cadang asli, dan teknisi tersertifikasi.
+
+After-Sales Kuat
+Servis berkala, konsultasi teknis, dan klaim garansi mudah.
+
+Pembayaran Aman
+Transfer bank, QRIS, Debit/Kredit, SPayLater. Tanpa titip dana.
+
+<script> // Toggle menu (jaga-jaga jika belum aktif di dokumen ini) (function(){ const btn = document.getElementById('menuBtn'); const links = document.getElementById('navLinks'); if(btn && links){ btn.addEventListener('click', ()=> links.classList.toggle('open')); } })(); // Pop-up mini auto-appear rotasi pesan (function(){ const el = document.getElementById('popmini'); if(!el) return; const txt = el.querySelector('.txt'); const closeBtn = el.querySelector('.close'); const msgs = [ '🔥 12 orang melihat T65L hari ini', '✅ Stok T80 ready beberapa unit', '🛠 Booking servis buka 10:00–21:00 WIB', '📍 Lokasi: Metro Indah Mall — Bandung', '💬 Butuh bantuan? Chat WhatsApp sekarang' ]; let i = 0, timerShow, timerRotate; function setMessage(){ txt.textContent = msgs[i % msgs.length]; i++; } function show(){ el.classList.add('show'); timerShow = setTimeout(hide, 4500); } function hide(){ el.classList.remove('show'); timerShow = null; } function cycle(){ setMessage(); show(); } // pertama muncul setelah 1.2s setTimeout(cycle, 1200); // rotasi tiap 12 detik timerRotate = setInterval(cycle, 12000); // klik tutup if(closeBtn){ closeBtn.addEventListener('click', ()=>{ hide(); clearInterval(timerRotate); }); } })(); </script>
+Kontak & Informasi Toko
+Uwinfly Eramolis MIM
+Metro Indah Mall Bandung — Dealer resmi sepeda & motor listrik Uwinfly.
+
+Jam Operasional: 10:00 – 21:00 WIB (setiap hari)
+Alamat: Metro Indah Mall, Bandung
+Email: halo@domainanda.com
+💬 WhatsApp 📞 Telepon 📍 Buka di Google Maps
+Sosial Media
+📸 Instagram 📘 Facebook 🎵 TikTok
+Garansi Resmi Uwinfly
+Ketentuan garansi berdasarkan pemakaian wajar dan perawatan yang dianjurkan.
+
+Rangka
+10 Tahun
+
+Cakupan struktur rangka utama.
+Dinamo
+Sepeda listrik: 1 Tahun
+Motor listrik: 2 Tahun
+Baterai
+Type SLA: 6 Bulan
+Lithium (sepeda): 1 Tahun
+Lithium (motor): 2 Tahun
+Catatan:
+Garansi tidak mencakup kerusakan akibat kecelakaan, banjir, modifikasi, salah pengisian, atau penggunaan di luar rekomendasi.
+Simpan bukti pembelian & lakukan servis berkala di bengkel resmi agar garansi tetap berlaku.
+Testimoni Pelanggan
+Beberapa pelanggan yang sudah membeli di Uwinfly Eramolis MIM.
+
+Pelanggan 1
+Rohman
+"Pelayanan ramah, unit lengkap, dan harga terbaik. Proses cepat!"
+
+Pelanggan 2
+Siti Rahma
+"Sudah beli D66A. Enak dipake harian, toko sangat membantu penjelasan."
+
+Pelanggan 3
+Yoga Permana
+"Servis cepat dan transparan. Teknisi berpengalaman, sangat puas!"
