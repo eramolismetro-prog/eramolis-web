@@ -4,13 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Uwinfly Eramolis Metro Indah Mall</title>
-<meta name="description" content="Dealer resmi sepeda & motor listrik Uwinfly Bandung. Harga promo, stok siap, order via WhatsApp.">
+<meta name="description" content="Dealer resmi motor & sepeda listrik Uwinfly Metro Indah Mall Bandung. Harga promo, stok ready, order via WhatsApp.">
 
 <style>
 :root{
---bg:#0b0f18;--card:#121826;--stroke:#1f2937;
---text:#e5e7eb;--muted:#9ca3af;
---brand:#25D366;--promo:#facc15;
+--bg:#090d15;
+--card:#0f1524;
+--stroke:#1b2233;
+--text:#e8eaf0;
+--muted:#9aa7bc;
+--brand:#25D366;
+--promo:#ffd166;
+--best:#ffb703;
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:Inter,system-ui;background:var(--bg);color:var(--text)}
@@ -19,13 +24,13 @@ a{text-decoration:none;color:inherit}
 .container{width:92%;max-width:1200px;margin:auto}
 
 /* NAV */
-nav{position:sticky;top:0;background:#0b0f18cc;backdrop-filter:blur(8px);border-bottom:1px solid var(--stroke);z-index:50}
+nav{position:sticky;top:0;z-index:50;background:#090d15cc;backdrop-filter:blur(8px);border-bottom:1px solid var(--stroke)}
 .navbar{display:flex;align-items:center;gap:12px;padding:10px 0}
 .logo-img{width:46px;height:46px;border-radius:50%;object-fit:cover}
 .brand-name{font-weight:800}
 
 /* HERO */
-.hero img{width:100%;border-radius:16px;margin:18px 0}
+.hero img{width:100%;border-radius:18px;margin:18px 0}
 
 /* GRID */
 .grid{display:grid;gap:16px}
@@ -33,23 +38,58 @@ nav{position:sticky;top:0;background:#0b0f18cc;backdrop-filter:blur(8px);border-
 @media(max-width:767px){.grid{grid-template-columns:repeat(2,1fr)}}
 
 /* CARD */
-.card{background:var(--card);border:1px solid var(--stroke);border-radius:16px;padding:12px;display:flex;flex-direction:column}
-.card img{border-radius:12px}
-.card h3{margin:10px 0 4px;font-size:16px}
+.card{
+background:var(--card);
+border:1px solid var(--stroke);
+border-radius:18px;
+padding:12px;
+display:flex;
+flex-direction:column;
+position:relative
+}
+.card img{border-radius:14px;height:180px;object-fit:cover}
+.card h3{margin:10px 0 6px;font-size:16px}
 .price{margin:6px 0}
-.old{text-decoration:line-through;color:var(--muted);font-size:14px}
-.new{color:var(--promo);font-weight:800}
-.badge{position:absolute;margin:8px;background:var(--promo);color:#000;font-size:12px;padding:4px 8px;border-radius:999px;font-weight:700}
-.badge.best{background:#fb923c}
-.btn{margin-top:auto;background:var(--brand);color:#000;padding:10px;border-radius:10px;font-weight:700;text-align:center}
+.old{color:var(--muted);text-decoration:line-through;font-size:14px}
+.new{color:var(--promo);font-weight:800;font-size:16px}
+
+/* BADGE */
+.badge{
+position:absolute;top:10px;left:10px;
+padding:4px 10px;
+border-radius:999px;
+font-size:12px;
+font-weight:800;
+color:#000
+}
+.badge.promo{background:var(--promo)}
+.badge.best{background:var(--best)}
+
+/* BUTTON */
+.btn{
+margin-top:auto;
+background:var(--brand);
+color:#000;
+padding:10px;
+border-radius:12px;
+font-weight:800;
+text-align:center
+}
 
 /* FLOAT WA */
 .float-wa{
-position:fixed;right:18px;bottom:18px;
-background:var(--brand);color:#000;
-width:56px;height:56px;border-radius:50%;
-display:grid;place-items:center;font-size:26px;
+position:fixed;
+right:18px;
+bottom:18px;
+width:56px;
+height:56px;
+border-radius:50%;
+background:var(--brand);
+display:grid;
+place-items:center;
+font-size:26px;
 box-shadow:0 10px 30px rgba(0,0,0,.4);
+z-index:99
 }
 </style>
 </head>
@@ -59,25 +99,26 @@ box-shadow:0 10px 30px rgba(0,0,0,.4);
 <!-- NAV -->
 <nav>
   <div class="container navbar">
-    <img src="LOGOWEB.png" class="logo-img" alt="Logo">
-    <div class="brand-name">Uwinfly Eramolis MIM</div>
+    <img src="LOGOWEB.png" class="logo-img" alt="Logo Uwinfly">
+    <div class="brand-name">Uwinfly Eramolis Metro Indah Mall</div>
   </div>
 </nav>
 
-<!-- HERO FOTO TOKO -->
+<!-- FOTO TOKO -->
 <div class="container hero">
   <img src="TOKOWEB.jpg" alt="Toko Uwinfly Eramolis">
 </div>
 
-<!-- KATALOG -->
+<!-- ================= MOTOR LISTRIK ================= -->
 <section class="container">
-<h2>Katalog Produk</h2>
+<h2>⚡ Motor Listrik</h2>
+<p class="sub">Kategori: M100, T90, T85, T80, T5</p>
 
 <div class="grid">
 
 <!-- T80 -->
 <div class="card">
-<span class="badge">PROMO</span>
+<span class="badge promo">PROMO</span>
 <img src="T80WEB.jpg">
 <h3>Uwinfly T80</h3>
 <div class="price">
@@ -85,7 +126,7 @@ box-shadow:0 10px 30px rgba(0,0,0,.4);
 <span class="new">Rp 7.000.000</span>
 </div>
 <a class="btn" target="_blank"
-href="https://wa.me/628551579797?text=Halo%20Admin%20Uwinfly%20Eramolis%2C%0ASaya%20ingin%20order%20*Uwinfly%20T80*%0AHarga%20Promo%3A%20Rp%207.000.000">
+href="https://wa.me/628551579797?text=Halo%20Admin%0ASaya%20ingin%20order%20Motor%20Listrik%20Uwinfly%20T80">
 Order WhatsApp</a>
 </div>
 
@@ -93,13 +134,24 @@ Order WhatsApp</a>
 <div class="card">
 <img src="T85WEB.jpg">
 <h3>Uwinfly T85</h3>
-<div class="price"><span class="new">Rp 11.999.000</span></div>
+<div class="price">
+<span class="new">Rp 11.999.000</span>
+</div>
 <a class="btn" target="_blank"
-href="https://wa.me/628551579797?text=Halo%20Admin%2C%20saya%20ingin%20order%20Uwinfly%20T85">
+href="https://wa.me/628551579797?text=Halo%20Admin%0ASaya%20ingin%20order%20Motor%20Listrik%20Uwinfly%20T85">
 Order WhatsApp</a>
 </div>
 
-<!-- M70 -->
+</div>
+</section>
+
+<!-- ================= SEPEDA LISTRIK ================= -->
+<section class="container">
+<h2>🚲 Sepeda Listrik</h2>
+<p class="sub">Semua model selain M100, T90, T85, T80, T5</p>
+
+<div class="grid">
+
 <div class="card">
 <span class="badge best">BESTSELLER</span>
 <img src="M70WEB.jpg">
@@ -109,11 +161,21 @@ Order WhatsApp</a>
 <span class="new">Rp 4.199.000</span>
 </div>
 <a class="btn" target="_blank"
-href="https://wa.me/628551579797?text=Halo%20Admin%2C%20order%20Uwinfly%20M70%20Rp%204.199.000">
+href="https://wa.me/628551579797?text=Halo%20Admin%0ASaya%20ingin%20order%20Sepeda%20Listrik%20Uwinfly%20M70">
 Order WhatsApp</a>
 </div>
 
-<!-- D65 -->
+<div class="card">
+<img src="M70LWEB.jpg">
+<h3>Uwinfly M70L</h3>
+<div class="price">
+<span class="new">Rp 5.200.000</span>
+</div>
+<a class="btn" target="_blank"
+href="https://wa.me/628551579797?text=Halo%20Admin%0ASaya%20ingin%20order%20Sepeda%20Listrik%20Uwinfly%20M70L">
+Order WhatsApp</a>
+</div>
+
 <div class="card">
 <span class="badge best">BESTSELLER</span>
 <img src="D65WEB.jpg">
@@ -123,13 +185,23 @@ Order WhatsApp</a>
 <span class="new">Rp 3.500.000</span>
 </div>
 <a class="btn" target="_blank"
-href="https://wa.me/628551579797?text=Halo%20Admin%2C%20order%20Uwinfly%20D65%20Rp%203.500.000">
+href="https://wa.me/628551579797?text=Halo%20Admin%0ASaya%20ingin%20order%20Sepeda%20Listrik%20Uwinfly%20D65">
 Order WhatsApp</a>
 </div>
 
-<!-- D70 -->
 <div class="card">
-<span class="badge">PROMO</span>
+<img src="D66AWEB.jpg">
+<h3>Uwinfly D66A</h3>
+<div class="price">
+<span class="new">Rp 3.600.000</span>
+</div>
+<a class="btn" target="_blank"
+href="https://wa.me/628551579797?text=Halo%20Admin%0ASaya%20ingin%20order%20Sepeda%20Listrik%20Uwinfly%20D66A">
+Order WhatsApp</a>
+</div>
+
+<div class="card">
+<span class="badge promo">PROMO</span>
 <img src="D70WEB.jpg">
 <h3>Uwinfly D70</h3>
 <div class="price">
@@ -137,7 +209,32 @@ Order WhatsApp</a>
 <span class="new">Rp 3.299.000</span>
 </div>
 <a class="btn" target="_blank"
-href="https://wa.me/628551579797?text=Halo%20Admin%2C%20order%20Uwinfly%20D70%20Rp%203.299.000">
+href="https://wa.me/628551579797?text=Halo%20Admin%0ASaya%20ingin%20order%20Sepeda%20Listrik%20Uwinfly%20D70">
+Order WhatsApp</a>
+</div>
+
+<div class="card">
+<span class="badge best">BESTSELLER</span>
+<img src="D65ADVWEB.jpeg">
+<h3>Uwinfly D65 ADV</h3>
+<div class="price">
+<span class="old">Rp 4.300.000</span><br>
+<span class="new">Rp 4.100.000</span>
+</div>
+<a class="btn" target="_blank"
+href="https://wa.me/628551579797?text=Halo%20Admin%0ASaya%20ingin%20order%20Sepeda%20Listrik%20Uwinfly%20D65%20ADV">
+Order WhatsApp</a>
+</div>
+
+<div class="card">
+<img src="D75WEB.jpg">
+<h3>Uwinfly D75</h3>
+<div class="price">
+<span class="old">Rp 3.900.000</span><br>
+<span class="new">Rp 3.800.000</span>
+</div>
+<a class="btn" target="_blank"
+href="https://wa.me/628551579797?text=Halo%20Admin%0ASaya%20ingin%20order%20Sepeda%20Listrik%20Uwinfly%20D75">
 Order WhatsApp</a>
 </div>
 
@@ -145,7 +242,7 @@ Order WhatsApp</a>
 </section>
 
 <!-- FLOAT WA -->
-<a href="https://wa.me/628551579797" class="float-wa" target="_blank">💬</a>
+<a class="float-wa" href="https://wa.me/628551579797" target="_blank">💬</a>
 
 </body>
 </html>
