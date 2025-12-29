@@ -7,7 +7,7 @@
 <meta name="keywords" content="motor listrik bandung, sepeda listrik bandung, uwinfly bandung, dealer motor listrik">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- GOOGLE ANALYTICS 4 -->
+<!-- ===== GOOGLE ANALYTICS (GANTI ID) ===== -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -16,13 +16,13 @@ gtag('js', new Date());
 gtag('config', 'G-XXXXXXXXXX');
 </script>
 
-<!-- SCHEMA: DEALER -->
+<!-- ===== SCHEMA GOOGLE (RICH RESULT) ===== -->
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
  "@type": "MotorcycleDealer",
  "name": "Uwinfly Eramolis MIM",
- "url": "https://domainkamu.github.io",
+ "url": "https://eramolismetro-prog.github.io/eramolis-web/",
  "telephone": "+628551579797",
  "address": {
    "@type": "PostalAddress",
@@ -37,26 +37,112 @@ gtag('config', 'G-XXXXXXXXXX');
 </script>
 
 <style>
+/* ===== GLOBAL ===== */
 body{margin:0;font-family:Arial,Inter,sans-serif;background:#0b1020;color:#fff}
 .container{max-width:1100px;margin:auto;padding:20px}
+h2{margin-bottom:16px}
+
+/* ===== GRID 2 KOLOM FIX ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px;
+}
+
+/* ===== CARD PRODUK ===== */
+.card{
+  background:#11162a;
+  border-radius:14px;
+  padding:12px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+}
+
+/* ===== GAMBAR SERAGAM ===== */
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:cover;
+  border-radius:10px;
+  background:#000;
+}
+
+/* ===== JUDUL ===== */
+.card h3{
+  margin:8px 0 4px;
+  font-size:15px;
+  min-height:38px;
+}
+
+/* ===== BADGE ===== */
+.badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  padding:4px 8px;
+  font-size:11px;
+  font-weight:800;
+  border-radius:6px;
+  color:#000;
+}
+.badge.promo{background:#ffd166}
+.badge.best{background:#25d366}
+
+/* ===== HARGA ===== */
+.price{
+  margin-top:auto;
+  font-weight:800;
+  color:#8fffad;
+  font-size:15px;
+}
+
+/* ===== TOMBOL ===== */
+.btn{
+  margin-top:8px;
+  background:#25d366;
+  color:#000;
+  text-decoration:none;
+  padding:10px;
+  border-radius:8px;
+  text-align:center;
+  font-weight:700;
+}
+
+/* ===== HEADER & HERO ===== */
 header{display:flex;justify-content:space-between;align-items:center}
 header img{height:44px}
-.btn{background:#25d366;color:#000;padding:10px 16px;border-radius:8px;font-weight:700;text-decoration:none}
-section{margin:48px 0}
 .hero img{width:100%;border-radius:16px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.card{background:#11162a;border-radius:14px;padding:14px}
-.card img{border-radius:10px}
-.price{font-weight:800;color:#8fffad;margin:6px 0}
-footer{text-align:center;color:#aaa;margin:40px 0}
 
-/* FLOATING SOSMED */
-.sosmed-float{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:10px;z-index:999}
-.sf{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none;color:#000;box-shadow:0 8px 20px rgba(0,0,0,.4)}
+/* ===== FLOATING SOSMED ===== */
+.sosmed-float{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  z-index:999;
+}
+.sf{
+  width:48px;height:48px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;text-decoration:none;
+  color:#000;box-shadow:0 8px 20px rgba(0,0,0,.4)
+}
 .sf.wa{background:#25d366}
 .sf.ig{background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af)}
 .sf.fb{background:#1877f2;color:#fff}
 .sf.tt{background:#000;color:#fff}
+
+/* ===== RESPONSIVE HP ===== */
+@media(max-width:480px){
+  .card img{height:160px}
+  .price{font-size:14px}
+  .btn{font-size:14px;padding:8px}
+}
+
+footer{text-align:center;color:#aaa;margin:40px 0}
 </style>
 </head>
 
@@ -73,11 +159,13 @@ footer{text-align:center;color:#aaa;margin:40px 0}
   <img src="SLIDE_M.jpg" alt="Dealer Motor & Sepeda Listrik Uwinfly Bandung">
 </section>
 
+<!-- ===== MOTOR LISTRIK ===== -->
 <section>
 <h2>Motor Listrik</h2>
 <div class="grid">
 
 <div class="card">
+  <span class="badge best">BESTSELLER</span>
   <img src="T85WEB.jpg">
   <h3>Uwinfly T85</h3>
   <div class="price">Rp 11.999.000</div>
@@ -85,6 +173,7 @@ footer{text-align:center;color:#aaa;margin:40px 0}
 </div>
 
 <div class="card">
+  <span class="badge promo">PROMO</span>
   <img src="T80WEB.jpg">
   <h3>Uwinfly T80</h3>
   <div class="price">Rp 7.000.000</div>
@@ -92,20 +181,30 @@ footer{text-align:center;color:#aaa;margin:40px 0}
 </div>
 
 <div class="card">
+  <span class="badge best">BESTSELLER</span>
   <img src="M70WEB.jpg">
   <h3>Uwinfly M70</h3>
   <div class="price">Rp 4.199.000</div>
   <a class="btn wa-order" data-produk="Uwinfly M70" data-harga="Rp 4.199.000">Pesan</a>
 </div>
 
+<div class="card">
+  <img src="M60WEB.jpg">
+  <h3>Uwinfly M60</h3>
+  <div class="price">Rp 3.900.000</div>
+  <a class="btn wa-order" data-produk="Uwinfly M60" data-harga="Rp 3.900.000">Pesan</a>
+</div>
+
 </div>
 </section>
 
+<!-- ===== SEPEDA LISTRIK ===== -->
 <section>
 <h2>Sepeda Listrik</h2>
 <div class="grid">
 
 <div class="card">
+  <span class="badge promo">PROMO</span>
   <img src="D65WEB.jpg">
   <h3>Uwinfly D65</h3>
   <div class="price">Rp 3.500.000</div>
@@ -119,14 +218,33 @@ footer{text-align:center;color:#aaa;margin:40px 0}
   <a class="btn wa-order" data-produk="Uwinfly D66A" data-harga="Rp 3.600.000">Pesan</a>
 </div>
 
+<div class="card">
+  <span class="badge best">BESTSELLER</span>
+  <img src="D70WEB.jpg">
+  <h3>Uwinfly D70</h3>
+  <div class="price">Rp 3.299.000</div>
+  <a class="btn wa-order" data-produk="Uwinfly D70" data-harga="Rp 3.299.000">Pesan</a>
+</div>
+
+<div class="card">
+  <img src="D75WEB.jpg">
+  <h3>Uwinfly D75</h3>
+  <div class="price">Rp 3.800.000</div>
+  <a class="btn wa-order" data-produk="Uwinfly D75" data-harga="Rp 3.800.000">Pesan</a>
+</div>
+
 </div>
 </section>
 
+<!-- ===== LOKASI ===== -->
 <section>
 <h2>Lokasi</h2>
 <p>Metro Indah Mall Blok F15–16, Bandung<br>Buka 10.00 – 21.00 WIB</p>
-<iframe src="https://www.google.com/maps?q=Uwinfly%20Eramolis%20Metro%20Indah%20Mall%20Bandung&output=embed"
-width="100%" height="300" style="border:0;border-radius:14px"></iframe>
+<iframe
+  src="https://www.google.com/maps?q=Uwinfly%20Eramolis%20Metro%20Indah%20Mall%20Bandung&output=embed"
+  width="100%" height="300"
+  style="border:0;border-radius:14px">
+</iframe>
 </section>
 
 <footer>
@@ -135,7 +253,7 @@ width="100%" height="300" style="border:0;border-radius:14px"></iframe>
 
 </div>
 
-<!-- FLOATING SOSMED -->
+<!-- ===== FLOATING SOSMED ===== -->
 <div class="sosmed-float">
   <a href="https://wa.me/628551579797" target="_blank" class="sf wa">💬</a>
   <a href="https://www.instagram.com/eramolis_metroindahmall/" target="_blank" class="sf ig">📸</a>
@@ -143,20 +261,24 @@ width="100%" height="300" style="border:0;border-radius:14px"></iframe>
   <a href="https://www.tiktok.com/@uwinfly_bandung_eramolis?lang=id-ID" target="_blank" class="sf tt">🎵</a>
 </div>
 
+<!-- ===== WA AUTO + TRACKING ===== -->
 <script>
-/* WA AUTO + TRACKING */
 document.querySelectorAll('.wa-order,.sf').forEach(el=>{
- el.addEventListener('click',function(){
-  const produk=this.dataset.produk||'Social Media';
-  const harga=this.dataset.harga||'';
-  if(this.classList.contains('wa-order')){
-   const msg=`Halo Eramolis MIM 👋\nSaya tertarik:\n${produk}\nHarga: ${harga}`;
-   window.open('https://wa.me/628551579797?text='+encodeURIComponent(msg),'_blank');
-  }
-  if(typeof gtag==='function'){
-   gtag('event','click',{event_category:'Engagement',event_label:produk});
-  }
- });
+  el.addEventListener('click',function(){
+    const produk=this.dataset.produk||'Social Media';
+    const harga=this.dataset.harga||'';
+    if(this.classList.contains('wa-order')){
+      const pesan=`Halo Eramolis MIM 👋
+Saya tertarik dengan:
+${produk}
+Harga: ${harga}
+Mohon info stok & promo.`;
+      window.open('https://wa.me/628551579797?text='+encodeURIComponent(pesan),'_blank');
+    }
+    if(typeof gtag==='function'){
+      gtag('event','click',{event_category:'Engagement',event_label:produk});
+    }
+  });
 });
 </script>
 
