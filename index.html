@@ -6,16 +6,19 @@
   <title>U-WINFLY ERAMOLIS METRO INDAH MALL</title>
    <style>
     body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
-   header {
-  background-image:
-    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-    url('ALLT65LWEB.jpg');
-  background-size: cover;
+   header { background-image:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('SEMUAT65LWEB.jpg');
+  background-size: contain;   /* ⬅️ PENTING */
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #000;     /* biar sisi kosong hitam rapi */
   color: #fff;
-  padding: 80px 20px;
+  padding: 120px 20px;        /* tinggi bisa diatur */
   text-align: center;}
+     @media(max-width:768px){
+  header{ padding: 80px 15px;
+    background-size: contain;}}
     nav { background: #e5e7ea; padding: 10px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,.1); }
     nav a { margin: 0 10px; text-decoration: none; color: #c40000; font-weight: bold; }
     .container { max-width: 1000px; margin: auto; padding: 20px; }
