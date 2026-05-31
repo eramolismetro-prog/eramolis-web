@@ -7,59 +7,140 @@
   <style>
     /* Global Styles */
     html { scroll-behavior: smooth; }
-    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; background: #f4f4f4; color: #333; }
+    body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #333; }
     
-    /* Header & Navigation */
-    header { background: #c40000; color: #fff; padding: 20px; text-align: center; }
-    nav { background: #e5e7ea; padding: 12px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,.1); position: sticky; top: 0; z-index: 100; }
-    nav a { margin: 0 6px; text-decoration: none; color: #c40000; font-weight: bold; padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease; }
-    nav a:hover { color: #fff; background: #c40000; }
+    /* Hero Banner Section (Style Pinterest dengan Background Sendiri) */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      height: 70vh; /* Mengambil 70% tinggi layar */
+      min-height: 400px;
+      
+      /* --- PERUBAHAN DI SINI --- */
+      /* Menggunakan linear-gradient agar teks tetap terbaca jelas di atas gambar */
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('BACKGROUND.WEB') no-repeat center center;
+      /* -------------------------- */
+      
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 0 20px;
+      box-sizing: border-box;
+    }
+
+    .hero-content h1 {
+      font-size: 2.8rem;
+      margin: 0 0 10px 0;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+
+    .hero-content p {
+      font-size: 1.2rem;
+      margin: 0;
+      opacity: 0.9;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    
+    /* Navigasi Transparan & Minimalis di Atas Gambar */
+    nav { 
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      box-sizing: border-box;
+      z-index: 100;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a { 
+      text-decoration: none; 
+      color: #fff; 
+      font-weight: bold; 
+      padding: 8px 14px; 
+      border-radius: 6px; 
+      transition: all 0.3s ease;
+      font-size: 14px;
+    }
+
+    nav a:hover { 
+      background: rgba(255, 255, 255, 0.2); 
+    }
+
+    /* Tombol Aksi Cepat Kanan Atas (Style 'Buy Now') */
+    .nav-btn {
+      background: #c40000;
+      border: 1px solid #c40000;
+    }
+    .nav-btn:hover {
+      background: #9e0000 !important;
+    }
 
     /* News Banner */
-    .news-container { background: linear-gradient(135deg,#c40000,#9e0000,#c0c0c0); overflow: hidden; position: relative; display: flex; align-items: center; padding: 12px 10px; box-shadow: 0 3px 10px rgba(192,192,192,.4); }
+    .news-container { background: linear-gradient(135deg,#c40000,#9e0000,#c0c0c0); overflow: hidden; position: relative; display: flex; align-items: center; padding: 12px 10px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
     .news-badge { background: #fff; color: #c40000; padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: bold; position: relative; z-index: 10; margin-right: 10px; flex-shrink: 0; }
     .news-scroll-wrapper { width: 100%; overflow: hidden; white-space: nowrap; }
     .news-text { display: inline-block; font-weight: bold; font-size: 15px; color: #fff; animation: marquee 20s linear infinite; padding-left: 100%; }
     @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
     /* Layout & Cards */
-    .container { max-width: 1000px; margin: auto; padding: 20px; }
-    .card { background: #fff; padding: 15px; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 3px 10px rgba(192,192,192,.55); }
-    h2 { color: #c40000; border-left: 4px solid #c40000; padding-left: 10px; margin-top: 30px; }
+    .container { max-width: 1100px; margin: auto; padding: 30px 20px; }
+    .card { background: #fff; padding: 20px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,.04); }
+    h2 { color: #c40000; border-left: 4px solid #c40000; padding-left: 12px; margin-top: 35px; font-size: 22px; }
 
     /* Grids */
-    .produk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 15px; }
+    .produk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 25px; margin-top: -60px; position: relative; z-index: 90; }
     .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
     
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
+      .stats-grid { grid-template-columns: repeat(3, 1fr); margin-top: -40px; }
+      nav { padding: 15px 20px; flex-direction: column; gap: 15px; position: relative; background: #000; }
+      .hero-section { height: 50vh; }
+      .hero-content h1 { font-size: 2rem; }
+    }
+    @media (max-width: 600px) {
       .produk-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* Stats & Info Cards */
-    .stat-card, .info-card-dark { background: #0f172a; color: #fff; padding: 16px; border-radius: 14px; box-shadow: 0 3px 12px rgba(192,192,192,.45); }
-    .stat-card h2 { margin: 0; font-size: 22px; color: #fff; border: none; padding: 0; }
-    .stat-card p { margin: 4px 0 0 0; font-size: 13px; opacity: .9; }
+    .stat-card, .info-card-dark { background: #0f172a; color: #fff; padding: 16px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,.15); text-align: center; }
+    .stat-card h2 { margin: 0; font-size: 20px; color: #fff; border: none; padding: 0; }
+    .stat-card p { margin: 4px 0 0 0; font-size: 12px; opacity: .8; }
     .info-card-dark h3 { margin-top: 0; color: #fff; }
 
     /* Klik Produk Utama (Hanya Foto & Nama) */
-    .product-clickable-card { background: #fff; padding: 12px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,.05); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #eee; }
-    .product-clickable-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,.15); }
+    .product-clickable-card { background: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.04); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #f1f5f9; }
+    .product-clickable-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,.12); }
     .product-img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 8px; margin-bottom: 8px; background: #fff; }
-    .product-title { font-weight: bold; font-size: 15px; color: #333; margin: 5px 0 0 0; }
+    .product-title { font-weight: bold; font-size: 15px; color: #1e293b; margin: 5px 0 0 0; }
 
-    /* Desain Warna Baru untuk Badge Status */
-    .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; margin-right: 5px; text-transform: uppercase; }
-    .sold-out { background: #475569; color: #fff; border: 1px solid #334155; } /* Abu-abu gelap profesional */
-    .best-seller { background: #f59e0b; color: #fff; border: 1px solid #d97706; box-shadow: 0 2px 5px rgba(245,158,11,0.3); } /* Gold menarik perhatian */
-    .promo-badge { background: #10b981; color: #fff; border: 1px solid #059669; } /* Hijau segar penanda diskon */
+    /* Badges */
+    .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; margin-bottom: 10px; margin-right: 5px; text-transform: uppercase; }
+    .sold-out { background: #64748b; color: #fff; border: 1px solid #475569; }
+    .best-seller { background: #f59e0b; color: #fff; border: 1px solid #d97706; }
+    .promo-badge { background: #10b981; color: #fff; border: 1px solid #059669; }
     
-    .price-normal { color: #777; text-decoration: line-through; margin: 5px 0; font-size: 15px; }
-    .price-promo { color: #c40000; font-weight: bold; font-size: 20px; margin: 5px 0; }
+    .price-normal { color: #94a3b8; text-decoration: line-through; margin: 5px 0; font-size: 14px; }
+    .price-promo { color: #c40000; font-weight: bold; font-size: 22px; margin: 5px 0; }
 
     /* Buttons */
-    .btn { background: #c40000; color: #fff; padding: 10px 16px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: bold; }
+    .btn { background: #c40000; color: #fff; padding: 10px 16px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: bold; transition: background 0.2s; }
     .btn:hover { background: #9e0000; }
     
     /* Tombol WhatsApp Berdenyut (Pulse) */
@@ -78,23 +159,36 @@
     .close-btn { position: absolute; right: 15px; top: 10px; color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
     .close-btn:hover { color: #333; }
     .modal-body img { width: 100%; max-height: 250px; object-fit: contain; margin-bottom: 15px; background: #fff; }
-    .modal-specs { margin-top: 15px; text-align: left; background: #f9f9f9; padding: 12px; border-radius: 8px; font-size: 14px; }
-    .modal-specs p { margin: 6px 0; border-bottom: 1px dashed #eee; padding-bottom: 4px; }
+    .modal-specs { margin-top: 15px; text-align: left; background: #f8fafc; padding: 12px; border-radius: 8px; font-size: 14px; border: 1px solid #e2e8f0; }
+    .modal-specs p { margin: 6px 0; border-bottom: 1px dashed #e2e8f0; padding-bottom: 4px; color: #334155; }
     .modal-specs p:last-child { border: none; }
 
     /* Tombol Melayang Back To Top */
     .back-to-top { position: fixed; bottom: 25px; right: 25px; background: #c40000; color: #fff; width: 45px; height: 45px; border-radius: 50%; text-align: center; line-height: 42px; font-size: 20px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 999; transition: all 0.2s ease; display: block; }
     .back-to-top:hover { background: #9e0000; transform: translateY(-3px); }
 
-    footer { background: #c40000; color: #fff; text-align: center; padding: 15px; margin-top: 40px; }
+    footer { background: #0f172a; color: #fff; text-align: center; padding: 20px; margin-top: 50px; font-size: 14px; }
   </style>
 </head>
 <body>
 
-<header>
-  <h1>U-WINFLY ERAMOLIS METRO INDAH MALL</h1>
-  <p>Hemat Energi • Ramah Lingkungan • Teknologi Modern</p>
-</header>
+<div class="hero-section">
+  <nav>
+    <div class="nav-links">
+      <a href="#motor">Motor</a>
+      <a href="#produk">Sepeda</a>
+      <a href="#promo">Promo</a>
+      <a href="#keamanan">Pembayaran</a>
+      <a href="#lokasi">Lokasi</a>
+    </div>
+    <a href="https://wa.me/628551579797" target="_blank" class="nav-btn">Hubungi WA</a>
+  </nav>
+
+  <div class="hero-content">
+    <h1>U-WINFLY ERAMOLIS METRO INDAH MALL</h1>
+    <p>Hemat Energi • Ramah Lingkungan • Teknologi Modern</p>
+  </div>
+</div>
 
 <section id="news">
   <div class="news-container">
@@ -107,25 +201,16 @@
   </div>
 </section>
 
-<nav>
-  <a href="#motor">Motor</a>
-  <a href="#produk">Sepeda</a>
-  <a href="#promo">Promo</a>
-  <a href="#keamanan">Pembayaran</a>
-  <a href="#kontak">Kontak</a>
-  <a href="#lokasi">Lokasi</a>
-</nav>
-
 <div class="container">
 
   <section id="highlight">
     <div class="stats-grid">
       <div class="stat-card"><h2>1.5K+</h2><p>Unit Terjual</p></div>
-      <div class="stat-card"><h2>10 Tahun</h2><p>Garansi Rangka</p></div>
-      <div class="stat-card"><h2>2 Tahun</h2><p>Baterai Lithium Motor</p></div>
-      <div class="stat-card"><h2>1 Tahun</h2><p>Baterai Lithium Sepeda</p></div>
-      <div class="stat-card"><h2>6 Bulan</h2><p>Baterai SLA</p></div>
-      <div class="stat-card"><h2>4.9/5</h2><p>Rating Pelanggan</p></div>
+      <div class="stat-card"><h2>10 Thn</h2><p>Garansi Rangka</p></div>
+      <div class="stat-card"><h2>2 Thn</h2><p>Baterai Motor</p></div>
+      <div class="stat-card"><h2>1 Thn</h2><p>Baterai Sepeda</p></div>
+      <div class="stat-card"><h2>6 Bln</h2><p>Baterai SLA</p></div>
+      <div class="stat-card"><h2>4.9/5</h2><p>Rating Toko</p></div>
     </div>
   </section>
 
@@ -176,12 +261,12 @@
           <div class="product-title">U‑WINFLY D65</div>
         </div>
                
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D66A', 'D66AWEB.png', '<span class=\'badge best-seller\'>Best Seller</span>', '', 'Rp 4.199.000', 'SLA (Lead Acid)', '48V – 12Ah', '600W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D66A')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D66A', 'D66AWEB.png', '<span class=\'badge best-seller\'>Best Seller</span>', '', 'Rp 4.199.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D66A')">
           <img class="product-img" src="D66AWEB.png" alt="U‑WINFLY D66A">
           <div class="product-title">U‑WINFLY D66A</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D66B', 'D66BWEB.png', '<span class=\'badge best-seller\'>Best Seller</span>', '', 'Rp 4.999.000', 'SLA (Lead Acid)', '48V – 12Ah', '600W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D66B')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D66B', 'D66BWEB.png', '<span class=\'badge best-seller\'>Best Seller</span>', '', 'Rp 4.999.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D66B')">
           <img class="product-img" src="D66BWEB.png" alt="U‑WINFLY D66B">
           <div class="product-title">U‑WINFLY D66B</div>
         </div>
@@ -191,7 +276,7 @@
           <div class="product-title">U‑WINFLY D70</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D75', 'D75WEB.png', '<span class=\'badge promo-badge\'>Promo</span><span class=\'badge best-seller\'>Best Seller</span>', 'Rp 3.900.000', 'Rp 3.700.000', 'SLA (Lead Acid)', '48V – 12Ah', '600W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D75')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D75', 'D75WEB.png', '<span class=\'badge promo-badge\'>Promo</span><span class=\'badge best-seller\'>Best Seller</span>', 'Rp 3.900.000', 'Rp 3.700.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D75')">
           <img class="product-img" src="D75WEB.png" alt="U‑WINFLY D75">
           <div class="product-title">U‑WINFLY D75</div>
         </div>
@@ -203,22 +288,22 @@
       <h3>Seri M</h3>
       <div class="produk-grid">
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M60', 'M60WEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 4.100.000', 'Rp 3.299.000', 'SLA (Lead Acid)', '48V – 12Ah', '600W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M60')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M60', 'M60WEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 4.100.000', 'Rp 3.299.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M60')">
           <img class="product-img" src="M60WEB.png" alt="U‑WINFLY M60">
           <div class="product-title">U‑WINFLY M60</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M60L', 'M60LWEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 4.500.000', 'Rp 4.299.000', 'Lithium', '48V – 12Ah', '600W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M60L')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M60L', 'M60LWEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 4.500.000', 'Rp 4.299.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M60L')">
           <img class="product-img" src="M60LWEB.png" alt="U‑WINFLY M60L">
           <div class="product-title">U‑WINFLY M60L</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M70', 'M70WEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 4.800.000', 'Rp 3.799.000', 'SLA (Lead Acid)', '48V – 12Ah', '600W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M70')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M70', 'M70WEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 4.800.000', 'Rp 3.799.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M70')">
           <img class="product-img" src="M70WEB.png" alt="U‑WINFLY M70">
           <div class="product-title">U‑WINFLY M70</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M70L', 'M70LWEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', '', 'Rp 5.200.000', 'Lithium', '48V – 12Ah', '600W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M70L')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M70L', 'M70LWEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', '', 'Rp 5.200.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M70L')">
           <img class="product-img" src="M70LWEB.png" alt="U‑WINFLY M70L">
           <div class="product-title">U‑WINFLY M70L</div>
         </div>
@@ -240,7 +325,7 @@
           <div class="product-title">U‑WINFLY T60</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T65L', 'T65LWEB.png', '<span class=\'badge promo-badge\'>Promo</span><span class=\'badge best-seller\'>Best Seller</span>', 'Rp 5.600.000', 'Rp 5.400.000', 'Lithium', '48V – 12Ah', '600W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T65L')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T65L', 'T65LWEB.png', '<span class=\'badge promo-badge\'>Promo</span><span class=\'badge best-seller\'>Best Seller</span>', 'Rp 5.600.000', 'Rp 5.400.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T65L')">
           <img class="product-img" src="T65LWEB.png" alt="U‑WINFLY T65L">
           <div class="product-title">U‑WINFLY T65L</div>
         </div>
@@ -292,14 +377,6 @@
     </div>
   </section>
 
-  <section id="kontak">
-    <h2>Kontak</h2>
-    <div class="card">
-      <p>📞 WhatsApp: <strong>0855-1579-797</strong></p>
-      <a class="btn" href="https://wa.me/628551579797" target="_blank">Hubungi via WhatsApp</a>
-    </div>
-  </section>
-
   <section id="lokasi">
     <h2>Lokasi Toko</h2>
     <div class="card">
@@ -322,29 +399,6 @@
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
-
-      <h3>Jam Operasional</h3>
-      <ul>
-        <li>Senin: 09.00 – 21.00</li>
-        <li>Selasa: 09.00 – 21.00</li>
-        <li>Rabu: 09.00 – 21.00</li>
-        <li>Kamis: 09.00 – 21.00</li>
-        <li>Jumat: 09.00 – 21.00</li>
-        <li>Sabtu: 09.00 – 21.00</li>
-        <li>Minggu: 09.00 – 21.00</li>
-      </ul>
-      <p><em>Jam buka dapat berbeda pada hari libur.</em></p>
-    </div>
-  </section>
-
-  <section id="sosial">
-    <h2>Sosial Media</h2>
-    <div class="card">
-      <p class="social">
-        <a href="https://www.instagram.com/eramolis_metroindahmall/" target="_blank">Instagram</a> |
-        <a href="https://www.facebook.com/profile.php?id=100081572577386" target="_blank">Facebook</a> |
-        <a href="https://www.tiktok.com/@uwinfly_bandung_eramolis?lang=id-ID" target="_blank">TikTok</a>
-      </p>
     </div>
   </section>
 
