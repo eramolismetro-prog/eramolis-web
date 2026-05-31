@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" translate="no">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,18 +9,14 @@
     html { scroll-behavior: smooth; }
     body { font-family: Arial, Helvetica, sans-serif; margin: 0; padding: 0; background: #f8fafc; color: #333; }
     
-    /* Hero Banner Section (Style Pinterest dengan Background Sendiri) */
+    /* Hero Banner Section (Style Pinterest dengan Background) */
     .hero-section {
       position: relative;
       width: 100%;
-      height: 70vh; /* Mengambil 70% tinggi layar */
-      min-height: 400px;
-      
-      /* --- PERUBAHAN NAMA FILE DI SINI --- */
-      /* Menggunakan linear-gradient agar teks tetap terbaca jelas di atas gambar */
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('BACKGROUND.WEB.jpeg') no-repeat center center;
-      /* ---------------------------------- */
-      
+      height: 60vh; /* Pas di layar HP agar proporsional */
+      min-height: 380px;
+      /* Menggunakan nama file asli tanpa terjemahan otomatis browser */
+      background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.75)), url('BACKGROUND.WEB.jpeg') no-repeat center center;
       background-size: cover;
       display: flex;
       flex-direction: column;
@@ -28,26 +24,27 @@
       align-items: center;
       text-align: center;
       color: #fff;
-      padding: 0 20px;
+      padding: 80px 20px 20px 20px;
       box-sizing: border-box;
     }
 
     .hero-content h1 {
-      font-size: 2.8rem;
+      font-size: 2.2rem;
       margin: 0 0 10px 0;
       font-weight: 800;
       letter-spacing: 1px;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+      line-height: 1.2;
     }
 
     .hero-content p {
-      font-size: 1.2rem;
+      font-size: 1rem;
       margin: 0;
       opacity: 0.9;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
     }
     
-    /* Navigasi Transparan & Minimalis di Atas Gambar */
+    /* Navigasi Modern - Responsif & Anti-Bentrok di HP */
     nav { 
       position: absolute;
       top: 0;
@@ -56,35 +53,54 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
+      padding: 15px 25px;
       box-sizing: border-box;
       z-index: 100;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0));
+      background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0));
     }
 
+    /* Di HP menu ini bisa di-geser (scroll) kanan-kiri agar tidak menumpuk */
     .nav-links {
       display: flex;
-      gap: 15px;
+      gap: 5px;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 5px;
+      -webkit-overflow-scrolling: touch;
+      max-width: 70%;
+    }
+    
+    /* Menyembunyikan scrollbar navigasi agar tetap bersih */
+    .nav-links::-webkit-scrollbar {
+      display: none;
     }
 
     nav a { 
       text-decoration: none; 
       color: #fff; 
       font-weight: bold; 
-      padding: 8px 14px; 
+      padding: 6px 10px; 
       border-radius: 6px; 
       transition: all 0.3s ease;
-      font-size: 14px;
+      font-size: 13px;
     }
 
     nav a:hover { 
       background: rgba(255, 255, 255, 0.2); 
     }
 
-    /* Tombol Aksi Cepat Kanan Atas (Style 'Buy Now') */
+    /* Tombol WA Kanan Atas */
     .nav-btn {
       background: #c40000;
       border: 1px solid #c40000;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      padding: 6px 10px;
+      white-space: nowrap;
+      font-size: 13px;
     }
     .nav-btn:hover {
       background: #9e0000 !important;
@@ -98,24 +114,43 @@
     @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
     /* Layout & Cards */
-    .container { max-width: 1100px; margin: auto; padding: 30px 20px; }
+    .container { max-width: 1100px; margin: auto; padding: 25px 15px; }
     .card { background: #fff; padding: 20px; margin-bottom: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,.04); }
     h2 { color: #c40000; border-left: 4px solid #c40000; padding-left: 12px; margin-top: 35px; font-size: 22px; }
 
     /* Grids */
     .produk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-    .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 25px; margin-top: -60px; position: relative; z-index: 90; }
+    .stats-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 25px; margin-top: -50px; position: relative; z-index: 90; }
     .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
     
+    /* Media Query Khusus Layar HP Tablet / Smartphone */
     @media (max-width: 900px) {
-      .stats-grid { grid-template-columns: repeat(3, 1fr); margin-top: -40px; }
-      nav { padding: 15px 20px; flex-direction: column; gap: 15px; position: relative; background: #000; }
-      .hero-section { height: 50vh; }
-      .hero-content h1 { font-size: 2rem; }
+      .stats-grid { grid-template-columns: repeat(3, 1fr); margin-top: -35px; }
+      .hero-section { height: 55vh; min-height: 340px; }
+      .hero-content h1 { font-size: 1.8rem; }
+      .hero-content p { font-size: 0.9rem; }
     }
+    
     @media (max-width: 600px) {
-      .produk-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      nav {
+        background: rgba(0, 0, 0, 0.85); /* Background menu solid di HP agar teks terbaca jelas */
+        padding: 10px 15px;
+      }
+      .nav-links {
+        max-width: 65%;
+      }
+      nav a {
+        padding: 6px 8px;
+        font-size: 12px;
+      }
+      .nav-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+      .produk-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); margin-top: -40px; gap: 8px; }
+      .stat-card { padding: 12px 8px !important; }
+      .stat-card h2 { font-size: 18px !important; }
     }
 
     /* Stats & Info Cards */
@@ -125,15 +160,16 @@
     .info-card-dark h3 { margin-top: 0; color: #fff; }
 
     /* Klik Produk Utama (Hanya Foto & Nama) */
-    .product-clickable-card { background: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.04); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #f1f5f9; }
+    .product-clickable-card { background: #fff; padding: 12px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,.04); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #f1f5f9; }
     .product-clickable-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,.12); }
     .product-img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 8px; margin-bottom: 8px; background: #fff; }
-    .product-title { font-weight: bold; font-size: 15px; color: #1e293b; margin: 5px 0 0 0; }
+    .product-title { font-weight: bold; font-size: 14px; color: #1e293b; margin: 5px 0 0 0; }
 
     /* Badges */
     .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: bold; margin-bottom: 10px; margin-right: 5px; text-transform: uppercase; }
     .sold-out { background: #64748b; color: #fff; border: 1px solid #475569; }
     .best-seller { background: #f59e0b; color: #fff; border: 1px solid #d97706; }
+    .brand-new { background: #3b82f6; color: #fff; border: 1px solid #2563eb; }
     .promo-badge { background: #10b981; color: #fff; border: 1px solid #059669; }
     
     .price-normal { color: #94a3b8; text-decoration: line-through; margin: 5px 0; font-size: 14px; }
@@ -478,7 +514,7 @@
 </script>
 
 <footer>
-  <p>© 2024 ERAMOLIS – Metro Indah Mall</p>
+  <p>© 2026 ERAMOLIS – Metro Indah Mall</p>
 </footer>
 
 </body>
