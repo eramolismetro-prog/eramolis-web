@@ -12,8 +12,8 @@
     /* Header & Navigation */
     header { background: #c40000; color: #fff; padding: 20px; text-align: center; }
     nav { background: #e5e7ea; padding: 12px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,.1); position: sticky; top: 0; z-index: 100; }
-    nav a { margin: 0 12px; text-decoration: none; color: #c40000; font-weight: bold; transition: color 0.2s; }
-    nav a:hover { color: #9e0000; }
+    nav a { margin: 0 6px; text-decoration: none; color: #c40000; font-weight: bold; padding: 8px 12px; border-radius: 6px; transition: all 0.3s ease; }
+    nav a:hover { color: #fff; background: #c40000; }
 
     /* News Banner */
     .news-container { background: linear-gradient(135deg,#c40000,#9e0000,#c0c0c0); overflow: hidden; position: relative; display: flex; align-items: center; padding: 12px 10px; box-shadow: 0 3px 10px rgba(192,192,192,.4); }
@@ -49,17 +49,26 @@
     .product-img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 8px; margin-bottom: 8px; background: #fff; }
     .product-title { font-weight: bold; font-size: 15px; color: #333; margin: 5px 0 0 0; }
 
-    /* Badge & Harga Di Modal Pop-Up */
-    .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
-    .promo { background: #ffe5e5; color: #c40000; border: 1px solid #c40000; }
-    .best { background: #e5e5e5; color: #555; border: 1px solid #aaa; }
+    /* Desain Warna Baru untuk Badge Status */
+    .badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; margin-right: 5px; text-transform: uppercase; }
+    .sold-out { background: #475569; color: #fff; border: 1px solid #334155; } /* Abu-abu gelap profesional */
+    .best-seller { background: #f59e0b; color: #fff; border: 1px solid #d97706; box-shadow: 0 2px 5px rgba(245,158,11,0.3); } /* Gold menarik perhatian */
+    .promo-badge { background: #10b981; color: #fff; border: 1px solid #059669; } /* Hijau segar penanda diskon */
+    
     .price-normal { color: #777; text-decoration: line-through; margin: 5px 0; font-size: 15px; }
     .price-promo { color: #c40000; font-weight: bold; font-size: 20px; margin: 5px 0; }
 
     /* Buttons */
     .btn { background: #c40000; color: #fff; padding: 10px 16px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: bold; }
     .btn:hover { background: #9e0000; }
-    .wa-btn { background: #25D366; color: #fff; padding: 12px; border-radius: 6px; text-decoration: none; display: block; text-align: center; margin-top: 15px; font-weight: bold; font-size: 16px; }
+    
+    /* Tombol WhatsApp Berdenyut (Pulse) */
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.03); box-shadow: 0 0 14px rgba(37, 211, 102, 0.7); }
+      100% { transform: scale(1); }
+    }
+    .wa-btn { background: #25D366; color: #fff; padding: 14px; border-radius: 6px; text-decoration: none; display: block; text-align: center; margin-top: 15px; font-weight: bold; font-size: 16px; animation: pulse 2s infinite ease-in-out; }
     .wa-btn:hover { opacity: 0.9; }
 
     /* Styling Jendela Modal Pop-Up */
@@ -72,6 +81,10 @@
     .modal-specs { margin-top: 15px; text-align: left; background: #f9f9f9; padding: 12px; border-radius: 8px; font-size: 14px; }
     .modal-specs p { margin: 6px 0; border-bottom: 1px dashed #eee; padding-bottom: 4px; }
     .modal-specs p:last-child { border: none; }
+
+    /* Tombol Melayang Back To Top */
+    .back-to-top { position: fixed; bottom: 25px; right: 25px; background: #c40000; color: #fff; width: 45px; height: 45px; border-radius: 50%; text-align: center; line-height: 42px; font-size: 20px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 999; transition: all 0.2s ease; display: block; }
+    .back-to-top:hover { background: #9e0000; transform: translateY(-3px); }
 
     footer { background: #c40000; color: #fff; text-align: center; padding: 15px; margin-top: 40px; }
   </style>
@@ -95,8 +108,8 @@
 </section>
 
 <nav>
-  <a href="#motor">Motor Listrik</a>
-  <a href="#produk">Sepeda Listrik</a>
+  <a href="#motor">Motor</a>
+  <a href="#produk">Sepeda</a>
   <a href="#promo">Promo</a>
   <a href="#keamanan">Pembayaran</a>
   <a href="#kontak">Kontak</a>
@@ -122,27 +135,27 @@
       <h3>Model Motor</h3>
       <div class="produk-grid">
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M100', 'M100WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 20.999.000', 'Rp 18.299.000', 'Lithium', '72V / 40Ah', '5000W', 'hingga 120 km', '75 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M100')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M100', 'M100WEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 20.999.000', 'Rp 18.299.000', 'Lithium', '72V / 40Ah', '5000W', 'hingga 120 km', '75 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M100')">
           <img class="product-img" src="M100WEB.png" alt="U‑WINFLY M100">
           <div class="product-title">U‑WINFLY M100</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T90', 'T90WEB.png', '<span class=\'badge promo\'>Sold Out</span><span class=\'badge best\'>Best Seller</span>', 'Rp 15.000.000', 'Rp 14.000.000', 'Lithium', '60V / 30Ah', '3000W', 'hingga 100 km', '55 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T90')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T90', 'T90WEB.png', '<span class=\'badge sold-out\'>Sold Out</span><span class=\'badge best-seller\'>Best Seller</span>', 'Rp 15.000.000', 'Rp 14.000.000', 'Lithium', '60V / 30Ah', '3000W', 'hingga 100 km', '55 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T90')">
           <img class="product-img" src="T90WEB.png" alt="U‑WINFLY T90">
           <div class="product-title">U‑WINFLY T90</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T5', 'T5WEB.png', '<span class=\'badge promo\'>Promo</span>', 'Rp 12.500.000', 'Rp 11.399.000', 'SLA (Lead Acid)', '72V / 20Ah', '2000W', 'hingga 65 km', '65 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T5')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T5', 'T5WEB.png', '<span class=\'badge promo-badge\'>Promo</span>', 'Rp 12.500.000', 'Rp 11.399.000', 'SLA (Lead Acid)', '72V / 20Ah', '2000W', 'hingga 65 km', '65 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T5')">
           <img class="product-img" src="T5WEB.png" alt="U‑WINFLY T5">
           <div class="product-title">U‑WINFLY T5</div>
         </div>
         
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M90E', 'M90EWEB.png', '<span class=\'badge best\'>Best Seller</span>', '', 'Rp 12.690.000', 'Lithium', '60V / 24Ah', '1500W', 'hingga 90-100 km', '70 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M90E')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M90E', 'M90EWEB.png', '<span class=\'badge best-seller\'>Best Seller</span>', '', 'Rp 12.690.000', 'Lithium', '60V / 24Ah', '1500W', 'hingga 90-100 km', '70 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M90E')">
           <img class="product-img" src="M90EWEB.png" alt="U‑WINFLY M90E">
           <div class="product-title">U‑WINFLY M90E</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M90G', 'M90GWEB.png', '<span class=\'badge best\'>Best Seller</span>', '', 'Rp 12.950.000', 'Lithium', '60V / 24Ah', '1500W', 'hingga 90-100 km', '70 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M90G')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M90G', 'M90GWEB.png', '<span class=\'badge best-seller\'>Best Seller</span>', '', 'Rp 12.950.000', 'Lithium', '60V / 24Ah', '1500W', 'hingga 90-100 km', '70 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M90G')">
           <img class="product-img" src="M90GWEB.png" alt="U‑WINFLY M90G">
           <div class="product-title">U‑WINFLY M90G</div>
         </div>
@@ -158,27 +171,27 @@
       <h3>Seri D</h3>
       <div class="produk-grid">
         
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D65', 'D65WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 3.700.000', 'Rp 3.400.000', 'SLA (Lead Acid)', '40V – 12Ah', '500W', '40–45 km', '40–45 km/jam', '8–10 jam dari 0%', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D65')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D65', 'D65WEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 3.700.000', 'Rp 3.400.000', 'SLA (Lead Acid)', '40V – 12Ah', '500W', '40–45 km', '40–45 km/jam', '8–10 jam dari 0%', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D65')">
           <img class="product-img" src="D65WEB.png" alt="U‑WINFLY D65">
           <div class="product-title">U‑WINFLY D65</div>
         </div>
                
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D66A', 'D66AWEB.png', '<span class=\'badge best\'>Best Seller</span>', '', 'Rp 4.199.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D66A')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D66A', 'D66AWEB.png', '<span class=\'badge best-seller\'>Best Seller</span>', '', 'Rp 4.199.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D66A')">
           <img class="product-img" src="D66AWEB.png" alt="U‑WINFLY D66A">
           <div class="product-title">U‑WINFLY D66A</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D66B', 'D66BWEB.png', '<span class=\'badge best\'>Best Seller</span>', '', 'Rp 4.999.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D66B')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D66B', 'D66BWEB.png', '<span class=\'badge best-seller\'>Best Seller</span>', '', 'Rp 4.999.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D66B')">
           <img class="product-img" src="D66BWEB.png" alt="U‑WINFLY D66B">
           <div class="product-title">U‑WINFLY D66B</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D70', 'D70WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 3.800.000', 'Rp 3.299.000', 'SLA (Lead Acid)', '40V – 12Ah', '500W', '40–45 km', '40–45 km/jam', '8–10 jam dari 0%', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D70')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D70', 'D70WEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 3.800.000', 'Rp 3.299.000', 'SLA (Lead Acid)', '40V – 12Ah', '500W', '40–45 km', '40–45 km/jam', '8–10 jam dari 0%', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D70')">
           <img class="product-img" src="D70WEB.png" alt="U‑WINFLY D70">
           <div class="product-title">U‑WINFLY D70</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D75', 'D75WEB.png', '<span class=\'badge promo\'>Promo</span><span class=\'badge best\'>Best Seller</span>', 'Rp 3.900.000', 'Rp 3.700.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D75')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D75', 'D75WEB.png', '<span class=\'badge promo-badge\'>Promo</span><span class=\'badge best-seller\'>Best Seller</span>', 'Rp 3.900.000', 'Rp 3.700.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D75')">
           <img class="product-img" src="D75WEB.png" alt="U‑WINFLY D75">
           <div class="product-title">U‑WINFLY D75</div>
         </div>
@@ -190,22 +203,22 @@
       <h3>Seri M</h3>
       <div class="produk-grid">
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M60', 'M60WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 4.100.000', 'Rp 3.299.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M60')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M60', 'M60WEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 4.100.000', 'Rp 3.299.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M60')">
           <img class="product-img" src="M60WEB.png" alt="U‑WINFLY M60">
           <div class="product-title">U‑WINFLY M60</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M60L', 'M60LWEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 4.500.000', 'Rp 4.299.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M60L')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M60L', 'M60LWEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 4.500.000', 'Rp 4.299.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M60L')">
           <img class="product-img" src="M60LWEB.png" alt="U‑WINFLY M60L">
           <div class="product-title">U‑WINFLY M60L</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M70', 'M70WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 4.800.000', 'Rp 3.799.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M70')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M70', 'M70WEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', 'Rp 4.800.000', 'Rp 3.799.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M70')">
           <img class="product-img" src="M70WEB.png" alt="U‑WINFLY M70">
           <div class="product-title">U‑WINFLY M70</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M70L', 'M70LWEB.png', '<span class=\'badge best\'>Sold Out</span>', '', 'Rp 5.200.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M70L')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M70L', 'M70LWEB.png', '<span class=\'badge sold-out\'>Sold Out</span>', '', 'Rp 5.200.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M70L')">
           <img class="product-img" src="M70LWEB.png" alt="U‑WINFLY M70L">
           <div class="product-title">U‑WINFLY M70L</div>
         </div>
@@ -217,17 +230,17 @@
       <h3>Seri T</h3>
       <div class="produk-grid">
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T78B', 'T78BWEB.png', '<span class=\'badge best\'>Best Seller</span>', '', 'Rp 6.599.000', 'Lithium', '48V – 18Ah', '800W', '40–45 km', '40–45 km/jam', '3-4 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T78B')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T78B', 'T78BWEB.png', '<span class=\'badge best-seller\'>Best Seller</span>', '', 'Rp 6.599.000', 'Lithium', '48V – 18Ah', '800W', '40–45 km', '40–45 km/jam', '3-4 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T78B')">
           <img class="product-img" src="T78BWEB.png" alt="U‑WINFLY T78B">
           <div class="product-title">U‑WINFLY T78B</div>
         </div>
         
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T60', 'T60WEB.png', '<span class=\'badge promo\'>Promo</span>', 'Rp 4.100.000', 'Rp 3.599.000', 'SLA (Lead Acid)', '40V – 12Ah', '500W', '40–45 km', '40–45 km/jam', '8–10 jam dari 0%', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T60')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T60', 'T60WEB.png', '<span class=\'badge promo-badge\'>Promo</span>', 'Rp 4.100.000', 'Rp 3.599.000', 'SLA (Lead Acid)', '40V – 12Ah', '500W', '40–45 km', '40–45 km/jam', '8–10 jam dari 0%', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T60')">
           <img class="product-img" src="T60WEB.png" alt="U‑WINFLY T60">
           <div class="product-title">U‑WINFLY T60</div>
         </div>
 
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T65L', 'T65LWEB.png', '<span class=\'badge promo\'>Promo</span><span class=\'badge best\'>Best Seller</span>', 'Rp 5.600.000', 'Rp 5.400.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T65L')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T65L', 'T65LWEB.png', '<span class=\'badge promo-badge\'>Promo</span><span class=\'badge best-seller\'>Best Seller</span>', 'Rp 5.600.000', 'Rp 5.400.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T65L')">
           <img class="product-img" src="T65LWEB.png" alt="U‑WINFLY T65L">
           <div class="product-title">U‑WINFLY T65L</div>
         </div>
@@ -339,7 +352,7 @@
 
 <div id="productModal" class="modal" onclick="closeProductModalOutside(event)">
   <div class="modal-content">
-    <span class="close-btn" onclick="closeProductModal()">&times;</span>
+    <span class="close-btn" onclick="closeProductModal()">×</span>
     <div class="modal-body">
       <h3 id="modalTitle" style="color:#c40000; margin-top:0;">Nama Produk</h3>
       <div id="modalBadges"></div>
@@ -364,6 +377,8 @@
     </div>
   </div>
 </div>
+
+<a href="#" class="back-to-top" title="Kembali ke atas">↑</a>
 
 <script>
   function openProductModal(title, imgSrc, badges, oldPrice, newPrice, battery, capacity, power, range, speed, charge, load, waUrl) {
