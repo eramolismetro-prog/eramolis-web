@@ -43,26 +43,26 @@
     .stat-card p { margin: 4px 0 0 0; font-size: 13px; opacity: .9; }
     .info-card-dark h3 { margin-top: 0; color: #fff; }
 
-    /* KLIK PRODUK (Hanya Foto & Nama) */
+    /* Klik Produk Utama (Hanya Foto & Nama) */
     .product-clickable-card { background: #fff; padding: 12px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,.05); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #eee; }
     .product-clickable-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,.15); }
     .product-img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 8px; margin-bottom: 8px; background: #fff; }
     .product-title { font-weight: bold; font-size: 15px; color: #333; margin: 5px 0 0 0; }
 
-    /* BADGE & HARGA DI MODAL */
+    /* Badge & Harga Di Modal Pop-Up */
     .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
     .promo { background: #ffe5e5; color: #c40000; border: 1px solid #c40000; }
     .best { background: #e5e5e5; color: #555; border: 1px solid #aaa; }
     .price-normal { color: #777; text-decoration: line-through; margin: 5px 0; font-size: 15px; }
     .price-promo { color: #c40000; font-weight: bold; font-size: 20px; margin: 5px 0; }
 
-    /* BUTTONS */
+    /* Buttons */
     .btn { background: #c40000; color: #fff; padding: 10px 16px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: bold; }
     .btn:hover { background: #9e0000; }
     .wa-btn { background: #25D366; color: #fff; padding: 12px; border-radius: 6px; text-decoration: none; display: block; text-align: center; margin-top: 15px; font-weight: bold; font-size: 16px; }
     .wa-btn:hover { opacity: 0.9; }
 
-    /* STYLING MODAL (POP-UP) MENU */
+    /* Styling Jendela Modal Pop-Up */
     .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
     .modal-content { background-color: #fff; margin: auto; padding: 20px; border-radius: 12px; max-width: 500px; width: 100%; position: relative; box-shadow: 0 5px 25px rgba(0,0,0,0.3); animation: fadeIn 0.3s; box-sizing: border-box; }
     @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
@@ -158,7 +158,7 @@
       <h3>Seri D</h3>
       <div class="produk-grid">
         
-        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D65', 'D65WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 3.700.000', 'Rp 3.400.000', 'SLA (Lead Acid)', '40V – 12Ah', '5000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D65')">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D65', 'D65WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 3.700.000', 'Rp 3.400.000', 'SLA (Lead Acid)', '40V – 12Ah', '500W', '40–45 km', '40–45 km/jam', '8–10 jam dari 0%', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D65')">
           <img class="product-img" src="D65WEB.png" alt="U‑WINFLY D65">
           <div class="product-title">U‑WINFLY D65</div>
         </div>
@@ -173,8 +173,69 @@
           <div class="product-title">U‑WINFLY D66B</div>
         </div>
 
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D70', 'D70WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 3.800.000', 'Rp 3.299.000', 'SLA (Lead Acid)', '40V – 12Ah', '500W', '40–45 km', '40–45 km/jam', '8–10 jam dari 0%', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D70')">
+          <img class="product-img" src="D70WEB.png" alt="U‑WINFLY D70">
+          <div class="product-title">U‑WINFLY D70</div>
+        </div>
+
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D75', 'D75WEB.png', '<span class=\'badge promo\'>Promo</span><span class=\'badge best\'>Best Seller</span>', 'Rp 3.900.000', 'Rp 3.700.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D75')">
+          <img class="product-img" src="D75WEB.png" alt="U‑WINFLY D75">
+          <div class="product-title">U‑WINFLY D75</div>
+        </div>
+
       </div>
     </div>
+
+    <div class="card">
+      <h3>Seri M</h3>
+      <div class="produk-grid">
+
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M60', 'M60WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 4.100.000', 'Rp 3.299.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M60')">
+          <img class="product-img" src="M60WEB.png" alt="U‑WINFLY M60">
+          <div class="product-title">U‑WINFLY M60</div>
+        </div>
+
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M60L', 'M60LWEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 4.500.000', 'Rp 4.299.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M60L')">
+          <img class="product-img" src="M60LWEB.png" alt="U‑WINFLY M60L">
+          <div class="product-title">U‑WINFLY M60L</div>
+        </div>
+
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M70', 'M70WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 4.800.000', 'Rp 3.799.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M70')">
+          <img class="product-img" src="M70WEB.png" alt="U‑WINFLY M70">
+          <div class="product-title">U‑WINFLY M70</div>
+        </div>
+
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M70L', 'M70LWEB.png', '<span class=\'badge best\'>Sold Out</span>', '', 'Rp 5.200.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M70L')">
+          <img class="product-img" src="M70LWEB.png" alt="U‑WINFLY M70L">
+          <div class="product-title">U‑WINFLY M70L</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Seri T</h3>
+      <div class="produk-grid">
+
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T78B', 'T78BWEB.png', '<span class=\'badge best\'>Best Seller</span>', '', 'Rp 6.599.000', 'Lithium', '48V – 18Ah', '800W', '40–45 km', '40–45 km/jam', '3-4 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T78B')">
+          <img class="product-img" src="T78BWEB.png" alt="U‑WINFLY T78B">
+          <div class="product-title">U‑WINFLY T78B</div>
+        </div>
+        
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T60', 'T60WEB.png', '<span class=\'badge promo\'>Promo</span>', 'Rp 4.100.000', 'Rp 3.599.000', 'SLA (Lead Acid)', '40V – 12Ah', '500W', '40–45 km', '40–45 km/jam', '8–10 jam dari 0%', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T60')">
+          <img class="product-img" src="T60WEB.png" alt="U‑WINFLY T60">
+          <div class="product-title">U‑WINFLY T60</div>
+        </div>
+
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T65L', 'T65LWEB.png', '<span class=\'badge promo\'>Promo</span><span class=\'badge best\'>Best Seller</span>', 'Rp 5.600.000', 'Rp 5.400.000', 'Lithium', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '7–8 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T65L')">
+          <img class="product-img" src="T65LWEB.png" alt="U‑WINFLY T65L">
+          <div class="product-title">U‑WINFLY T65L</div>
+        </div>
+
+      </div>
+    </div>
+
+    <p><em>*Semua produk di atas termasuk kategori Sepeda Listrik.</em></p>
   </section>
 
   <section id="promo">
@@ -200,9 +261,20 @@
         </ul>
         <p>💳 VISA    💳 Mastercard    🏦 Bank Transfer    📱 QRIS</p>
       </div>
+
       <div class="info-card-dark">
         <h3>Tanpa Titip Dana</h3>
-        <p>Kami <strong>tidak pernah</strong> meminta DP atau transfer ke rekening pribadi. Pastikan rekening atas nama <strong>Eramolis Jaya Sakti</strong>.</p>
+        <p>
+          Kami <strong>tidak pernah</strong> meminta DP atau transfer ke rekening pribadi.
+          Pastikan nomor rekening atas nama toko/perusahaan <strong>Eramolis Jaya Sakti</strong>.
+        </p>
+      </div>
+
+      <div class="info-card-dark">
+        <h3>Bukti & Invoice</h3>
+        <p>
+          Setiap transaksi mendapatkan invoice resmi + bukti pembayaran sah untuk keperluan klaim garansi.
+        </p>
       </div>
     </div>
   </section>
@@ -212,6 +284,54 @@
     <div class="card">
       <p>📞 WhatsApp: <strong>0855-1579-797</strong></p>
       <a class="btn" href="https://wa.me/628551579797" target="_blank">Hubungi via WhatsApp</a>
+    </div>
+  </section>
+
+  <section id="lokasi">
+    <h2>Lokasi Toko</h2>
+    <div class="card">
+      <p><strong>Alamat:</strong><br>
+      <a href="https://www.google.com/maps/place/Sepeda+Listrik+Uwinfly+Metro+Indah+Mall/" target="_blank" rel="noopener noreferrer">
+        📍 Jl. MTC IV, Sekejati, Kec. Buahbatu,<br>
+        Kota Bandung, Jawa Barat 40286
+      </a></p>
+      <p><strong>Plus Code:</strong> 3M45+WQ Sekejati, Kota Bandung, Jawa Barat</p>
+
+      <a class="btn" href="https://www.google.com/maps/place/Sepeda+Listrik+Uwinfly+Metro+Indah+Mall/" target="_blank">Buka di Google Maps</a>
+
+      <h3 style="margin-top:15px;">Peta Lokasi</h3>
+      <div style="width:100%;height:0;padding-bottom:56%;position:relative;border-radius:10px;overflow:hidden;">
+        <iframe
+          src="https://www.google.com/maps?q=Sepeda%20Listrik%20Uwinfly%20Metro%20Indah%20Mall&z=16&output=embed"
+          style="border:0;position:absolute;top:0;left:0;width:100%;height:100%;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
+      <h3>Jam Operasional</h3>
+      <ul>
+        <li>Senin: 09.00 – 21.00</li>
+        <li>Selasa: 09.00 – 21.00</li>
+        <li>Rabu: 09.00 – 21.00</li>
+        <li>Kamis: 09.00 – 21.00</li>
+        <li>Jumat: 09.00 – 21.00</li>
+        <li>Sabtu: 09.00 – 21.00</li>
+        <li>Minggu: 09.00 – 21.00</li>
+      </ul>
+      <p><em>Jam buka dapat berbeda pada hari libur.</em></p>
+    </div>
+  </section>
+
+  <section id="sosial">
+    <h2>Sosial Media</h2>
+    <div class="card">
+      <p class="social">
+        <a href="https://www.instagram.com/eramolis_metroindahmall/" target="_blank">Instagram</a> |
+        <a href="https://www.facebook.com/profile.php?id=100081572577386" target="_blank">Facebook</a> |
+        <a href="https://www.tiktok.com/@uwinfly_bandung_eramolis?lang=id-ID" target="_blank">TikTok</a>
+      </p>
     </div>
   </section>
 
@@ -251,7 +371,6 @@
     document.getElementById('modalImg').src = imgSrc;
     document.getElementById('modalBadges').innerHTML = badges;
     
-    // Atur Harga Coret
     if(oldPrice) {
       document.getElementById('modalPriceNormal').innerText = oldPrice;
       document.getElementById('modalPriceNormal').style.display = 'block';
@@ -266,7 +385,6 @@
     document.getElementById('specRange').innerText = range;
     document.getElementById('specSpeed').innerText = speed;
     
-    // Kondisi membedakan isi spek tambahan sepeda / motor
     if(charge !== '-' && charge !== '') {
       document.getElementById('additionalSpecs').style.display = 'block';
       document.getElementById('specCharge').innerText = charge;
@@ -276,8 +394,6 @@
     }
     
     document.getElementById('modalWaBtn').href = waUrl;
-    
-    // Tampilkan pop-up
     document.getElementById('productModal').style.display = 'flex';
   }
 
@@ -285,7 +401,6 @@
     document.getElementById('productModal').style.display = 'none';
   }
 
-  // Tutup jika mengklik area hitam di luar kotak putih
   function closeProductModalOutside(event) {
     if (event.target.id === "productModal") {
       closeProductModal();
