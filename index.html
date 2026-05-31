@@ -15,7 +15,7 @@
     nav a { margin: 0 12px; text-decoration: none; color: #c40000; font-weight: bold; transition: color 0.2s; }
     nav a:hover { color: #9e0000; }
 
-    /* News Banner with CSS Animation */
+    /* News Banner */
     .news-container { background: linear-gradient(135deg,#c40000,#9e0000,#c0c0c0); overflow: hidden; position: relative; display: flex; align-items: center; padding: 12px 10px; box-shadow: 0 3px 10px rgba(192,192,192,.4); }
     .news-badge { background: #fff; color: #c40000; padding: 3px 8px; border-radius: 6px; font-size: 12px; font-weight: bold; position: relative; z-index: 10; margin-right: 10px; flex-shrink: 0; }
     .news-scroll-wrapper { width: 100%; overflow: hidden; white-space: nowrap; }
@@ -28,35 +28,51 @@
     h2 { color: #c40000; border-left: 4px solid #c40000; padding-left: 10px; margin-top: 30px; }
 
     /* Grids */
-    .produk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 15px; }
+    .produk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; }
     .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 15px; }
     .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
     
-    @media (max-width: 768px){
+    @media (max-width: 768px) {
       .produk-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    /* Inner Component Cards */
+    /* Stats & Info Cards */
     .stat-card, .info-card-dark { background: #0f172a; color: #fff; padding: 16px; border-radius: 14px; box-shadow: 0 3px 12px rgba(192,192,192,.45); }
     .stat-card h2 { margin: 0; font-size: 22px; color: #fff; border: none; padding: 0; }
     .stat-card p { margin: 4px 0 0 0; font-size: 13px; opacity: .9; }
     .info-card-dark h3 { margin-top: 0; color: #fff; }
 
-    /* Product Elements */
-    .product-img { width: 100%; aspect-ratio: 4 / 3; object-fit: contain; border-radius: 10px; margin-bottom: 10px; background: #ffffff; padding: 10px; box-sizing: border-box; }
-    .badge { display: inline-block; padding: 3px 8px; border-radius: 20px; font-size: 11px; margin-right: 4px; font-weight: bold; }
+    /* KLIK PRODUK (Hanya Foto & Nama) */
+    .product-clickable-card { background: #fff; padding: 12px; border-radius: 10px; box-shadow: 0 3px 10px rgba(0,0,0,.05); text-align: center; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; border: 1px solid #eee; }
+    .product-clickable-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,.15); }
+    .product-img { width: 100%; aspect-ratio: 1 / 1; object-fit: contain; border-radius: 8px; margin-bottom: 8px; background: #fff; }
+    .product-title { font-weight: bold; font-size: 15px; color: #333; margin: 5px 0 0 0; }
+
+    /* BADGE & HARGA DI MODAL */
+    .badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
     .promo { background: #ffe5e5; color: #c40000; border: 1px solid #c40000; }
     .best { background: #e5e5e5; color: #555; border: 1px solid #aaa; }
-    .price-normal { color: #777; text-decoration: line-through; margin: 4px 0; font-size: 14px; }
-    .price-promo { color: #c40000; font-weight: bold; font-size: 17px; margin: 2px 0; }
+    .price-normal { color: #777; text-decoration: line-through; margin: 5px 0; font-size: 15px; }
+    .price-promo { color: #c40000; font-weight: bold; font-size: 20px; margin: 5px 0; }
 
-    /* Buttons */
-    .btn { background: #c40000; color: #fff; padding: 10px 16px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: bold; transition: background 0.2s; }
+    /* BUTTONS */
+    .btn { background: #c40000; color: #fff; padding: 10px 16px; border-radius: 6px; text-decoration: none; display: inline-block; font-weight: bold; }
     .btn:hover { background: #9e0000; }
-    .wa-btn { background: #25D366; color: #fff; padding: 10px 12px; border-radius: 6px; text-decoration: none; display: block; text-align: center; margin-top: 8px; font-weight: bold; transition: opacity 0.2s; }
+    .wa-btn { background: #25D366; color: #fff; padding: 12px; border-radius: 6px; text-decoration: none; display: block; text-align: center; margin-top: 15px; font-weight: bold; font-size: 16px; }
     .wa-btn:hover { opacity: 0.9; }
-    
+
+    /* STYLING MODAL (POP-UP) MENU */
+    .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.6); align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
+    .modal-content { background-color: #fff; margin: auto; padding: 20px; border-radius: 12px; max-width: 500px; width: 100%; position: relative; box-shadow: 0 5px 25px rgba(0,0,0,0.3); animation: fadeIn 0.3s; box-sizing: border-box; }
+    @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    .close-btn { position: absolute; right: 15px; top: 10px; color: #aaa; font-size: 28px; font-weight: bold; cursor: pointer; }
+    .close-btn:hover { color: #333; }
+    .modal-body img { width: 100%; max-height: 250px; object-fit: contain; margin-bottom: 15px; background: #fff; }
+    .modal-specs { margin-top: 15px; text-align: left; background: #f9f9f9; padding: 12px; border-radius: 8px; font-size: 14px; }
+    .modal-specs p { margin: 6px 0; border-bottom: 1px dashed #eee; padding-bottom: 4px; }
+    .modal-specs p:last-child { border: none; }
+
     footer { background: #c40000; color: #fff; text-align: center; padding: 15px; margin-top: 40px; }
   </style>
 </head>
@@ -106,72 +122,29 @@
       <h3>Model Motor</h3>
       <div class="produk-grid">
 
-        <div class="card">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M100', 'M100WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 20.999.000', 'Rp 18.299.000', 'Lithium', '72V / 40Ah', '5000W', 'hingga 120 km', '75 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M100')">
           <img class="product-img" src="M100WEB.png" alt="U‑WINFLY M100">
-          <h4>U‑WINFLY M100</h4>
-          <p><span class="badge promo">Sold Out</span></p>
-          <p><strong>Tipe Baterai:</strong> Lithium</p>
-          <p><strong>Kapasitas:</strong> 72V / 40Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 5000W</p>
-          <p><strong>Jarak Tempuh:</strong> hingga 120 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 75 km/jam</p>
-          <p class="price-normal">Rp 20.999.000</p>
-          <p class="price-promo">Rp 18.299.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20M100" target="_blank">Tanya via WhatsApp</a>
+          <div class="product-title">U‑WINFLY M100</div>
         </div>
 
-        <div class="card">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T90', 'T90WEB.png', '<span class=\'badge promo\'>Sold Out</span><span class=\'badge best\'>Best Seller</span>', 'Rp 15.000.000', 'Rp 14.000.000', 'Lithium', '60V / 30Ah', '3000W', 'hingga 100 km', '55 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T90')">
           <img class="product-img" src="T90WEB.png" alt="U‑WINFLY T90">
-          <h4>U‑WINFLY T90</h4>
-          <p><span class="badge promo">Sold Out</span><span class="badge best">Best Seller</span></p>
-          <p><strong>Tipe Baterai:</strong> Lithium</p>
-          <p><strong>Kapasitas:</strong> 60V / 30Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 3000W</p>
-          <p><strong>Jarak Tempuh:</strong> hingga 100 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 55 km/jam</p>
-          <p class="price-normal">Rp 15.000.000</p>
-          <p class="price-promo">Rp 14.000.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20T90" target="_blank">Tanya via WhatsApp</a>
+          <div class="product-title">U‑WINFLY T90</div>
         </div>
 
-        <div class="card">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY T5', 'T5WEB.png', '<span class=\'badge promo\'>Promo</span>', 'Rp 12.500.000', 'Rp 11.399.000', 'SLA (Lead Acid)', '72V / 20Ah', '2000W', 'hingga 65 km', '65 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20T5')">
           <img class="product-img" src="T5WEB.png" alt="U‑WINFLY T5">
-          <h4>U‑WINFLY T5</h4>
-          <p><span class="badge promo">Promo</span></p>
-          <p><strong>Tipe Baterai:</strong> SLA (Lead Acid)</p>
-          <p><strong>Kapasitas:</strong> 72V / 20Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 2000W</p>
-          <p><strong>Jarak Tempuh:</strong> hingga 65 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 65 km/jam</p>
-          <p class="price-normal">Rp 12.500.000</p>
-          <p class="price-promo">Rp 11.399.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20T5" target="_blank">Tanya via WhatsApp</a>
+          <div class="product-title">U‑WINFLY T5</div>
         </div>
         
-        <div class="card">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M90E', 'M90EWEB.png', '<span class=\'badge best\'>Best Seller</span>', '', 'Rp 12.690.000', 'Lithium', '60V / 24Ah', '1500W', 'hingga 90-100 km', '70 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M90E')">
           <img class="product-img" src="M90EWEB.png" alt="U‑WINFLY M90E">
-          <h4>U‑WINFLY M90E</h4>
-          <p><span class="badge best">Best Seller</span></p>
-          <p><strong>Tipe Baterai:</strong> Lithium</p>
-          <p><strong>Kapasitas:</strong> 60V / 24Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 1500W</p>
-          <p><strong>Jarak Tempuh:</strong> hingga 90-100 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 70 km/jam</p>
-          <p class="price-promo">Rp 12.690.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20M90E" target="_blank">Tanya via WhatsApp</a>
+          <div class="product-title">U‑WINFLY M90E</div>
         </div>
 
-        <div class="card">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY M90G', 'M90GWEB.png', '<span class=\'badge best\'>Best Seller</span>', '', 'Rp 12.950.000', 'Lithium', '60V / 24Ah', '1500W', 'hingga 90-100 km', '70 km/jam', '-', '-', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20M90G')">
           <img class="product-img" src="M90GWEB.png" alt="U‑WINFLY M90G">
-          <h4>U‑WINFLY M90G</h4>
-          <p><span class="badge best">Best Seller</span></p>
-          <p><strong>Tipe Baterai:</strong> Lithium</p>
-          <p><strong>Kapasitas:</strong> 60V / 24Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 1500W</p>
-          <p><strong>Jarak Tempuh:</strong> hingga 90-100 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 70 km/jam</p>
-          <p class="price-promo">Rp 12.950.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20M90G" target="_blank">Tanya via WhatsApp</a>
+          <div class="product-title">U‑WINFLY M90G</div>
         </div>
 
       </div>
@@ -185,212 +158,23 @@
       <h3>Seri D</h3>
       <div class="produk-grid">
         
-        <div class="card">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D65', 'D65WEB.png', '<span class=\'badge promo\'>Sold Out</span>', 'Rp 3.700.000', 'Rp 3.400.000', 'SLA (Lead Acid)', '40V – 12Ah', '5000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D65')">
           <img class="product-img" src="D65WEB.png" alt="U‑WINFLY D65">
-          <h4>U‑WINFLY D65</h4>
-          <p><span class="badge promo">Sold Out</span></p>
-          <p><strong>Tipe Baterai:</strong> SLA (Lead Acid)</p>
-          <p><strong>Kapasitas:</strong> 40V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 500W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 8–10 jam dari 0%</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-normal">Rp 3.700.000</p>
-          <p class="price-promo">Rp 3.400.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20D65" target="_blank">Tanya via WhatsApp</a>
+          <div class="product-title">U‑WINFLY D65</div>
         </div>
                
-        <div class="card">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D66A', 'D66AWEB.png', '<span class=\'badge best\'>Best Seller</span>', '', 'Rp 4.199.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D66A')">
           <img class="product-img" src="D66AWEB.png" alt="U‑WINFLY D66A">
-          <h4>U‑WINFLY D66A</h4>
-          <p><span class="badge best">Best Seller</span></p>
-          <p><strong>Tipe Baterai:</strong> SLA (Lead Acid)</p>
-          <p><strong>Kapasitas:</strong> 48V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 600W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 8–10 jam</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-promo">Rp 4.199.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20D66A" target="_blank">Tanya via WhatsApp</a>
+          <div class="product-title">U‑WINFLY D66A</div>
         </div>
 
-        <div class="card">
+        <div class="product-clickable-card" onclick="openProductModal('U‑WINFLY D66B', 'D66BWEB.png', '<span class=\'badge best\'>Best Seller</span>', '', 'Rp 4.999.000', 'SLA (Lead Acid)', '48V – 12Ah', '6000W', '40–45 km', '40–45 km/jam', '8–10 jam', '100–150 kg', 'https://wa.me/628551579797?text=Halo%20Eramolis%2C%20saya%20tertarik%20dengan%20U-WINFLY%20D66B')">
           <img class="product-img" src="D66BWEB.png" alt="U‑WINFLY D66B">
-          <h4>U‑WINFLY D66B</h4>
-          <p><span class="badge best">Best Seller</span></p>
-          <p><strong>Tipe Baterai:</strong> SLA (Lead Acid)</p>
-          <p><strong>Kapasitas:</strong> 48V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 600W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 8–10 jam</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-promo">Rp 4.999.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20D66B" target="_blank">Tanya via WhatsApp</a>
-        </div>
-
-        <div class="card">
-          <img class="product-img" src="D70WEB.png" alt="U‑WINFLY D70">
-          <h4>U‑WINFLY D70</h4>
-          <p><span class="badge promo">Sold Out</span></p>
-          <p><strong>Tipe Baterai:</strong> SLA (Lead Acid)</p>
-          <p><strong>Kapasitas:</strong> 40V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 500W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 8–10 jam dari 0%</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-normal">Rp 3.800.000</p>
-          <p class="price-promo">Rp 3.299.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20D70" target="_blank">Tanya via WhatsApp</a>
-        </div>
-
-        <div class="card">
-          <img class="product-img" src="D75WEB.png" alt="U‑WINFLY D75">
-          <h4>U‑WINFLY D75</h4>
-          <p><span class="badge promo">Promo</span><span class="badge best">Best Seller</span></p>
-          <p><strong>Tipe Baterai:</strong> SLA (Lead Acid)</p>
-          <p><strong>Kapasitas:</strong> 48V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 600W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 8–10 jam</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-normal">Rp 3.900.000</p>
-          <p class="price-promo">Rp 3.700.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20D75" target="_blank">Tanya via WhatsApp</a>
+          <div class="product-title">U‑WINFLY D66B</div>
         </div>
 
       </div>
     </div>
-
-    <div class="card">
-      <h3>Seri M</h3>
-      <div class="produk-grid">
-
-        <div class="card">
-          <img class="product-img" src="M60WEB.png" alt="U‑WINFLY M60">
-          <h4>U‑WINFLY M60</h4>
-          <p><span class="badge promo">Sold Out</span></p>
-          <p><strong>Tipe Baterai:</strong> SLA (Lead Acid)</p>
-          <p><strong>Kapasitas:</strong> 48V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 600W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 8–10 jam</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-normal">Rp 4.100.000</p>
-          <p class="price-promo">Rp 3.299.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20M60" target="_blank">Tanya via WhatsApp</a>
-        </div>
-
-        <div class="card">
-          <img class="product-img" src="M60LWEB.png" alt="U‑WINFLY M60L">
-          <h4>U‑WINFLY M60L</h4>
-          <p><span class="badge promo">Sold Out</span></p>
-          <p><strong>Tipe Baterai:</strong> Lithium</p>
-          <p><strong>Kapasitas:</strong> 48V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 600W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 7–8 jam</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-normal">Rp 4.500.000</p>
-          <p class="price-promo">Rp 4.299.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20M60L" target="_blank">Tanya via WhatsApp</a>
-        </div>
-
-        <div class="card">
-          <img class="product-img" src="M70WEB.png" alt="U‑WINFLY M70">
-          <h4>U‑WINFLY M70</h4>
-          <p><span class="badge promo">Sold Out</span></p>
-          <p><strong>Tipe Baterai:</strong> SLA (Lead Acid)</p>
-          <p><strong>Kapasitas:</strong> 48V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 600W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 8–10 jam</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-normal">Rp 4.800.000</p>
-          <p class="price-promo">Rp 3.799.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20M70" target="_blank">Tanya via WhatsApp</a>
-        </div>
-
-        <div class="card">
-          <img class="product-img" src="M70LWEB.png" alt="U‑WINFLY M70L">
-          <h4>U‑WINFLY M70L</h4>
-          <p><span class="badge best">Sold Out</span></p>
-          <p><strong>Tipe Baterai:</strong> Lithium</p>
-          <p><strong>Kapasitas:</strong> 48V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 600W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 7–8 jam</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-promo">Rp 5.200.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20M70L" target="_blank">Tanya via WhatsApp</a>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="card">
-      <h3>Seri T</h3>
-      <div class="produk-grid">
-
-        <div class="card">
-          <img class="product-img" src="T78BWEB.png" alt="U‑WINFLY T78B">
-          <h4>U‑WINFLY T78B</h4>
-          <p><span class="badge best">Best Seller</span></p>
-          <p><strong>Tipe Baterai:</strong> Lithium</p>
-          <p><strong>Kapasitas:</strong> 48V – 18Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 800W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 3-4 jam</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-promo">Rp 6.599.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20T78B" target="_blank">Tanya via WhatsApp</a>
-        </div>
-        
-        <div class="card">
-          <img class="product-img" src="T60WEB.png" alt="U‑WINFLY T60">
-          <h4>U‑WINFLY T60</h4>
-          <p><span class="badge promo">Promo</span></p>
-          <p><strong>Tipe Baterai:</strong> SLA (Lead Acid)</p>
-          <p><strong>Kapasitas:</strong> 40V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 500W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 8–10 jam dari 0%</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-normal">Rp 4.100.000</p>
-          <p class="price-promo">Rp 3.599.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20T60" target="_blank">Tanya via WhatsApp</a>
-        </div>
-
-        <div class="card">
-          <img class="product-img" src="T65LWEB.png" alt="U‑WINFLY T65L">
-          <h4>U‑WINFLY T65L</h4>
-          <p><span class="badge promo">Promo</span><span class="badge best">Best Seller</span></p>
-          <p><strong>Tipe Baterai:</strong> Lithium</p>
-          <p><strong>Kapasitas:</strong> 48V – 12Ah</p>
-          <p><strong>Daya/Power Motor:</strong> 600W</p>
-          <p><strong>Jarak Tempuh:</strong> 40–45 km</p>
-          <p><strong>Kecepatan Maksimal:</strong> 40–45 km/jam</p>
-          <p><strong>Waktu Cas:</strong> 7–8 jam</p>
-          <p><strong>Daya Angkut:</strong> 100–150 kg</p>
-          <p class="price-normal">Rp 5.600.000</p>
-          <p class="price-promo">Rp 5.400.000</p>
-          <a class="wa-btn" href="https://wa.me/628551579797?text=Halo%2C%20saya%20ingin%20tanya%20tentang%20U-WINFLY%20T65L" target="_blank">Tanya via WhatsApp</a>
-        </div>
-
-      </div>
-    </div>
-
-    <p><em>*Semua produk di atas termasuk kategori Sepeda Listrik.</em></p>
   </section>
 
   <section id="promo">
@@ -416,20 +200,9 @@
         </ul>
         <p>💳 VISA    💳 Mastercard    🏦 Bank Transfer    📱 QRIS</p>
       </div>
-
       <div class="info-card-dark">
         <h3>Tanpa Titip Dana</h3>
-        <p>
-          Kami <strong>tidak pernah</strong> meminta DP atau transfer ke rekening pribadi.
-          Pastikan nomor rekening atas nama toko/perusahaan <strong>Eramolis Jaya Sakti</strong>.
-        </p>
-      </div>
-
-      <div class="info-card-dark">
-        <h3>Bukti & Invoice</h3>
-        <p>
-          Every transaction gets an official invoice + proof of purchase for warranty purposes.
-        </p>
+        <p>Kami <strong>tidak pernah</strong> meminta DP atau transfer ke rekening pribadi. Pastikan rekening atas nama <strong>Eramolis Jaya Sakti</strong>.</p>
       </div>
     </div>
   </section>
@@ -442,55 +215,83 @@
     </div>
   </section>
 
-  <section id="lokasi">
-    <h2>Lokasi Toko</h2>
-    <div class="card">
-      <p><strong>Alamat:</strong><br>
-      <a href="https://www.google.com/maps/place/Sepeda+Listrik+Uwinfly+Metro+Indah+Mall/" target="_blank" rel="noopener noreferrer">
-        📍 Jl. MTC IV, Sekejati, Kec. Buahbatu,<br>
-        Kota Bandung, Jawa Barat 40286
-      </a></p>
-      <p><strong>Plus Code:</strong> 3M45+WQ Sekejati, Kota Bandung, Jawa Barat</p>
-
-      <a class="btn" href="https://www.google.com/maps/place/Sepeda+Listrik+Uwinfly+Metro+Indah+Mall/" target="_blank">Buka di Google Maps</a>
-
-      <h3 style="margin-top:15px;">Peta Lokasi</h3>
-      <div style="width:100%;height:0;padding-bottom:56%;position:relative;border-radius:10px;overflow:hidden;">
-        <iframe
-          src="https://www.google.com/maps?q=Sepeda%20Listrik%20Uwinfly%20Metro%20Indah%20Mall&z=16&output=embed"
-          style="border:0;position:absolute;top:0;left:0;width:100%;height:100%;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
-
-      <h3>Jam Operasional</h3>
-      <ul>
-        <li>Senin: 09.00 – 21.00</li>
-        <li>Selasa: 09.00 – 21.00</li>
-        <li>Rabu: 09.00 – 21.00</li>
-        <li>Kamis (Tahun Baru): 09.00 – 21.00</li>
-        <li>Jumat: 09.00 – 21.00</li>
-        <li>Sabtu: 09.00 – 21.00</li>
-        <li>Minggu: 09.00 – 21.00</li>
-      </ul>
-      <p><em>Jam buka dapat berbeda pada hari libur.</em></p>
-    </div>
-  </section>
-
-  <section id="sosial">
-    <h2>Sosial Media</h2>
-    <div class="card">
-      <p class="social">
-        <a href="https://www.instagram.com/eramolis_metroindahmall/" target="_blank">Instagram</a> |
-        <a href="https://www.facebook.com/profile.php?id=100081572577386" target="_blank">Facebook</a> |
-        <a href="https://www.tiktok.com/@uwinfly_bandung_eramolis?lang=id-ID" target="_blank">TikTok</a>
-      </p>
-    </div>
-  </section>
-
 </div>
+
+<div id="productModal" class="modal" onclick="closeProductModalOutside(event)">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeProductModal()">&times;</span>
+    <div class="modal-body">
+      <h3 id="modalTitle" style="color:#c40000; margin-top:0;">Nama Produk</h3>
+      <div id="modalBadges"></div>
+      <img id="modalImg" src="" alt="Produk">
+      
+      <div id="modalPriceNormal" class="price-normal"></div>
+      <div id="modalPricePromo" class="price-promo"></div>
+      
+      <div class="modal-specs">
+        <p><strong>Tipe Baterai:</strong> <span id="specBattery"></span></p>
+        <p><strong>Kapasitas:</strong> <span id="specCapacity"></span></p>
+        <p><strong>Daya Motor:</strong> <span id="specPower"></span></p>
+        <p><strong>Jarak Tempuh:</strong> <span id="specRange"></span></p>
+        <p><strong>Kecepatan Maks:</strong> <span id="specSpeed"></span></p>
+        <div id="additionalSpecs">
+          <p><strong>Waktu Cas:</strong> <span id="specCharge"></span></p>
+          <p><strong>Daya Angkut:</strong> <span id="specLoad"></span></p>
+        </div>
+      </div>
+      
+      <a id="modalWaBtn" class="wa-btn" href="#" target="_blank">Tanya via WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function openProductModal(title, imgSrc, badges, oldPrice, newPrice, battery, capacity, power, range, speed, charge, load, waUrl) {
+    document.getElementById('modalTitle').innerText = title;
+    document.getElementById('modalImg').src = imgSrc;
+    document.getElementById('modalBadges').innerHTML = badges;
+    
+    // Atur Harga Coret
+    if(oldPrice) {
+      document.getElementById('modalPriceNormal').innerText = oldPrice;
+      document.getElementById('modalPriceNormal').style.display = 'block';
+    } else {
+      document.getElementById('modalPriceNormal').style.display = 'none';
+    }
+    
+    document.getElementById('modalPricePromo').innerText = newPrice;
+    document.getElementById('specBattery').innerText = battery;
+    document.getElementById('specCapacity').innerText = capacity;
+    document.getElementById('specPower').innerText = power;
+    document.getElementById('specRange').innerText = range;
+    document.getElementById('specSpeed').innerText = speed;
+    
+    // Kondisi membedakan isi spek tambahan sepeda / motor
+    if(charge !== '-' && charge !== '') {
+      document.getElementById('additionalSpecs').style.display = 'block';
+      document.getElementById('specCharge').innerText = charge;
+      document.getElementById('specLoad').innerText = load;
+    } else {
+      document.getElementById('additionalSpecs').style.display = 'none';
+    }
+    
+    document.getElementById('modalWaBtn').href = waUrl;
+    
+    // Tampilkan pop-up
+    document.getElementById('productModal').style.display = 'flex';
+  }
+
+  function closeProductModal() {
+    document.getElementById('productModal').style.display = 'none';
+  }
+
+  // Tutup jika mengklik area hitam di luar kotak putih
+  function closeProductModalOutside(event) {
+    if (event.target.id === "productModal") {
+      closeProductModal();
+    }
+  }
+</script>
 
 <footer>
   <p>© 2024 ERAMOLIS – Metro Indah Mall</p>
