@@ -448,6 +448,87 @@
       line-height: 1.25;
     }
 
+    .compare-toggle {
+      width: 100%;
+      margin-top: 10px;
+      border: 1px solid var(--red);
+      border-radius: 8px;
+      background: #fff;
+      color: var(--red);
+      padding: 9px 10px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .compare-toggle.selected {
+      background: var(--red);
+      color: #fff;
+    }
+
+    .compare-bar {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      z-index: 900;
+      width: min(760px, calc(100% - 28px));
+      transform: translate(-50%, 130%);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 14px;
+      background: rgba(17,24,39,.96);
+      color: #fff;
+      box-shadow: 0 18px 50px rgba(15,23,42,.32);
+      transition: transform .25s ease;
+    }
+
+    .compare-bar.open { transform: translate(-50%, 0); }
+    .compare-bar p { margin: 0; font-size: 13px; }
+    .compare-actions { display: flex; gap: 8px; flex: 0 0 auto; }
+    .compare-actions button { min-height: 38px; border-radius: 8px; padding: 8px 12px; font-weight: 900; cursor: pointer; }
+    .compare-clear { border: 1px solid #64748b; background: transparent; color: #fff; }
+    .compare-open { border: 0; background: var(--red); color: #fff; }
+    .compare-open:disabled { opacity: .5; cursor: not-allowed; }
+
+    .gallery-stage {
+      position: relative;
+      margin: 12px 0 8px;
+      border: 1px solid #f1f5f9;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .gallery-stage img,
+    .gallery-stage video,
+    .gallery-stage iframe {
+      display: block;
+      width: 100%;
+      height: 290px;
+      max-height: none;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      object-fit: contain;
+    }
+
+    .gallery-thumbs { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 10px; }
+    .gallery-thumb { flex: 0 0 72px; height: 58px; border: 2px solid transparent; border-radius: 8px; background: #fff; padding: 3px; cursor: pointer; overflow: hidden; }
+    .gallery-thumb.active { border-color: var(--red); }
+    .gallery-thumb img { width: 100%; height: 100%; margin: 0; border: 0; object-fit: contain; }
+    .gallery-thumb.video-thumb { background: #111827; color: #fff; font-weight: 900; font-size: 11px; }
+
+    .compare-modal-content { width: min(1000px, 100%); }
+    .compare-table-wrap { overflow-x: auto; margin-top: 14px; }
+    .compare-table { width: 100%; min-width: 680px; border-collapse: collapse; }
+    .compare-table th, .compare-table td { padding: 12px; border: 1px solid var(--line); text-align: center; vertical-align: middle; }
+    .compare-table th:first-child, .compare-table td:first-child { text-align: left; font-weight: 900; background: #f8fafc; }
+    .compare-table img { width: 120px; height: 100px; object-fit: contain; margin: auto; }
+    .compare-best { color: var(--green); font-size: 11px; font-weight: 900; display: block; margin-top: 3px; }
+
     .product-meta {
       color: var(--muted);
       font-size: 13px;
@@ -848,6 +929,8 @@
       .modal-content {
         padding-bottom: 86px;
       }
+      .compare-bar { bottom: 72px; align-items: stretch; flex-direction: column; }
+      .compare-actions button { flex: 1; }
       .modal .wa-btn {
         position: sticky;
         bottom: 0;
@@ -945,6 +1028,7 @@
           <button class="filter-btn" type="button" data-filter="promo">Promo</button>
           <button class="filter-btn" type="button" data-filter="ready">Ready</button>
         </div>
+        <p style="margin:-4px 0 18px;color:var(--muted);font-size:13px;font-weight:700;">Pilih tombol <strong>Bandingkan</strong> pada 2â€“3 produk untuk melihat perbedaannya.</p>
 
         <div class="battery-strip reveal">
           <div class="battery-card">
@@ -1071,13 +1155,31 @@
       <button class="close-btn" type="button" id="closeModal" aria-label="Tutup">&times;</button>
       <h3 id="modalTitle">Nama Produk</h3>
       <div class="badges" id="modalBadges"></div>
-      <img id="modalImg" src="" alt="Produk" />
+      <div class="gallery-stage" id="galleryStage"></div>
+      <div class="gallery-thumbs" id="galleryThumbs" aria-label="Galeri produk"></div>
       <div class="modal-price">
         <span class="product-old-price" id="modalOldPrice"></span>
         <span class="modal-new-price" id="modalNewPrice"></span>
       </div>
       <div class="spec-grid" id="specGrid"></div>
       <a class="wa-btn" id="modalWaBtn" href="#" target="_blank" rel="noopener noreferrer">Tanya via WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="modal" id="compareModal" role="dialog" aria-modal="true" aria-labelledby="compareTitle">
+    <div class="modal-content compare-modal-content">
+      <button class="close-btn" type="button" id="closeCompareModal" aria-label="Tutup">&times;</button>
+      <h3 id="compareTitle">Perbandingan Produk</h3>
+      <p style="color:var(--muted);margin:0;">Bandingkan harga, baterai, tenaga, jarak tempuh, dan kecepatan.</p>
+      <div class="compare-table-wrap" id="compareTableWrap"></div>
+    </div>
+  </div>
+
+  <div class="compare-bar" id="compareBar" aria-live="polite">
+    <p><strong id="compareCount">0 produk dipilih</strong><br>Maksimal 3 produk.</p>
+    <div class="compare-actions">
+      <button class="compare-clear" id="clearCompare" type="button">Hapus</button>
+      <button class="compare-open" id="openCompare" type="button" disabled>Bandingkan</button>
     </div>
   </div>
 
@@ -1121,6 +1223,91 @@
       sold: "Sold Out"
     };
 
+    let currentFilter = "all";
+    const compareSelection = new Set();
+
+    function productMedia(product) {
+      const gallery = Array.isArray(product.gallery) && product.gallery.length ? product.gallery : [product.image];
+      const media = gallery.map((src) => ({ type: "image", src }));
+      if (product.video) media.push({ type: "video", src: product.video });
+      return media;
+    }
+
+    function mediaUrl(src) {
+      return /^https?:\/\//i.test(src) ? src : `${baseImageUrl}${src}`;
+    }
+
+    function youtubeEmbedUrl(url) {
+      const match = String(url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|shorts\/|embed\/))([\w-]{6,})/);
+      return match ? `https://www.youtube.com/embed/${match[1]}` : "";
+    }
+
+    function showGalleryMedia(item, button) {
+      const stage = document.getElementById("galleryStage");
+      const src = mediaUrl(item.src);
+      if (item.type === "video") {
+        const youtube = youtubeEmbedUrl(src);
+        stage.innerHTML = youtube
+          ? `<iframe src="${youtube}" title="Video produk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`
+          : `<video src="${src}" controls playsinline preload="metadata">Browser Anda tidak mendukung video.</video>`;
+      } else {
+        stage.innerHTML = `<img src="${src}" alt="Foto produk">`;
+      }
+      document.querySelectorAll(".gallery-thumb").forEach((thumb) => thumb.classList.remove("active"));
+      if (button) button.classList.add("active");
+    }
+
+    function renderGallery(product) {
+      const media = productMedia(product);
+      const thumbs = document.getElementById("galleryThumbs");
+      thumbs.innerHTML = "";
+      media.forEach((item, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `gallery-thumb${item.type === "video" ? " video-thumb" : ""}${index === 0 ? " active" : ""}`;
+        button.setAttribute("aria-label", item.type === "video" ? "Putar video produk" : `Lihat foto ${index + 1}`);
+        button.innerHTML = item.type === "video" ? "â–¶ VIDEO" : `<img src="${mediaUrl(item.src)}" alt="Thumbnail ${product.name}">`;
+        button.addEventListener("click", () => showGalleryMedia(item, button));
+        thumbs.appendChild(button);
+      });
+      showGalleryMedia(media[0], thumbs.firstElementChild);
+      thumbs.style.display = media.length > 1 ? "flex" : "none";
+    }
+
+    function updateCompareBar() {
+      const count = compareSelection.size;
+      document.getElementById("compareCount").textContent = `${count} produk dipilih`;
+      document.getElementById("compareBar").classList.toggle("open", count > 0);
+      document.getElementById("openCompare").disabled = count < 2;
+    }
+
+    function toggleCompare(index) {
+      if (compareSelection.has(index)) {
+        compareSelection.delete(index);
+      } else if (compareSelection.size < 3) {
+        compareSelection.add(index);
+      } else {
+        alert("Maksimal 3 produk yang dapat dibandingkan.");
+      }
+      renderProducts(currentFilter);
+      updateCompareBar();
+    }
+
+    function renderComparison() {
+      const selected = [...compareSelection].map((index) => products[index]);
+      const rows = [
+        ["Harga", "price"], ["Tipe Baterai", "battery"], ["Kapasitas", "capacity"],
+        ["Daya Motor", "power"], ["Jarak Tempuh", "range"], ["Kecepatan Maks", "speed"],
+        ["Waktu Cas", "charge"], ["Daya Angkut", "load"]
+      ];
+      document.getElementById("compareTableWrap").innerHTML = `
+        <table class="compare-table">
+          <thead><tr><th>Spesifikasi</th>${selected.map((p) => `<th><img src="${baseImageUrl}${p.image}" alt="${p.name}"><strong>${p.name}</strong></th>`).join("")}</tr></thead>
+          <tbody>${rows.map(([label, key]) => `<tr><td>${label}</td>${selected.map((p) => `<td>${p[key] || "-"}</td>`).join("")}</tr>`).join("")}</tbody>
+        </table>`;
+      document.getElementById("compareModal").classList.add("open");
+    }
+
     function productMessage(product) {
       const status = product.badges.includes("sold") ? "cek stok pengganti" : "cek stok";
       return `Halo Eramolis, saya tertarik dengan ${product.name}. Mohon info harga terbaru dan ${status}.`;
@@ -1131,6 +1318,7 @@
     }
 
     function renderProducts(filter = "all") {
+      currentFilter = filter;
       const motorGrid = document.getElementById("motorGrid");
       const sepedaGrid = document.getElementById("sepedaGrid");
       motorGrid.innerHTML = "";
@@ -1144,9 +1332,8 @@
 
         if (!match) return;
 
-        const card = document.createElement("button");
+        const card = document.createElement("article");
         card.className = `product-card reveal${product.badges.includes("sold") ? " sold-out" : ""}`;
-        card.type = "button";
         card.dataset.index = index;
         card.innerHTML = `
           <div class="image-wrap">
@@ -1159,8 +1346,11 @@
             <span class="product-price">${product.price}</span>
           </div>
           <div class="badges">${renderBadges(product)}</div>
+          <button class="compare-toggle${compareSelection.has(index) ? " selected" : ""}" type="button">${compareSelection.has(index) ? "âœ“ Dipilih" : "+ Bandingkan"}</button>
         `;
-        card.addEventListener("click", () => openProductModal(product));
+        card.querySelector(".image-wrap").addEventListener("click", () => openProductModal(product));
+        card.querySelector("h3").addEventListener("click", () => openProductModal(product));
+        card.querySelector(".compare-toggle").addEventListener("click", () => toggleCompare(index));
 
         if (product.category === "motor") {
           motorGrid.appendChild(card);
@@ -1180,8 +1370,7 @@
 
     function openProductModal(product) {
       document.getElementById("modalTitle").textContent = product.name;
-      document.getElementById("modalImg").src = `${baseImageUrl}${product.image}`;
-      document.getElementById("modalImg").alt = product.name;
+      renderGallery(product);
       document.getElementById("modalBadges").innerHTML = renderBadges(product);
       document.getElementById("modalOldPrice").textContent = product.oldPrice;
       document.getElementById("modalOldPrice").style.display = product.oldPrice ? "inline" : "none";
@@ -1212,6 +1401,11 @@
 
     function closeProductModal() {
       document.getElementById("productModal").classList.remove("open");
+      document.getElementById("galleryStage").innerHTML = "";
+    }
+
+    function closeCompareModal() {
+      document.getElementById("compareModal").classList.remove("open");
     }
 
     document.getElementById("menuToggle").addEventListener("click", () => {
@@ -1236,11 +1430,24 @@
     });
 
     document.getElementById("closeModal").addEventListener("click", closeProductModal);
+    document.getElementById("openCompare").addEventListener("click", renderComparison);
+    document.getElementById("clearCompare").addEventListener("click", () => {
+      compareSelection.clear();
+      renderProducts(currentFilter);
+      updateCompareBar();
+    });
+    document.getElementById("closeCompareModal").addEventListener("click", closeCompareModal);
+    document.getElementById("compareModal").addEventListener("click", (event) => {
+      if (event.target.id === "compareModal") closeCompareModal();
+    });
     document.getElementById("productModal").addEventListener("click", (event) => {
       if (event.target.id === "productModal") closeProductModal();
     });
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeProductModal();
+      if (event.key === "Escape") {
+        closeProductModal();
+        closeCompareModal();
+      }
     });
 
     let revealObserver;
