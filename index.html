@@ -846,6 +846,36 @@
       font-size: 14px;
     }
 
+    .color-panel {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .color-panel h4 { margin: 0 0 4px; font-size: 16px; }
+    .color-help { margin: 0 0 10px; color: var(--muted); font-size: 12px; }
+    .color-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .color-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 36px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .color-option.selected { border: 2px solid var(--red); padding: 5px 9px; color: var(--red); }
+    .color-option:disabled { opacity: .42; cursor: not-allowed; text-decoration: line-through; }
+    .color-dot { width: 18px; height: 18px; flex: 0 0 18px; border: 1px solid #cbd5e1; border-radius: 50%; background: var(--swatch); }
+    .color-selection { min-height: 18px; margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+    .color-panel + .spec-grid { margin-top: 14px; }
+
     .wa-btn {
       width: 100%;
       margin-top: 14px;
@@ -1190,6 +1220,12 @@
         <span class="product-old-price" id="modalOldPrice"></span>
         <span class="modal-new-price" id="modalNewPrice"></span>
       </div>
+      <div class="color-panel">
+        <h4>Warna Tersedia</h4>
+        <p class="color-help">Warna pudar sedang tidak tersedia dan tidak dapat dipilih.</p>
+        <div class="color-options" id="modalColorOptions"></div>
+        <p class="color-selection" id="modalColorSelection"></p>
+      </div>
       <div class="spec-grid" id="specGrid"></div>
       <a class="wa-btn" id="modalWaBtn" href="#" target="_blank" rel="noopener noreferrer">Tanya via WhatsApp</a>
     </div>
@@ -1224,25 +1260,25 @@
     const phone = "628551579797";
 
     const products = [
-      { category: "motor", name: "U-WINFLY M100", image: "M100WEB.png", badges: ["sold"], oldPrice: "Rp 20.999.000", price: "Rp 18.299.000", battery: "Lithium", capacity: "72V / 40Ah", power: "5000W", range: "hingga 120 km", speed: "75 km/jam", charge: "-", load: "-" },
-      { category: "motor", name: "U-WINFLY T90", image: "T90WEB.png", badges: ["sold", "best"], oldPrice: "Rp 15.000.000", price: "Rp 14.000.000", battery: "Lithium", capacity: "60V / 30Ah", power: "3000W", range: "hingga 100 km", speed: "55 km/jam", charge: "-", load: "-" },
-      { category: "motor", name: "U-WINFLY T5", image: "T5WEB.png", badges: ["promo", "ready"], oldPrice: "Rp 12.500.000", price: "Rp 11.399.000", battery: "SLA (Lead Acid)", capacity: "72V / 20Ah", power: "2000W", range: "hingga 65 km", speed: "65 km/jam", charge: "-", load: "-" },
-      { category: "motor", name: "U-WINFLY M90E", image: "M90EWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 12.690.000", battery: "Lithium", capacity: "60V / 24Ah", power: "1500W", range: "hingga 90-100 km", speed: "70 km/jam", charge: "-", load: "-" },
-      { category: "motor", name: "U-WINFLY M90G", image: "M90GWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 12.950.000", battery: "Lithium", capacity: "60V / 24Ah", power: "1500W", range: "hingga 90-100 km", speed: "70 km/jam", charge: "-", load: "-" },
-      { category: "sepeda", name: "U-WINFLY D65", image: "D65WEB.png", badges: ["sold"], oldPrice: "Rp 3.700.000", price: "Rp 3.400.000", battery: "SLA (Lead Acid)", capacity: "40V - 12Ah", power: "500W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam dari 0%", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY D66A", image: "D66AWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.199.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY D66B", image: "D66BWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.999.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY D66i", image: "D66iWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.899.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY D70", image: "D70WEB.png", badges: ["sold"], oldPrice: "Rp 3.800.000", price: "Rp 3.299.000", battery: "SLA (Lead Acid)", capacity: "40V - 12Ah", power: "500W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam dari 0%", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY D75", image: "D75WEB.png", badges: ["sold"], oldPrice: "Rp 3.900.000", price: "Rp 3.700.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY M60", image: "M60WEB.png", badges: ["sold"], oldPrice: "Rp 4.100.000", price: "Rp 3.299.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY M60L", image: "M60LWEB.png", badges: ["sold"], oldPrice: "Rp 4.500.000", price: "Rp 4.299.000", battery: "Lithium", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "7-8 jam", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY M70", image: "M70WEB.png", badges: ["sold"], oldPrice: "Rp 4.800.000", price: "Rp 3.799.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY M70L", image: "M70LWEB.png", badges: ["sold"], oldPrice: "", price: "Rp 5.200.000", battery: "Lithium", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "7-8 jam", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY T78B", image: "T78BWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 6.599.000", battery: "Lithium", capacity: "48V - 18Ah", power: "800W", range: "40-45 km", speed: "40-45 km/jam", charge: "3-4 jam", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY T60", image: "T60WEB.png", badges: ["sold"], oldPrice: "Rp 4.100.000", price: "Rp 3.599.000", battery: "SLA (Lead Acid)", capacity: "40V - 12Ah", power: "500W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam dari 0%", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY T65L", image: "T65LWEB.png", badges: ["promo", "best", "ready"], oldPrice: "Rp 5.600.000", price: "Rp 5.400.000", battery: "Lithium", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "7-8 jam", load: "100-150 kg" },
-      { category: "sepeda", name: "U-WINFLY T78C", image: "T78CWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 7.399.000", battery: "Lithium", capacity: "48V - 18Ah", power: "800W", range: "45-50 km", speed: "45-50 km/jam", charge: "3-4 jam", load: "100-150 kg" }
+      { category: "motor", name: "U-WINFLY M100", image: "M100WEB.png", badges: ["sold"], oldPrice: "Rp 20.999.000", price: "Rp 18.299.000", battery: "Lithium", capacity: "72V / 40Ah", power: "5000W", range: "hingga 120 km", speed: "75 km/jam", charge: "-", load: "-", colorsAvailable: [], colorsUnavailable: ["Putih", "Hitam", "Gray", "Nebula"] },
+      { category: "motor", name: "U-WINFLY T90", image: "T90WEB.png", badges: ["sold", "best"], oldPrice: "Rp 15.000.000", price: "Rp 14.000.000", battery: "Lithium", capacity: "60V / 30Ah", power: "3000W", range: "hingga 100 km", speed: "55 km/jam", charge: "-", load: "-", colorsAvailable: [], colorsUnavailable: ["Hitam", "Merah", "Gray", "Hijau"] },
+      { category: "motor", name: "U-WINFLY T5", image: "T5WEB.png", badges: ["promo", "ready"], oldPrice: "Rp 12.500.000", price: "Rp 11.399.000", battery: "SLA (Lead Acid)", capacity: "72V / 20Ah", power: "2000W", range: "hingga 65 km", speed: "65 km/jam", charge: "-", load: "-", colorsAvailable: ["Hijau Army"], colorsUnavailable: ["Putih", "Hitam", "Biru"] },
+      { category: "motor", name: "U-WINFLY M90E", image: "M90EWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 12.690.000", battery: "Lithium", capacity: "60V / 24Ah", power: "1500W", range: "hingga 90-100 km", speed: "70 km/jam", charge: "-", load: "-", colorsAvailable: ["Pink"], colorsUnavailable: ["Gray", "Silver", "Hijau"] },
+      { category: "motor", name: "U-WINFLY M90G", image: "M90GWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 12.950.000", battery: "Lithium", capacity: "60V / 24Ah", power: "1500W", range: "hingga 90-100 km", speed: "70 km/jam", charge: "-", load: "-", colorsAvailable: ["Silver"], colorsUnavailable: ["Gray", "Merah", "Ungu"] },
+      { category: "sepeda", name: "U-WINFLY D65", image: "D65WEB.png", badges: ["sold"], oldPrice: "Rp 3.700.000", price: "Rp 3.400.000", battery: "SLA (Lead Acid)", capacity: "40V - 12Ah", power: "500W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam dari 0%", load: "100-150 kg", colorsAvailable: [], colorsUnavailable: ["Hitam", "Biru", "Hijau", "Merah", "Pink", "Ungu"] },
+      { category: "sepeda", name: "U-WINFLY D66A", image: "D66AWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.199.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Biru", "Hijau", "Merah", "Silver"], colorsUnavailable: ["Pink"] },
+      { category: "sepeda", name: "U-WINFLY D66B", image: "D66BWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.999.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Hijau", "Merah"], colorsUnavailable: ["Silver"] },
+      { category: "sepeda", name: "U-WINFLY D66i", image: "D66iWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.899.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Merah", "Putih", "Silver"], colorsUnavailable: ["Kuning", "Pink"] },
+      { category: "sepeda", name: "U-WINFLY D70", image: "D70WEB.png", badges: ["sold"], oldPrice: "Rp 3.800.000", price: "Rp 3.299.000", battery: "SLA (Lead Acid)", capacity: "40V - 12Ah", power: "500W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam dari 0%", load: "100-150 kg", colorsAvailable: [], colorsUnavailable: ["Hitam", "Biru", "Hijau", "Merah", "Pink", "Ungu"] },
+      { category: "sepeda", name: "U-WINFLY D75", image: "D75WEB.png", badges: ["sold"], oldPrice: "Rp 3.900.000", price: "Rp 3.700.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: [], colorsUnavailable: ["Hitam", "Biru", "Hijau", "Merah", "Pink", "Ungu"] },
+      { category: "sepeda", name: "U-WINFLY M60", image: "M60WEB.png", badges: ["sold"], oldPrice: "Rp 4.100.000", price: "Rp 3.299.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: [], colorsUnavailable: ["Hitam", "Biru", "Hijau", "Merah", "Pink", "Ungu"] },
+      { category: "sepeda", name: "U-WINFLY M60L", image: "M60LWEB.png", badges: ["sold"], oldPrice: "Rp 4.500.000", price: "Rp 4.299.000", battery: "Lithium", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "7-8 jam", load: "100-150 kg", colorsAvailable: [], colorsUnavailable: ["Hitam", "Biru", "Hijau", "Merah", "Pink", "Ungu"] },
+      { category: "sepeda", name: "U-WINFLY M70", image: "M70WEB.png", badges: ["sold"], oldPrice: "Rp 4.800.000", price: "Rp 3.799.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: [], colorsUnavailable: ["Hitam", "Biru", "Hijau", "Merah", "Pink", "Ungu"] },
+      { category: "sepeda", name: "U-WINFLY M70L", image: "M70LWEB.png", badges: ["sold"], oldPrice: "", price: "Rp 5.200.000", battery: "Lithium", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "7-8 jam", load: "100-150 kg", colorsAvailable: [], colorsUnavailable: ["Hitam", "Biru", "Hijau", "Merah", "Pink", "Ungu"] },
+      { category: "sepeda", name: "U-WINFLY T78B", image: "T78BWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 6.599.000", battery: "Lithium", capacity: "48V - 18Ah", power: "800W", range: "40-45 km", speed: "40-45 km/jam", charge: "3-4 jam", load: "100-150 kg", colorsAvailable: ["Biru", "Hijau"], colorsUnavailable: ["Silver", "Hitam", "Merah"] },
+      { category: "sepeda", name: "U-WINFLY T60", image: "T60WEB.png", badges: ["sold"], oldPrice: "Rp 4.100.000", price: "Rp 3.599.000", battery: "SLA (Lead Acid)", capacity: "40V - 12Ah", power: "500W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam dari 0%", load: "100-150 kg", colorsAvailable: [], colorsUnavailable: ["Biru", "Hijau", "Pink"] },
+      { category: "sepeda", name: "U-WINFLY T65L", image: "T65LWEB.png", badges: ["promo", "best", "ready"], oldPrice: "Rp 5.600.000", price: "Rp 5.400.000", battery: "Lithium", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "7-8 jam", load: "100-150 kg", colorsAvailable: ["Silver"], colorsUnavailable: ["Biru", "Hijau", "Putih"] },
+      { category: "sepeda", name: "U-WINFLY T78C", image: "T78CWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 7.399.000", battery: "Lithium", capacity: "48V - 18Ah", power: "800W", range: "45-50 km", speed: "45-50 km/jam", charge: "3-4 jam", load: "100-150 kg", colorsAvailable: ["Biru", "Gray"], colorsUnavailable: ["Pink", "Merah"] }
     ];
 
     const badgeLabels = {
@@ -1254,6 +1290,14 @@
 
     let currentFilter = "all";
     const compareSelection = new Set();
+    let activeProduct = null;
+    let selectedColor = "";
+
+    const colorValues = {
+      "Hitam": "#151515", "Putih": "#ffffff", "Gray": "#808080", "Silver": "linear-gradient(135deg,#f8fafc,#9ca3af)",
+      "Nebula": "linear-gradient(135deg,#111827,#6d28d9,#0ea5e9)", "Merah": "#dc2626", "Hijau": "#16a34a",
+      "Hijau Army": "#4b5320", "Biru": "#2563eb", "Pink": "#ec4899", "Ungu": "#7e22ce", "Kuning": "#facc15"
+    };
 
     function productMedia(product) {
       const gallery = Array.isArray(product.gallery) && product.gallery.length ? product.gallery : [product.image];
@@ -1337,9 +1381,47 @@
       document.getElementById("compareModal").classList.add("open");
     }
 
-    function productMessage(product) {
-      const status = product.badges.includes("sold") ? "cek stok pengganti" : "cek stok";
-      return `Halo Eramolis, saya tertarik dengan ${product.name}. Mohon info harga terbaru dan ${status}.`;
+    function refreshProductWhatsApp() {
+      if (!activeProduct) return;
+      const button = document.getElementById("modalWaBtn");
+      const hasAvailableColor = activeProduct.colorsAvailable.length > 0;
+      button.href = `https://wa.me/${phone}?text=${encodeURIComponent(productMessage(activeProduct, selectedColor))}`;
+      button.textContent = hasAvailableColor ? "Tanya via WhatsApp" : "Tanyakan ketersediaan warna";
+      document.getElementById("modalColorSelection").innerHTML = selectedColor
+        ? `Warna pilihan: <strong>${selectedColor}</strong>`
+        : "Belum ada warna yang tersedia untuk dipilih.";
+    }
+
+    function renderColorOptions(product) {
+      const container = document.getElementById("modalColorOptions");
+      selectedColor = product.colorsAvailable[0] || "";
+      container.innerHTML = "";
+
+      [...product.colorsAvailable.map((name) => ({ name, available: true })),
+       ...product.colorsUnavailable.map((name) => ({ name, available: false }))]
+        .forEach(({ name, available }) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = `color-option${name === selectedColor ? " selected" : ""}`;
+          button.disabled = !available;
+          button.setAttribute("aria-label", `${name}${available ? " tersedia" : " tidak tersedia"}`);
+          button.innerHTML = `<span class="color-dot" style="--swatch:${colorValues[name] || "#cbd5e1"}"></span><span>${name}</span>`;
+          if (available) {
+            button.addEventListener("click", () => {
+              selectedColor = name;
+              container.querySelectorAll(".color-option").forEach((item) => item.classList.remove("selected"));
+              button.classList.add("selected");
+              refreshProductWhatsApp();
+            });
+          }
+          container.appendChild(button);
+        });
+      refreshProductWhatsApp();
+    }
+
+    function productMessage(product, color = "") {
+      if (color) return `Halo U-WINFLY Eramolis, saya tertarik dengan ${product.name} harga ${product.price}, warna ${color}. Apakah stoknya masih tersedia?`;
+      return `Halo U-WINFLY Eramolis, saya tertarik dengan ${product.name} harga ${product.price}. Apakah ada warna yang tersedia saat ini?`;
     }
 
     function renderBadges(product) {
@@ -1398,6 +1480,7 @@
     }
 
     function openProductModal(product) {
+      activeProduct = product;
       document.getElementById("modalTitle").textContent = product.name;
       renderGallery(product);
       document.getElementById("modalBadges").innerHTML = renderBadges(product);
@@ -1423,8 +1506,7 @@
         </div>
       `).join("");
 
-      document.getElementById("modalWaBtn").href = `https://wa.me/${phone}?text=${encodeURIComponent(productMessage(product))}`;
-      document.getElementById("modalWaBtn").textContent = product.badges.includes("sold") ? "Cek stok pengganti" : "Tanya via WhatsApp";
+      renderColorOptions(product);
       document.getElementById("productModal").classList.add("open");
     }
 
