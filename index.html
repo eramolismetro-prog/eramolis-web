@@ -389,6 +389,10 @@
       padding: 12px;
       text-align: left;
       cursor: pointer;
+      display: grid;
+      grid-template-rows: auto 40px 20px 52px 30px 38px;
+      align-content: start;
+      row-gap: 0;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
@@ -446,11 +450,15 @@
       margin: 10px 0 4px;
       font-size: 16px;
       line-height: 1.25;
+      height: 40px;
+      overflow: hidden;
     }
 
     .compare-toggle {
       width: 100%;
-      margin-top: 10px;
+      height: 38px;
+      margin-top: 0;
+      align-self: end;
       border: 1px solid var(--red);
       border-radius: 8px;
       background: #fff;
@@ -534,6 +542,23 @@
       font-size: 13px;
       font-weight: 700;
       margin-bottom: 8px;
+      height: 20px;
+      overflow: hidden;
+    }
+
+    .product-price-box {
+      height: 52px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    .product-card .badges {
+      height: 30px;
+      align-content: flex-start;
+      margin: 0;
+      overflow: hidden;
     }
 
     .product-price {
@@ -547,6 +572,10 @@
       text-decoration: line-through;
       font-size: 13px;
       margin-right: 6px;
+    }
+
+    .product-old-price.price-placeholder {
+      visibility: hidden;
     }
 
     .badges {
@@ -1028,7 +1057,7 @@
           <button class="filter-btn" type="button" data-filter="promo">Promo</button>
           <button class="filter-btn" type="button" data-filter="ready">Ready</button>
         </div>
-        <p style="margin:-4px 0 18px;color:var(--muted);font-size:13px;font-weight:700;">Pilih tombol <strong>Bandingkan</strong> pada 2–3 produk untuk melihat perbedaannya.</p>
+        <p style="margin:-4px 0 18px;color:var(--muted);font-size:13px;font-weight:700;">Pilih tombol <strong>Bandingkan</strong> pada 2â€“3 produk untuk melihat perbedaannya.</p>
 
         <div class="battery-strip reveal">
           <div class="battery-card">
@@ -1266,7 +1295,7 @@
         button.type = "button";
         button.className = `gallery-thumb${item.type === "video" ? " video-thumb" : ""}${index === 0 ? " active" : ""}`;
         button.setAttribute("aria-label", item.type === "video" ? "Putar video produk" : `Lihat foto ${index + 1}`);
-        button.innerHTML = item.type === "video" ? "▶ VIDEO" : `<img src="${mediaUrl(item.src)}" alt="Thumbnail ${product.name}">`;
+        button.innerHTML = item.type === "video" ? "â–¶ VIDEO" : `<img src="${mediaUrl(item.src)}" alt="Thumbnail ${product.name}">`;
         button.addEventListener("click", () => showGalleryMedia(item, button));
         thumbs.appendChild(button);
       });
@@ -1341,12 +1370,12 @@
           </div>
           <h3>${product.name}</h3>
           <div class="product-meta">${product.battery} | ${product.power}</div>
-          <div>
-            ${product.oldPrice ? `<span class="product-old-price">${product.oldPrice}</span>` : ""}
+          <div class="product-price-box">
+            <span class="product-old-price${product.oldPrice ? "" : " price-placeholder"}">${product.oldPrice || "Rp 0"}</span>
             <span class="product-price">${product.price}</span>
           </div>
           <div class="badges">${renderBadges(product)}</div>
-          <button class="compare-toggle${compareSelection.has(index) ? " selected" : ""}" type="button">${compareSelection.has(index) ? "✓ Dipilih" : "+ Bandingkan"}</button>
+          <button class="compare-toggle${compareSelection.has(index) ? " selected" : ""}" type="button">${compareSelection.has(index) ? "âœ“ Dipilih" : "+ Bandingkan"}</button>
         `;
         card.querySelector(".image-wrap").addEventListener("click", () => openProductModal(product));
         card.querySelector("h3").addEventListener("click", () => openProductModal(product));
