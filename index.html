@@ -1608,7 +1608,7 @@
 
     function updateCountdown() {
       const now = new Date();
-      const end = new Date(now.getFullYear(), now.getMonth() + 1, 0, 23, 59, 59);
+      const end = new Date("2026-07-31T22:00:00+07:00");
       const distance = Math.max(0, end - now);
       const seconds = Math.floor(distance / 1000);
       const days = Math.floor(seconds / 86400);
