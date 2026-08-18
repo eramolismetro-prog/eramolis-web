@@ -1281,7 +1281,7 @@
     const products = [
       { category: "motor", name: "U-WINFLY M90E", image: "M90EWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 12.690.000", battery: "Lithium", capacity: "60V / 24Ah", power: "1500W", range: "hingga 90-100 km", speed: "70 km/jam", charge: "-", load: "-", colorsAvailable: ["Pink"], colorsUnavailable: ["Gray", "Silver", "Hijau"] },
       { category: "motor", name: "U-WINFLY M90G", image: "M90GWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 12.950.000", battery: "Lithium", capacity: "60V / 24Ah", power: "1500W", range: "hingga 90-100 km", speed: "70 km/jam", charge: "-", load: "-", colorsAvailable: ["Silver"], colorsUnavailable: ["Gray", "Merah", "Ungu"] },
-      { category: "sepeda", name: "U-WINFLY D66A", image: "D66AWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.199.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Biru", "Hijau", "Merah", "Silver"], colorsUnavailable: ["Pink"] },
+      { category: "sepeda", name: "U-WINFLY D66A", image: "D66AWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.199.000", price: "Rp 3.999.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Biru", "Hijau", "Merah", "Silver"], colorsUnavailable: ["Pink"] },
       { category: "sepeda", name: "U-WINFLY D66B", image: "D66BWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.999.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Hijau", "Merah"], colorsUnavailable: ["Silver"] },
       { category: "sepeda", name: "U-WINFLY D66i", image: "D66iWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.899.000", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Merah", "Putih", "Silver"], colorsUnavailable: ["Kuning", "Pink"] },
       { category: "sepeda", name: "U-WINFLY T78B", image: "T78BWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 6.699.000", battery: "Lithium", capacity: "48V - 18Ah", power: "800W", range: "40-45 km", speed: "40-45 km/jam", charge: "3-4 jam", load: "100-150 kg", colorsAvailable: ["Biru", "Hijau"], colorsUnavailable: ["Silver", "Hitam", "Merah"] },
@@ -1612,11 +1612,11 @@
     }
 
     function syncPromoWithStock() {
-      const t5 = products.find((product) => product.name === "U-WINFLY T5");
+      const D66A = products.find((product) => product.name === "U-WINFLY D66A");
       const promoSection = document.getElementById("promo");
-      if (!t5 || !promoSection) return;
+      if (!d66a || !promoSection) return;
 
-      const isSoldOut = t5.badges.includes("sold");
+      const isSoldOut = d66a.badges.includes("sold");
       promoSection.hidden = isSoldOut;
     }
 
