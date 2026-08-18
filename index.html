@@ -1611,15 +1611,6 @@
       document.getElementById("countSeconds").textContent = String(remainingSeconds).padStart(2, "0");
     }
 
-    function syncPromoWithStock() {
-      const D66A = products.find((product) => product.name === "U-WINFLY D66A");
-      const promoSection = document.getElementById("promo");
-      if (!d66a || !promoSection) return;
-
-      const isSoldOut = d66a.badges.includes("sold");
-      promoSection.hidden = isSoldOut;
-    }
-
     renderProducts();
     syncPromoWithStock();
     observeRevealItems();
