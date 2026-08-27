@@ -812,6 +812,64 @@
       line-height: 1.65;
     }
 
+    .detail-section {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .detail-section-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 14px;
+      border: 0;
+      background: #f8fafc;
+      color: var(--ink);
+      font: inherit;
+      font-weight: 900;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .detail-section-toggle:hover { background: #f1f5f9; }
+    .detail-section-toggle .section-arrow { transition: transform .2s ease; font-size: 16px; }
+    .detail-section.collapsed .section-arrow { transform: rotate(-90deg); }
+    .detail-section-body { padding: 12px 14px 14px; }
+    .detail-section.collapsed .detail-section-body { display: none; }
+
+    .feature-list { display: flex; flex-wrap: wrap; gap: 8px; }
+    .feature-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 34px;
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .feature-pill::before {
+      content: "✓";
+      display: grid;
+      place-items: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #dcfce7;
+      color: #15803d;
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .section-note { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+
     .modal-content img {
       width: 100%;
       max-height: 270px;
@@ -1229,13 +1287,37 @@
         <span class="product-old-price" id="modalOldPrice"></span>
         <span class="modal-new-price" id="modalNewPrice"></span>
       </div>
-      <div class="color-panel">
-        <h4>Warna Tersedia</h4>
-        <p class="color-help">Warna pudar sedang tidak tersedia dan tidak dapat dipilih.</p>
-        <div class="color-options" id="modalColorOptions"></div>
-        <p class="color-selection" id="modalColorSelection"></p>
-      </div>
-      <div class="spec-grid" id="specGrid"></div>
+
+      <section class="detail-section" id="colorSection">
+        <button class="detail-section-toggle" type="button" data-detail-toggle="colorSection" aria-expanded="true">
+          <span>🎨 Warna Tersedia</span><span class="section-arrow">⌄</span>
+        </button>
+        <div class="detail-section-body">
+          <p class="color-help">Warna pudar sedang tidak tersedia dan tidak dapat dipilih.</p>
+          <div class="color-options" id="modalColorOptions"></div>
+          <p class="color-selection" id="modalColorSelection"></p>
+        </div>
+      </section>
+
+      <section class="detail-section" id="specSection">
+        <button class="detail-section-toggle" type="button" data-detail-toggle="specSection" aria-expanded="true">
+          <span>📋 Spesifikasi</span><span class="section-arrow">⌄</span>
+        </button>
+        <div class="detail-section-body">
+          <div class="spec-grid" id="specGrid"></div>
+        </div>
+      </section>
+
+      <section class="detail-section" id="featureSection">
+        <button class="detail-section-toggle" type="button" data-detail-toggle="featureSection" aria-expanded="true">
+          <span>⭐ Fitur Unggulan</span><span class="section-arrow">⌄</span>
+        </button>
+        <div class="detail-section-body">
+          <div class="feature-list" id="featureList"></div>
+          <p class="section-note" id="featureEmpty" style="display:none">Belum ada fitur tambahan yang dicantumkan.</p>
+        </div>
+      </section>
+
       <a class="wa-btn" id="modalWaBtn" href="#" target="_blank" rel="noopener noreferrer">Tanya via WhatsApp</a>
     </div>
   </div>
@@ -1269,14 +1351,14 @@
     const phone = "628551579797";
 
     const products = [
-      { category: "motor", name: "U-WINFLY M90E", image: "M90EWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 12.690.000", description: "M90E cocok untuk kamu yang menginginkan motor listrik dengan perpaduan tenaga, jarak tempuh, dan fitur pintar. Dibekali baterai Lithium 60V 24Ah dan motor 1500W, M90E mampu menempuh hingga 90–100 km dengan kecepatan maksimal 70 km/jam. Dilengkapi Cruise Control, Booster, tombol (P) manual, kunci stang, serta mode mundur (Reverse/Atret) untuk pengalaman berkendara yang lebih praktis. M90E juga dapat terhubung dengan aplikasi untuk memberikan pengalaman penggunaan yang lebih modern dan terintegrasi.", battery: "Lithium", capacity: "60V / 24Ah", power: "1500W", range: "hingga 90-100 km", speed: "70 km/jam", charge: "-", load: "-", colorsAvailable: ["Pink"], colorsUnavailable: ["Gray", "Silver", "Hijau"] },
-      { category: "motor", name: "U-WINFLY M90G", image: "M90GWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 12.950.000", description: "M90G cocok untuk kamu yang menginginkan motor listrik dengan perpaduan tenaga, jarak tempuh, fitur pintar, dan desain yang lebih futuristik. Dibekali baterai Lithium 60V 24Ah dan motor 1500W, M90G mampu menempuh hingga 90–100 km dengan kecepatan maksimal 70 km/jam. Dilengkapi Cruise Control, Booster, tombol (P) manual, kunci stang, serta mode mundur (Reverse/Atret). M90G juga dapat terhubung dengan aplikasi untuk memberikan pengalaman penggunaan yang lebih modern dan terintegrasi.", battery: "Lithium", capacity: "60V / 24Ah", power: "1500W", range: "hingga 90-100 km", speed: "70 km/jam", charge: "-", load: "-", colorsAvailable: ["Silver"], colorsUnavailable: ["Gray", "Merah", "Ungu"] },
-      { category: "sepeda", name: "U-WINFLY D66A", image: "D66AWEB.png", badges: ["promo", "best", "ready"], oldPrice: "Rp 4.199.000", price: "Rp 3.999.000", description: "D66A cocok untuk penggunaan keluarga, baik untuk dewasa maupun anak. Dibekali baterai SLA 48V 12Ah dan motor 600W, D66A mampu menempuh jarak 40–45 km dengan kecepatan maksimal 40–45 km/jam. Dilengkapi fitur Cruise Control dan Booster. Salah satu keunggulannya, baterai dapat dilepas sehingga lebih praktis untuk dibawa dan dicas di tempat yang nyaman. Dengan daya angkut hingga 100–150 kg, D66A menjadi pilihan praktis untuk kebutuhan mobilitas sehari-hari.", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Biru", "Hijau", "Merah", "Silver"], colorsUnavailable: ["Pink"] },
-      { category: "sepeda", name: "U-WINFLY D66B", image: "D66BWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.999.000", description: "D66B cocok untuk kamu yang mencari sepeda listrik praktis untuk kebutuhan sehari-hari. Dibekali baterai SLA 48V 12Ah dan motor 600W, D66B mampu menempuh jarak 40–45 km dengan kecepatan maksimal 40–45 km/jam. Dilengkapi Cruise Control dan bagasi luas yang praktis untuk membawa barang bawaan. D66B juga dapat terhubung ke aplikasi untuk memberikan pengalaman penggunaan yang lebih modern. Dengan daya angkut hingga 100–150 kg, D66B cocok untuk penggunaan dewasa maupun anak, serta aktivitas harian, kerja, sekolah, dan kebutuhan keluarga.", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Hijau", "Merah"], colorsUnavailable: ["Silver"] },
-      { category: "sepeda", name: "U-WINFLY D66i", image: "D66iWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.899.000", description: "D66i cocok untuk kamu yang mencari sepeda listrik praktis dengan teknologi yang lebih modern. Dibekali baterai SLA 48V 12Ah dan motor 600W, D66i mampu menempuh jarak 40–45 km dengan kecepatan maksimal 40–45 km/jam. Dilengkapi Cruise Control dan bagasi berkapasitas 26 liter untuk memberikan kepraktisan dalam penggunaan sehari-hari. D66i juga dapat terhubung dengan aplikasi, sementara sistem startup menggunakan NFC dan aplikasi sehingga tidak memerlukan kunci kontak untuk menyalakan kendaraan.", battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Merah", "Putih", "Silver"], colorsUnavailable: ["Kuning", "Pink"] },
-      { category: "sepeda", name: "U-WINFLY T78B", image: "T78BWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 6.699.000", description: "Cocok untuk kamu yang mencari sepeda listrik dengan baterai Lithium, pengisian lebih cepat, dan tenaga 800W. Dilengkapi fitur Booster dan Cruise Control. Dengan jarak tempuh hingga 40–45 km dan waktu pengisian sekitar 3–4 jam, T78B cocok untuk aktivitas harian, kerja, sekolah, maupun perjalanan dalam kota.", battery: "Lithium", capacity: "48V - 18Ah", power: "800W", range: "40-45 km", speed: "40-45 km/jam", charge: "3-4 jam", load: "100-150 kg", colorsAvailable: ["Biru", "Hijau"], colorsUnavailable: ["Silver", "Hitam", "Merah"] },
-      { category: "sepeda", name: "U-WINFLY T65L", image: "T65LWEB.png", badges: ["sold"], oldPrice: "Rp 5.600.000", price: "Rp 5.400.000", description: "T65L saat ini berstatus SOLD OUT. Silakan hubungi Eramolis untuk menanyakan ketersediaan unit berikutnya.", battery: "Lithium", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "7-8 jam", load: "100-150 kg", colorsAvailable: ["Silver"], colorsUnavailable: ["Biru", "Hijau", "Putih"] },
-      { category: "sepeda", name: "U-WINFLY T78C", image: "T78CWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 7.599.000", description: "T78C cocok untuk kamu yang menginginkan sepeda listrik dengan baterai Lithium 48V 18Ah dan tenaga 800W untuk perjalanan yang lebih jauh. Dilengkapi fitur Booster dan Cruise Control untuk pengalaman berkendara yang lebih praktis, serta tombol (P) manual untuk membantu mengunci stang. T78C juga memiliki bagasi berkapasitas 26 liter yang praktis untuk menyimpan barang bawaan. Dengan jarak tempuh hingga 45–50 km dan waktu pengecasan sekitar 3–4 jam, T78C cocok untuk aktivitas harian maupun perjalanan dalam kota dengan kebutuhan mobilitas yang lebih tinggi.", battery: "Lithium", capacity: "48V - 18Ah", power: "800W", range: "45-50 km", speed: "45-50 km/jam", charge: "3-4 jam", load: "100-150 kg", colorsAvailable: ["Biru", "Gray"], colorsUnavailable: ["Pink", "Merah"] }
+      { category: "motor", name: "U-WINFLY M90E", image: "M90EWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 12.690.000", description: "M90E cocok untuk kamu yang menginginkan motor listrik dengan perpaduan tenaga, jarak tempuh, dan fitur pintar. Dibekali baterai Lithium 60V 24Ah dan motor 1500W, M90E mampu menempuh hingga 90–100 km dengan kecepatan maksimal 70 km/jam. Dilengkapi Cruise Control, Booster, tombol (P) manual, kunci stang, serta mode mundur (Reverse/Atret) untuk pengalaman berkendara yang lebih praktis. M90E juga dapat terhubung dengan aplikasi untuk memberikan pengalaman penggunaan yang lebih modern dan terintegrasi.", features: ["Cruise Control","Booster","Tombol (P) Manual","Kunci Stang","Reverse / Atret","Koneksi Aplikasi"], battery: "Lithium", capacity: "60V / 24Ah", power: "1500W", range: "hingga 90-100 km", speed: "70 km/jam", charge: "-", load: "-", colorsAvailable: ["Pink"], colorsUnavailable: ["Gray", "Silver", "Hijau"] },
+      { category: "motor", name: "U-WINFLY M90G", image: "M90GWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 12.950.000", description: "M90G cocok untuk kamu yang menginginkan motor listrik dengan perpaduan tenaga, jarak tempuh, fitur pintar, dan desain yang lebih futuristik. Dibekali baterai Lithium 60V 24Ah dan motor 1500W, M90G mampu menempuh hingga 90–100 km dengan kecepatan maksimal 70 km/jam. Dilengkapi Cruise Control, Booster, tombol (P) manual, kunci stang, serta mode mundur (Reverse/Atret). M90G juga dapat terhubung dengan aplikasi untuk memberikan pengalaman penggunaan yang lebih modern dan terintegrasi.", features: ["Desain Futuristik","Cruise Control","Booster","Tombol (P) Manual","Kunci Stang","Reverse / Atret","Koneksi Aplikasi"], battery: "Lithium", capacity: "60V / 24Ah", power: "1500W", range: "hingga 90-100 km", speed: "70 km/jam", charge: "-", load: "-", colorsAvailable: ["Silver"], colorsUnavailable: ["Gray", "Merah", "Ungu"] },
+      { category: "sepeda", name: "U-WINFLY D66A", image: "D66AWEB.png", badges: ["promo", "best", "ready"], oldPrice: "Rp 4.199.000", price: "Rp 3.999.000", description: "D66A cocok untuk penggunaan keluarga, baik untuk dewasa maupun anak. Dibekali baterai SLA 48V 12Ah dan motor 600W, D66A mampu menempuh jarak 40–45 km dengan kecepatan maksimal 40–45 km/jam. Dilengkapi fitur Cruise Control dan Booster. Salah satu keunggulannya, baterai dapat dilepas sehingga lebih praktis untuk dibawa dan dicas di tempat yang nyaman. Dengan daya angkut hingga 100–150 kg, D66A menjadi pilihan praktis untuk kebutuhan mobilitas sehari-hari.", features: ["Cruise Control","Booster","Baterai Dapat Dilepas"], battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Biru", "Hijau", "Merah", "Silver"], colorsUnavailable: ["Pink"] },
+      { category: "sepeda", name: "U-WINFLY D66B", image: "D66BWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.999.000", description: "D66B cocok untuk kamu yang mencari sepeda listrik praktis untuk kebutuhan sehari-hari. Dibekali baterai SLA 48V 12Ah dan motor 600W, D66B mampu menempuh jarak 40–45 km dengan kecepatan maksimal 40–45 km/jam. Dilengkapi Cruise Control dan bagasi luas yang praktis untuk membawa barang bawaan. D66B juga dapat terhubung ke aplikasi untuk memberikan pengalaman penggunaan yang lebih modern. Dengan daya angkut hingga 100–150 kg, D66B cocok untuk penggunaan dewasa maupun anak, serta aktivitas harian, kerja, sekolah, dan kebutuhan keluarga.", features: ["Cruise Control","Bagasi Luas","Koneksi Aplikasi"], battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Hijau", "Merah"], colorsUnavailable: ["Silver"] },
+      { category: "sepeda", name: "U-WINFLY D66i", image: "D66iWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 4.899.000", description: "D66i cocok untuk kamu yang mencari sepeda listrik praktis dengan teknologi yang lebih modern. Dibekali baterai SLA 48V 12Ah dan motor 600W, D66i mampu menempuh jarak 40–45 km dengan kecepatan maksimal 40–45 km/jam. Dilengkapi Cruise Control dan bagasi berkapasitas 26 liter untuk memberikan kepraktisan dalam penggunaan sehari-hari. D66i juga dapat terhubung dengan aplikasi, sementara sistem startup menggunakan NFC dan aplikasi sehingga tidak memerlukan kunci kontak untuk menyalakan kendaraan.", features: ["Cruise Control","Bagasi 26 Liter","Koneksi Aplikasi","Startup NFC + Aplikasi","Tanpa Kunci Kontak"], battery: "SLA (Lead Acid)", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "8-10 jam", load: "100-150 kg", colorsAvailable: ["Hitam", "Merah", "Putih", "Silver"], colorsUnavailable: ["Kuning", "Pink"] },
+      { category: "sepeda", name: "U-WINFLY T78B", image: "T78BWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 6.699.000", description: "Cocok untuk kamu yang mencari sepeda listrik dengan baterai Lithium, pengisian lebih cepat, dan tenaga 800W. Dilengkapi fitur Booster dan Cruise Control. Dengan jarak tempuh hingga 40–45 km dan waktu pengisian sekitar 3–4 jam, T78B cocok untuk aktivitas harian, kerja, sekolah, maupun perjalanan dalam kota.", features: ["Booster","Cruise Control"], battery: "Lithium", capacity: "48V - 18Ah", power: "800W", range: "40-45 km", speed: "40-45 km/jam", charge: "3-4 jam", load: "100-150 kg", colorsAvailable: ["Biru", "Hijau"], colorsUnavailable: ["Silver", "Hitam", "Merah"] },
+      { category: "sepeda", name: "U-WINFLY T65L", image: "T65LWEB.png", badges: ["sold"], oldPrice: "Rp 5.600.000", price: "Rp 5.400.000", description: "T65L saat ini berstatus SOLD OUT. Silakan hubungi Eramolis untuk menanyakan ketersediaan unit berikutnya.", features: [], battery: "Lithium", capacity: "48V - 12Ah", power: "600W", range: "40-45 km", speed: "40-45 km/jam", charge: "7-8 jam", load: "100-150 kg", colorsAvailable: ["Silver"], colorsUnavailable: ["Biru", "Hijau", "Putih"] },
+      { category: "sepeda", name: "U-WINFLY T78C", image: "T78CWEB.png", badges: ["best", "ready"], oldPrice: "", price: "Rp 7.599.000", description: "T78C cocok untuk kamu yang menginginkan sepeda listrik dengan baterai Lithium 48V 18Ah dan tenaga 800W untuk perjalanan yang lebih jauh. Dilengkapi fitur Booster dan Cruise Control untuk pengalaman berkendara yang lebih praktis, serta tombol (P) manual untuk membantu mengunci stang. T78C juga memiliki bagasi berkapasitas 26 liter yang praktis untuk menyimpan barang bawaan. Dengan jarak tempuh hingga 45–50 km dan waktu pengecasan sekitar 3–4 jam, T78C cocok untuk aktivitas harian maupun perjalanan dalam kota dengan kebutuhan mobilitas yang lebih tinggi.", features: ["Booster","Cruise Control","Tombol (P) Manual","Kunci Stang","Bagasi 26 Liter"], battery: "Lithium", capacity: "48V - 18Ah", power: "800W", range: "45-50 km", speed: "45-50 km/jam", charge: "3-4 jam", load: "100-150 kg", colorsAvailable: ["Biru", "Gray"], colorsUnavailable: ["Pink", "Merah"] }
     ];
 
     const badgeLabels = {
@@ -1477,11 +1559,38 @@
       observeRevealItems();
     }
 
+    function setupDetailSectionToggles() {
+      document.querySelectorAll("[data-detail-toggle]").forEach((button) => {
+        if (button.dataset.bound === "1") return;
+        button.dataset.bound = "1";
+        button.addEventListener("click", () => {
+          const section = document.getElementById(button.dataset.detailToggle);
+          const collapsed = section.classList.toggle("collapsed");
+          button.setAttribute("aria-expanded", String(!collapsed));
+        });
+      });
+    }
+
+    function resetDetailSections() {
+      document.querySelectorAll(".detail-section").forEach((section) => section.classList.remove("collapsed"));
+      document.querySelectorAll("[data-detail-toggle]").forEach((button) => button.setAttribute("aria-expanded", "true"));
+    }
+
+    function renderFeatureList(product) {
+      const list = document.getElementById("featureList");
+      const empty = document.getElementById("featureEmpty");
+      const features = Array.isArray(product.features) ? product.features : [];
+      list.innerHTML = features.map((feature) => `<span class="feature-pill">${feature}</span>`).join("");
+      empty.style.display = features.length ? "none" : "block";
+    }
+
     function openProductModal(product) {
       activeProduct = product;
       document.getElementById("modalTitle").textContent = product.name;
       document.getElementById("modalDescription").textContent = product.description || "";
       document.getElementById("modalDescription").style.display = product.description ? "block" : "none";
+      resetDetailSections();
+      renderFeatureList(product);
       renderGallery(product);
       document.getElementById("modalBadges").innerHTML = renderBadges(product);
       document.getElementById("modalOldPrice").textContent = product.oldPrice;
@@ -1669,6 +1778,7 @@
       document.getElementById("countSeconds").textContent = String(remainingSeconds).padStart(2, "0");
     }
 
+    setupDetailSectionToggles();
     renderProducts();
     renderActivePromos();
     observeRevealItems();
